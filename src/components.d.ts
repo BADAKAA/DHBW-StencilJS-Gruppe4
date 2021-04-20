@@ -10,6 +10,8 @@ export namespace Components {
         "exampleProp": string;
         "exampleToUpperCase": () => Promise<void>;
     }
+    interface ImageSlider {
+    }
     interface MyComponent {
         /**
           * The first name
@@ -32,6 +34,12 @@ declare global {
         prototype: HTMLExampleComponentElement;
         new (): HTMLExampleComponentElement;
     };
+    interface HTMLImageSliderElement extends Components.ImageSlider, HTMLStencilElement {
+    }
+    var HTMLImageSliderElement: {
+        prototype: HTMLImageSliderElement;
+        new (): HTMLImageSliderElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -40,6 +48,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "example-component": HTMLExampleComponentElement;
+        "image-slider": HTMLImageSliderElement;
         "my-component": HTMLMyComponentElement;
     }
 }
@@ -47,6 +56,8 @@ declare namespace LocalJSX {
     interface ExampleComponent {
         "exampleProp"?: string;
         "onExampleEvent"?: (event: CustomEvent<string>) => void;
+    }
+    interface ImageSlider {
     }
     interface MyComponent {
         /**
@@ -64,6 +75,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "example-component": ExampleComponent;
+        "image-slider": ImageSlider;
         "my-component": MyComponent;
     }
 }
@@ -72,6 +84,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "example-component": LocalJSX.ExampleComponent & JSXBase.HTMLAttributes<HTMLExampleComponentElement>;
+            "image-slider": LocalJSX.ImageSlider & JSXBase.HTMLAttributes<HTMLImageSliderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
