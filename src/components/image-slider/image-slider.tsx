@@ -1,11 +1,9 @@
 //This tutorial is the basis for most of the sliuder-logic:
 //https://www.youtube.com/watch?v=KcdBOoK3Pfw
-//Ich habe das Tutorial nur bis Minute 9:02 angesehen 
 
 
 import { Component, Host, Prop, h } from '@stencil/core';
 let imageElements:Array<HTMLImageElement>=[];
-let sliderFrame:HTMLDivElement;
 let slider:HTMLDivElement;
 
 let currentImageNumber:number=2;
@@ -47,10 +45,9 @@ function addImages() {
 
   setTimeout(()=>{
 
-  sliderFrame=document.querySelector("image-slider").shadowRoot.querySelector("#slider-frame");
   slider=document.querySelector("image-slider").shadowRoot.querySelector("#slider");
 
-  sliderSize=sliderFrame.clientWidth;
+  sliderSize=slider.clientWidth;
   //add last image to start and first image to end to enable smooth transition
   //.cloneNode(true) is necessary because the elements won't get appended multiple times otherwise
   slider.appendChild(imageElements[imageElements.length-1]);
@@ -62,13 +59,46 @@ function addImages() {
   slider.appendChild(imageElements[0]).cloneNode(true);
   //move slider to hide last image appended to start for smooth transition
   slider.style.transform = "translateX("+ (-sliderSize) +"px)";
-  slider.style.transition= "transform 2s";
-  setInterval(()=>{changeSlide()},5000);
+  setInterval(()=>{changeSlide("-")},7500);
+  slider.addEventListener("transitionend", checkEndReached)
   },0)
+ 
 }
 
 
-function changeSlide() {
-  slider.style.transform = "translateX("+ (-sliderSize*currentImageNumber) +"px)";
-  currentImageNumber++;
+function changeSlide(index:string) {
+
+slider.style.transition = "transform 2s ease-in-out";
+let factor:number=1;
+  switch (index) {
+    case "+":
+      factor=(-currentImageNumber)
+      currentImageNumber++;
+      break;
+    case "-":
+      factor=(-currentImageNumber)+2;
+      currentImageNumber--;
+      break;
+    default:
+      break;
+  }
+  slider.style.transform = "translateX("+ sliderSize*factor+"px)";
+  
 }
+
+
+function checkEndReached() {
+
+  if (currentImageNumber>imageElements.length+1) {
+
+
+    slider.style.transition= "none";
+    slider.style.transform = "translateX("+ (-sliderSize)+"px)";
+    currentImageNumber=2;
+} else if (currentImageNumber===1){
+  slider.style.transition= "none";
+  slider.style.transform = "translateX("+ (-sliderSize*imageElements.length)+"px)";
+  currentImageNumber=imageElements.length+1;
+}
+}
+
