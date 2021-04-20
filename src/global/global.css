@@ -1,3 +1,62 @@
 :root {
     --app-example-var: black;
 }
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #FFFCF9;
+}
+
+p {
+    color:#100B00;
+    font-size: 12pt;
+}
+h1,h2,h3,h4 {
+    font-family: 'Catamaran', sans-serif;
+ }
+h1 {
+    font-weight: 900;
+    color: #100B00;
+    font-size: 48pt;
+}
+h2 {
+    font-weight: 800;
+    color: #1a1a1a;
+    font-size: 36pt;
+}
+h3 {
+    font-weight: 700;
+    color: #333333;
+    font-size: 30pt;
+}
+h4 {
+    font-weight: 600;
+    color: #404040;
+    font-size: 20pt;
+}
+
+
+.inverted {
+    color: #FFFCF9;
+}
+.cta {
+    font-family: 'Catamaran', sans-serif;
+    transition: background 0.2s ease-in;
+    background:#247ba0;
+    font-size: 20pt;
+    font-weight:600;
+    color:#FFFCF9;
+}
+.cta:hover {
+    background:#1d6483;
+}
+.cta:focus {
+    background:#1F487E;
+}
+.primary {
+    background:#941C2F;
+    color:#FFFCF9;
+}
+.secondary {
+    background:#1F487E;
+    color:#FFFCF9;
+}
