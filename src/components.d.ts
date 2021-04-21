@@ -11,6 +11,7 @@ export namespace Components {
         "exampleToUpperCase": () => Promise<void>;
     }
     interface ImageSlider {
+        "autoplay"?: string;
         "sources": string;
     }
     interface MyComponent {
@@ -59,6 +60,7 @@ declare namespace LocalJSX {
         "onExampleEvent"?: (event: CustomEvent<string>) => void;
     }
     interface ImageSlider {
+        "autoplay"?: string;
         "sources"?: string;
     }
     interface MyComponent {

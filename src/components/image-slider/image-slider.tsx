@@ -8,6 +8,15 @@ let slider:HTMLDivElement;
 
 let currentImageNumber:number=2;
 let sliderSize:number;
+
+let autoplay:boolean=false;
+
+//variables for responsiveness
+let resized:boolean=false;
+let transitionActive:boolean=false;
+window.addEventListener('resize', ()=>{
+  resized=true;
+  adjustSliderSize()});
 @Component({
   tag: 'image-slider',
   styleUrl: 'image-slider.css',
@@ -15,6 +24,8 @@ let sliderSize:number;
 })
 export class ImageSlider {
   @Prop() sources: string;
+
+  @Prop() autoplay?: string;
 
   constructor() {
     //process input information and store sources in array
@@ -24,6 +35,10 @@ export class ImageSlider {
       currentImage.src=link;
       currentImage.classList.add("slideshow-image");
       imageElements.push(currentImage);
+
+      if(this.autoplay==="true") {
+        autoplay=true;
+      }
     }
   }
   render() {
@@ -59,15 +74,22 @@ function addImages() {
   slider.appendChild(imageElements[0]).cloneNode(true);
   //move slider to hide last image appended to start for smooth transition
   slider.style.transform = "translateX("+ (-sliderSize) +"px)";
-  setInterval(()=>{changeSlide("-")},7500);
-  slider.addEventListener("transitionend", checkEndReached)
+
+  if (autoplay) {
+  setInterval(()=>{changeSlide("+")},3000);
+  slider.addEventListener("transitionend", ()=>{
+    checkEndReached();
+    transitionActive=false;
+    adjustSliderSize();
+  })
+  } 
   },0)
- 
+
 }
 
 
 function changeSlide(index:string) {
-
+transitionActive=true;
 slider.style.transition = "transform 2s ease-in-out";
 let factor:number=1;
   switch (index) {
@@ -102,3 +124,16 @@ function checkEndReached() {
 }
 }
 
+
+function adjustSliderSize() {
+
+  if(!transitionActive&&resized) {
+    //quick transition to smoothly fix position
+  slider.style.transition = "transform 0.2s";
+  sliderSize=slider.clientWidth;
+  console.log(currentImageNumber);
+  slider.style.transform = "translateX("+ (-sliderSize*(currentImageNumber-1))+"px)";
+  console.log("resized");
+  resized=false;
+  }
+}
