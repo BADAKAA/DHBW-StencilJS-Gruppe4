@@ -13,15 +13,18 @@ let previousImageButton:HTMLImageElement;
 let nextImageButton:HTMLImageElement;
 
 const sliderCooldown:number=7500;
+let sliderFrequency:number=5000;
 let paused:boolean=false;
 
-let currentImageNumber:number=2;
 let sliderSize:number;
-
 let autoplay:boolean=false;
+let currentImageNumber:number=2;
+
 let sliderTimingFunction:any;
 let sliderCooldowFunction:any;
 
+let sliderHeight:string;
+let sliderWidth:string;
 
 //responsiveness
 let resized:boolean=false;
@@ -39,6 +42,7 @@ export class ImageSlider {
 
   @Prop() sources: string;
   @Prop() autoplay?: string;
+  @Prop() time:string;
   @Prop() height?:string;
   @Prop() width?:string;
 
@@ -50,16 +54,28 @@ export class ImageSlider {
       currentImage.src=link;
       currentImage.classList.add("slideshow-image");
       imageElements.push(currentImage);
+    }
 
+    //store user input height and width
+    sliderHeight=this.height;
+    sliderWidth=this.width;
+      //check if autoplay property has been set to "true"
       if(this.autoplay==="true") {
         autoplay=true;
       }
-
+      //adapt slider frequency
+      if(this.time) {
+        if(this.time.includes("s")){
+        sliderFrequency=parseInt(this.time)*1000;
+      } else {
+        sliderFrequency=parseInt(this.time);
+      }
+      
     }
   }
 
   componentDidLoad() {
-    initializeSlider(this.width, this.height)
+    initializeSlider()
   }
 
   render() {
@@ -79,12 +95,12 @@ export class ImageSlider {
   }
 } 
 
-function initializeSlider(width:string,height:string) {
+function initializeSlider() {
 
   defineObjectReferences()
 
   addImages();
-  changeSliderProperties(width,height)
+  changeSliderProperties()
 
   slider.addEventListener("transitionend", ()=>{
     checkEndReached();
@@ -99,7 +115,7 @@ function initializeSlider(width:string,height:string) {
 
 function addImages() {
   //add last image to start and first image to end to enable smooth transition
-  //.cloneNode(true) is necessary because the elements won't get appended multiple times otherwise
+  //.cloneNode(true) is necessary because the elements will not get appended multiple times otherwise
   slider.appendChild(imageElements[imageElements.length-1]);
   
   //append images to slider
@@ -125,47 +141,33 @@ function defineObjectReferences() {
 }
 
 
-function changeSliderProperties(width:string,height:string) {
-if (width) {
+function changeSliderProperties() {
+if (sliderWidth) {
   resized=true;
-  sliderFrame.style.minWidth=width;
+  sliderFrame.style.minWidth=sliderWidth;
 }
-if (height) {
-  resized=true;
-  if(height.includes("%")){
-    //calcualte height from screen size  
-    const calculatedHeight:number=window.innerHeight*(parseInt(height)/100);
-    sliderFrame.style.height=calculatedHeight.toString()+"px";
-  } else {
-    sliderFrame.style.height=height;
-  }
-}
+//height is updated in "adjustSliderSize()";
 adjustSliderSize();
 }
 
-function changeSlide(index:string) {
 
-if(!transitionActive) {
-transitionActive=true;
-slider.style.transition = "transform 2s ease-in-out";
-let factor:number;
-  switch (index) {
-    case "+":
-      factor=(-currentImageNumber)
-      currentImageNumber++;
-      break;
-    case "-":
-      factor=(-currentImageNumber)+2;
-      currentImageNumber--;
-      break;
-    default:
-      break;
+function calculateSliderHeight() {
+
+  let calculatedHeight:string;
+  
+  if(sliderHeight.includes("%")){
+    //calcualte height from screen size  
+    const pixelvalueFromPercantage:number=window.innerHeight*(parseInt(sliderHeight)/100);
+    calculatedHeight=pixelvalueFromPercantage.toString()+"px";
+    return calculatedHeight;
+
+  } else if (sliderHeight.includes("px")){
+    return sliderHeight;
+
+  } else {
+    return null;
   }
-  slider.style.transform = "translateX("+ sliderSize*factor+"px)";
-  paused=false;
 }
-}
-
 function adjustSliderSize() {
 
   if(!transitionActive&&resized) {
@@ -183,8 +185,34 @@ function adjustSliderSize() {
     image.style.minWidth=sliderFrame.offsetWidth+"px";  
   }
   }
+  if (calculateSliderHeight()!=null) {
+  sliderFrame.style.height=calculateSliderHeight();
+
+  }
 }
 
+function changeSlide(index:string) {
+
+  if(!transitionActive) {
+  transitionActive=true;
+  slider.style.transition = "transform 2s ease-in-out";
+  let factor:number;
+    switch (index) {
+      case "+":
+        factor=(-currentImageNumber)
+        currentImageNumber++;
+        break;
+      case "-":
+        factor=(-currentImageNumber)+2;
+        currentImageNumber--;
+        break;
+      default:
+        break;
+    }
+    slider.style.transform = "translateX("+ sliderSize*factor+"px)";
+    paused=false;
+  }
+  }
 function checkEndReached() {
 
   if (currentImageNumber>imageElements.length+1) {
@@ -209,7 +237,7 @@ function startStopSlider() {
   } else if (paused) {
     stopSliderButton.src="/assets/pause.png";
     changeSlide("+");
-    sliderTimingFunction = setInterval(()=>{changeSlide("+")},5000);
+    sliderTimingFunction = setInterval(()=>{changeSlide("+")},sliderFrequency);
     paused=false;
   }
 }
@@ -221,7 +249,7 @@ function pauseSlider() {
   clearTimeout(sliderCooldowFunction);
 
   sliderCooldowFunction = setTimeout(() => {
-      sliderTimingFunction = setInterval(()=>{changeSlide("+")},5000);
+      sliderTimingFunction = setInterval(()=>{changeSlide("+")},sliderFrequency);
     }
   , sliderCooldown);
 }

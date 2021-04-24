@@ -14,6 +14,7 @@ export namespace Components {
         "autoplay"?: string;
         "height"?: string;
         "sources": string;
+        "time": string;
         "width"?: string;
     }
     interface MyComponent {
@@ -65,6 +66,7 @@ declare namespace LocalJSX {
         "autoplay"?: string;
         "height"?: string;
         "sources"?: string;
+        "time"?: string;
         "width"?: string;
     }
     interface MyComponent {
