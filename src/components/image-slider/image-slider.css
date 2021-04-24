@@ -3,19 +3,50 @@
 }
 #slider-frame {
   width: 80%;
+  height: 50%;
   margin:auto;
+  vertical-align: middle;
   overflow: hidden;
+  position: relative;
 }
 
 #slider {
+  position:inherit;
   display:flex;
   width:100%;
-  height: 600px;
+  height:100%;
 }
 
 .slideshow-image {
   width:100%;
+  height:auto;
   display: inline-block;
   vertical-align: middle;
   object-fit: cover;
+}
+
+.sliderButton {
+  pointer-events: auto;
+  position: absolute;
+  cursor: pointer;
+  margin: 0 auto;
+  z-index: 1000;
+  width:100px;
+  top: 50%;
+  mix-blend-mode: lighten;
+}
+#nextImageButton {
+  right: 1%;           
+  transform: translate(0, -50%) rotate(-90deg); 
+}
+
+#previousImageButton {
+  left: 1%;                      
+  transform: translate(0, -50%) rotate(90deg); 
+}
+#stopSliderButton {
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -75%);
+  opacity: 0.5;
 }

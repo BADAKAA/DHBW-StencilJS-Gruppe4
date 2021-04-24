@@ -12,7 +12,9 @@ export namespace Components {
     }
     interface ImageSlider {
         "autoplay"?: string;
+        "height"?: string;
         "sources": string;
+        "width"?: string;
     }
     interface MyComponent {
         /**
@@ -61,7 +63,9 @@ declare namespace LocalJSX {
     }
     interface ImageSlider {
         "autoplay"?: string;
+        "height"?: string;
         "sources"?: string;
+        "width"?: string;
     }
     interface MyComponent {
         /**
