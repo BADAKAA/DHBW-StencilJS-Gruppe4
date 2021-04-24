@@ -1,11 +1,11 @@
 import { Component, Host, h } from '@stencil/core';
 
 @Component({
-  tag: 'datepicker-component',
-  styleUrl: 'datepicker-component.css',
+  tag: 'date-picker',
+  styleUrl: 'date-picker.css',
   shadow: true,
 })
-export class DatepickerComponent {
+export class DatePicker {
 
   render() {
     return (
