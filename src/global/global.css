@@ -3,9 +3,11 @@
 }
 body {
     font-family: 'Open Sans', sans-serif;
-    background-color: #FFFCF9;
+    background-color: #100B00;
 }
-
+header {
+    background: #100B00;
+}
 p {
     color:#100B00;
     font-size: 12pt;
