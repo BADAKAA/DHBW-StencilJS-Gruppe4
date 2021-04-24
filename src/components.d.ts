@@ -14,7 +14,7 @@ export namespace Components {
         "autoplay"?: string;
         "height"?: string;
         "sources": string;
-        "time": string;
+        "time"?: string;
         "width"?: string;
     }
     interface MyComponent {
@@ -30,6 +30,8 @@ export namespace Components {
           * The middle name
          */
         "middle": string;
+    }
+    interface SearchBar {
     }
 }
 declare global {
@@ -51,10 +53,17 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLSearchBarElement extends Components.SearchBar, HTMLStencilElement {
+    }
+    var HTMLSearchBarElement: {
+        prototype: HTMLSearchBarElement;
+        new (): HTMLSearchBarElement;
+    };
     interface HTMLElementTagNameMap {
         "example-component": HTMLExampleComponentElement;
         "image-slider": HTMLImageSliderElement;
         "my-component": HTMLMyComponentElement;
+        "search-bar": HTMLSearchBarElement;
     }
 }
 declare namespace LocalJSX {
@@ -83,10 +92,13 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface SearchBar {
+    }
     interface IntrinsicElements {
         "example-component": ExampleComponent;
         "image-slider": ImageSlider;
         "my-component": MyComponent;
+        "search-bar": SearchBar;
     }
 }
 export { LocalJSX as JSX };
@@ -96,6 +108,7 @@ declare module "@stencil/core" {
             "example-component": LocalJSX.ExampleComponent & JSXBase.HTMLAttributes<HTMLExampleComponentElement>;
             "image-slider": LocalJSX.ImageSlider & JSXBase.HTMLAttributes<HTMLImageSliderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "search-bar": LocalJSX.SearchBar & JSXBase.HTMLAttributes<HTMLSearchBarElement>;
         }
     }
 }

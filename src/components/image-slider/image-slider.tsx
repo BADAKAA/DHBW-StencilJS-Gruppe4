@@ -42,7 +42,7 @@ export class ImageSlider {
 
   @Prop() sources: string;
   @Prop() autoplay?: string;
-  @Prop() time:string;
+  @Prop() time?:string;
   @Prop() height?:string;
   @Prop() width?:string;
 

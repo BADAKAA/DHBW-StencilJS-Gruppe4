@@ -1,0 +1,30 @@
+:host {
+  display: block;
+}
+.searchBar {
+border: 1px solid lightgray;
+border-radius: 30px;
+padding: 0 80px 0;
+
+left: 50%;
+width: 50%;
+height: 60px;
+
+font-size: 16pt;
+font-weight: 600;
+font-family: 'Open Sans', sans-serif;
+
+
+z-index: 1000;
+position: absolute;
+transform: translate(-50%, -50%);
+}
+
+.searchIcon {
+  display: inline-block;
+  position: absolute;
+  height: 60px;
+  width:60px;
+  top:0px;
+  right:0px;
+}
