@@ -4,9 +4,16 @@
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: #100B00;
+    margin:0;
 }
 header {
     background: #100B00;
+}
+.white {
+background: #FFFCF9;
+}
+.padding {
+    padding:0px 20px 0 20px;
 }
 p {
     color:#100B00;
