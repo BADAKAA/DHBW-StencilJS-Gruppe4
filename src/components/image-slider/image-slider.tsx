@@ -100,8 +100,7 @@ function initializeSlider() {
   defineObjectReferences()
 
   addImages();
-  changeSliderProperties()
-
+  changeSliderProperties();
   slider.addEventListener("transitionend", ()=>{
     checkEndReached();
     transitionActive=false;
