@@ -45,7 +45,7 @@ import { Component, Host, h } from '@stencil/core';
 
 let componentElement: ShadowRoot;
 let listElement: HTMLUListElement;
-
+let expanded:boolean=false;
 @Component({
   tag: 'event-list',
   styleUrl: 'event-list.css',
@@ -87,7 +87,7 @@ function fillList() {
                         <div class="details" style='display:none'>
                         <p><h4>Location: </h4>${event.location}</p>
                         <p><h4>Date: </h4>${(convertDate(event.date))}</p>
-                        <p><h4>Time: </h4>${event.time}</p>
+                        <p><h4>Time: </h4>${event.time} Uhr</p>
                         <p><h4>Description: </h4>${event.description}<p>
                         </div>`
     listItem.querySelector(".eventTitle").addEventListener("click", (ev) => expandItem(ev.target));
@@ -141,14 +141,15 @@ function expandAllItems() {
     const info = listItem.querySelector(".info") as HTMLElement;
     const details = listItem.querySelector(".details") as HTMLElement;
 
-    if (details.style.display == "none") {
+    if (!expanded) {
       info.style.display = "none";
       details.style.display = "contents";
       detailButton.textContent = "Hide Details";
-    } else {
+    } else if (expanded){
       info.style.display = "contents";
       details.style.display = "none";
       detailButton.textContent = "Show Details";
     }
   }
+  expanded=!expanded;
 }

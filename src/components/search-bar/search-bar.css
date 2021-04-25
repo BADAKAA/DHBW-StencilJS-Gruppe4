@@ -18,7 +18,7 @@
 border: 1px solid lightgray;
 border-radius: 30px;
 padding: 0 80px;
-
+outline: none;
 font-size: 16pt;
 font-family: 'Open Sans', sans-serif;
 width: 100%;
@@ -27,7 +27,6 @@ z-index: 1000;
 position: absolute;
 }
 .searchBar:hover {
-  
   background: #F8F8F8;
 }
 .searchBar:focus {
@@ -49,6 +48,5 @@ position: absolute;
 
   cursor: pointer;
   position: absolute;
-  
   
 }

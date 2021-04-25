@@ -1,7 +1,12 @@
-import { Component, Host, h } from '@stencil/core';
+//The main logic fpr the search bar comes from this tutorial:
+//https://www.youtube.com/watch?v=3NG8zy0ywIk
 
+import { Component, Host, h, Prop } from '@stencil/core';
+
+let searchBarContainer:HTMLDivElement;
 let componentElement:ShadowRoot;
 let searchBar:HTMLInputElement;
+let searchedElement:HTMLElement;
 @Component({
   tag: 'search-bar',
   styleUrl: 'search-bar.css',
@@ -9,7 +14,9 @@ let searchBar:HTMLInputElement;
 })
 
 export class SearchBar {
-
+  @Prop() element:string;
+  @Prop() type:string;
+  @Prop() position:string;
   render() {
     return (
       <Host>
@@ -23,12 +30,61 @@ export class SearchBar {
   componentDidLoad() {
     componentElement=document.querySelector("search-bar").shadowRoot;
     searchBar=componentElement.querySelector("#searchBar");
+    searchBarContainer=componentElement.querySelector(".searchBarContainer");
+    defineSearchedElement(this.element,this.type);
+    searchBar.addEventListener("input", search);
+
+    if(this.position) {
+      searchBarContainer.style.position=this.position;
+    }
+  }
+}
+
+function defineSearchedElement(element:string, type:string) {
+  if (!type) {
+    type="ul";
+  }
+  if (!element) {
+    element="body";
+  }
+
+  if (document.querySelector(element).shadowRoot) {
+  searchedElement=document.querySelector(element).shadowRoot.querySelector(type);
+  console.log(searchedElement);
+  
+  } else if (document.querySelector(element)) {
+    searchedElement=document.querySelector(element).querySelector(type);
+  } else {
+    throw new Error('The element you want to search cannot be found.');
   }
 }
 
 function search() {
 
-  const input:string = searchBar.value;
-  const url ='http://www.google.com/search?q=' + input;
-  window.open(url,'_blank');
+  resetSearch();
+  const input:string = searchBar.value.toLowerCase();
+  const listElements=searchedElement.querySelectorAll("li") as unknown as Array<HTMLElement>;
+
+  for (const element of listElements) {
+    element.style.transition="opacity 1s";
+  
+    if (!element.textContent.toLowerCase().includes(input)) {
+        element.style.position="absolute";
+        element.style.visibility="hidden";
+        element.style.opacity="0";
+    }
+  }
+  console.log(searchedElement);
 }
+
+
+function resetSearch() {
+  const listElements=searchedElement.querySelectorAll("li") as unknown as Array<HTMLElement>;
+
+  for (const element of listElements) {
+      element.style.visibility="visible";
+      element.style.position="relative";
+      element.style.opacity="1";
+  }
+}
+

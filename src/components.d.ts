@@ -34,6 +34,9 @@ export namespace Components {
         "middle": string;
     }
     interface SearchBar {
+        "element": string;
+        "position": string;
+        "type": string;
     }
 }
 declare global {
@@ -104,6 +107,9 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface SearchBar {
+        "element"?: string;
+        "position"?: string;
+        "type"?: string;
     }
     interface IntrinsicElements {
         "event-list": EventList;
