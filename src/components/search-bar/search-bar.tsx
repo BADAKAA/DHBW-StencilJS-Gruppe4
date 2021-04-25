@@ -70,6 +70,8 @@ function defineSearchedElement(element: string, typeProperty: string) {
     searchedElement = document.querySelector(element).shadowRoot.querySelector(type);
     console.log(searchedElement);
 
+  } else if (!type) {
+    searchedElement = document.querySelector(element);
   } else if (document.querySelector(element)) {
     searchedElement = document.querySelector(element).querySelector(typeProperty);
   } else {
