@@ -8,6 +8,7 @@ let componentElement: ShadowRoot|HTMLElement;
 let searchIcon: HTMLImageElement;
 let searchedElement: HTMLElement;
 let searchBar: HTMLInputElement;
+let type:string;
 @Component({
   tag: 'search-bar',
   styleUrl: 'search-bar.css',
@@ -59,8 +60,8 @@ export class SearchBar {
   }
 }
 
-function defineSearchedElement(element: string, type: string) {
-  if (!type) {
+function defineSearchedElement(element: string, typeProperty: string) {
+  if (!typeProperty) {
     type = "ul";
   }
   if (!element) {
@@ -72,7 +73,7 @@ function defineSearchedElement(element: string, type: string) {
     console.log(searchedElement);
 
   } else if (document.querySelector(element)) {
-    searchedElement = document.querySelector(element).querySelector(type);
+    searchedElement = document.querySelector(element).querySelector(typeProperty);
   } else {
     throw new Error('The element you want to search cannot be found.');
   }
@@ -83,7 +84,13 @@ function search() {
   resetSearch();
   searchIcon.src = "/assets/clear.png";
   const input: string = searchBar.value.toLowerCase();
-  const listElements = searchedElement.querySelectorAll("li") as unknown as Array<HTMLElement>;
+  let listElements;
+  if(type=="ul" || type=="ol") {
+  listElements = searchedElement.querySelectorAll("li") as unknown as Array<HTMLElement>;
+  } else {
+    listElements =  searchedElement.children as unknown as Array<HTMLElement>;
+  }
+
 
   for (const element of listElements) {
     element.style.transition = "opacity 1s";
