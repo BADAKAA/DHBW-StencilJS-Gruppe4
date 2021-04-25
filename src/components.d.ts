@@ -12,10 +12,10 @@ export namespace Components {
     }
     interface ImageSlider {
         "autoplay"?: string;
-        "height"?: string;
+        "height": string;
         "sources": string;
         "time"?: string;
-        "width"?: string;
+        "width": string;
     }
     interface MyComponent {
         /**
