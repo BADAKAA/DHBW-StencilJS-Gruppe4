@@ -6,6 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface EventList {
+    }
     interface ExampleComponent {
         "exampleProp": string;
         "exampleToUpperCase": () => Promise<void>;
@@ -35,6 +37,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLEventListElement extends Components.EventList, HTMLStencilElement {
+    }
+    var HTMLEventListElement: {
+        prototype: HTMLEventListElement;
+        new (): HTMLEventListElement;
+    };
     interface HTMLExampleComponentElement extends Components.ExampleComponent, HTMLStencilElement {
     }
     var HTMLExampleComponentElement: {
@@ -60,6 +68,7 @@ declare global {
         new (): HTMLSearchBarElement;
     };
     interface HTMLElementTagNameMap {
+        "event-list": HTMLEventListElement;
         "example-component": HTMLExampleComponentElement;
         "image-slider": HTMLImageSliderElement;
         "my-component": HTMLMyComponentElement;
@@ -67,6 +76,8 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface EventList {
+    }
     interface ExampleComponent {
         "exampleProp"?: string;
         "onExampleEvent"?: (event: CustomEvent<string>) => void;
@@ -95,6 +106,7 @@ declare namespace LocalJSX {
     interface SearchBar {
     }
     interface IntrinsicElements {
+        "event-list": EventList;
         "example-component": ExampleComponent;
         "image-slider": ImageSlider;
         "my-component": MyComponent;
@@ -105,6 +117,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "event-list": LocalJSX.EventList & JSXBase.HTMLAttributes<HTMLEventListElement>;
             "example-component": LocalJSX.ExampleComponent & JSXBase.HTMLAttributes<HTMLExampleComponentElement>;
             "image-slider": LocalJSX.ImageSlider & JSXBase.HTMLAttributes<HTMLImageSliderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;

@@ -1,13 +1,11 @@
 :root {
     --app-example-var: black;
+    --custom-black: #100B00;
 }
 body {
     font-family: 'Open Sans', sans-serif;
-    background-color: #100B00;
+    background-color: var(--custom-black);
     margin:0;
-}
-header {
-    background: #100B00;
 }
 .white {
 background: #FFFCF9;
@@ -16,15 +14,15 @@ background: #FFFCF9;
     padding:0px 20px 0 20px;
 }
 p {
-    color:#100B00;
+    color:var(--custom-black);
     font-size: 12pt;
 }
 h1,h2,h3,h4 {
     font-family: 'Catamaran', sans-serif;
- }
+}
 h1 {
     font-weight: 900;
-    color: #100B00;
+    color: var(--custom-black);
     font-size: 48pt;
 }
 h2 {
@@ -73,4 +71,8 @@ h4 {
 
 header {
     text-align: center;
+}
+
+a {
+    text-decoration: none;
 }
