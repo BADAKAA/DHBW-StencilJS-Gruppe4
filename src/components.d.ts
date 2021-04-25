@@ -35,8 +35,10 @@ export namespace Components {
     }
     interface SearchBar {
         "element": string;
+        "google": string;
         "position": string;
         "type": string;
+        "width": string;
     }
 }
 declare global {
@@ -108,8 +110,10 @@ declare namespace LocalJSX {
     }
     interface SearchBar {
         "element"?: string;
+        "google"?: string;
         "position"?: string;
         "type"?: string;
+        "width"?: string;
     }
     interface IntrinsicElements {
         "event-list": EventList;
