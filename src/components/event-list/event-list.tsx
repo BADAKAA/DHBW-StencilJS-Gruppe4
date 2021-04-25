@@ -50,7 +50,12 @@ export class EventList {
   render() {
     return (
       <Host>
+        <div class="buttonFrame">
+          <button class="cta" onClick={()=>expandItems()}>Expand Items</button>
+          <button class="cta" onClick={()=>collapseItems()}>Collapse Items</button>
+        </div>
         <ul class="eventList"></ul>
+        
       </Host>
     );
   }
@@ -72,14 +77,39 @@ function fillList() {
 
     const listItem:HTMLElement = document.createElement("LI");
     listItem.innerHTML=`<h2>${event.title}</h2>
-                        <p><span>Date: </span>${(convertDate(event.date))}</p>
-                        <p><span>Time: </span>${event.time}</p>
-                        <p><span>Location: </span>${event.location}</p>
-                        <p><span>Description: </span>${event.description}<p>`
+                        <h3>${event.location}</h3>
+                        <p>${(convertDate(event.date))}</p>`
     console.log(event);
     listElement.appendChild(listItem);
   }
 
+}
+function expandItems() {
+  const listElements = componentElement.querySelectorAll("LI") as unknown as Array<HTMLLIElement>;
+  let i:number=0;
+  for (const event of data.events) {
+
+    listElements[i].innerHTML=`<h2>${event.title}</h2>
+                        <p><h4>Date: </h4>${(convertDate(event.date))}</p>
+                        <p><h4>Time: </h4>${event.time}</p>
+                        <p><h4>Location: </h4>${event.location}</p>
+                        <p><h4>Description: </h4>${event.description}<p>`
+    console.log(event);
+    i++;
+  }
+}
+
+function collapseItems() {
+  const listElements = componentElement.querySelectorAll("LI") as unknown as Array<HTMLLIElement>;
+  let i:number=0;
+  for (const event of data.events) {
+
+    listElements[i].innerHTML=` <h2>${event.title}</h2>
+                                <h3>${event.location}</h3>
+                                <p>${(convertDate(event.date))}</p>`
+    console.log(event);
+    i++;
+  }
 }
 
 function convertDate(date:string) {
