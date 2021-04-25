@@ -3,6 +3,8 @@
 }
 .eventList {
   list-style: none;
+  margin:0;
+  padding: 0 30px 0 30px;
 }
 
 h1,h2,h3 {
@@ -10,7 +12,7 @@ h1,h2,h3 {
 }
 h2 {
   font-weight: 700;
-  color: #333333;
+  color: #1a1a1a;
   font-size: 30pt;
   margin: 0 0 -15px 0;
   cursor: pointer;
@@ -18,7 +20,7 @@ h2 {
 }
 h3 {
   font-weight: 600;
-  color: #333333;
+  color: #404040;
   font-size: 20pt;
   margin: -5px 0 -10px;
 }
@@ -48,23 +50,23 @@ p {
 }
 
 
-.cta {
-  display: inline;
-  font-family: 'Catamaran', sans-serif;
+.detailButton {
+  position: absolute;
+  margin: 0 0 0 60px;
+  transform: translate(0,-130%);
   transition: background 0.2s ease-in;
-  background:#247ba0;
-  font-size: 20pt;
-  font-weight:600;
-  color:#FFFCF9;
+  
   cursor: pointer;
-  margin: 0 20px 0 20px;
+  color:#404040;
+  font-size: 12pt;
+  font-weight:light;
+  font-family: 'Open Sans', 'Catamaran', sans-serif;
 }
-.cta:hover {
-  background:#1d6483;
+
+.detailButton:hover {
+  color:#1a1a1a;
 }
-.cta:focus {
-  background:#1F487E;
-}
+
 .buttonFrame{
   text-align: center;
   margin-top: 0;
