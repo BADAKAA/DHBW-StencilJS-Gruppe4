@@ -37,7 +37,7 @@ export class SearchBar {
     searchBarContainer = componentElement.querySelector(".searchBarContainer");
     searchIcon = componentElement.querySelector(".searchIcon");
     searchBar = componentElement.querySelector("#searchBar");
-
+    type=this.type;
     if (this.google && this.google=="true") {
       searchIcon.removeEventListener;
       searchIcon.addEventListener("click", googleSearch);
@@ -70,7 +70,7 @@ function defineSearchedElement(element: string, typeProperty: string) {
     searchedElement = document.querySelector(element).shadowRoot.querySelector(type);
     console.log(searchedElement);
 
-  } else if (!type) {
+  } else if (!typeProperty) {
     searchedElement = document.querySelector(element);
   } else if (document.querySelector(element)) {
     searchedElement = document.querySelector(element).querySelector(typeProperty);
@@ -84,7 +84,7 @@ function search() {
   resetSearch();
   searchIcon.src = "/assets/clear.png";
   const input: string = searchBar.value.toLowerCase();
-  let listElements;
+  let listElements:Array<HTMLElement>;
   if(type=="ul" || type=="ol") {
   listElements = searchedElement.querySelectorAll("li") as unknown as Array<HTMLElement>;
   } else {
@@ -105,8 +105,12 @@ function search() {
 
 
 function resetSearch() {
-  const listElements = searchedElement.querySelectorAll("li") as unknown as Array<HTMLElement>;
-
+  let listElements:Array<HTMLElement>;
+  if(type=="ul" || type=="ol") {
+    listElements = searchedElement.querySelectorAll("li") as unknown as Array<HTMLElement>;
+    } else {
+      listElements =  searchedElement.children as unknown as Array<HTMLElement>;
+    }
   for (const element of listElements) {
     element.style.visibility = "visible";
     element.style.position = "relative";
