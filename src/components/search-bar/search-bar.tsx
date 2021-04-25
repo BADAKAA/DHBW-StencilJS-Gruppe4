@@ -61,9 +61,7 @@ export class SearchBar {
 }
 
 function defineSearchedElement(element: string, typeProperty: string) {
-  if (!typeProperty) {
-    type = "ul";
-  }
+
   if (!element) {
     element = "body";
   }
