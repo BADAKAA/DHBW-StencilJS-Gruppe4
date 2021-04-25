@@ -51,8 +51,6 @@ export class EventList {
     return (
       <Host>
         <div class="buttonFrame">
-          <button class="cta" onClick={()=>expandItems()}>Expand Items</button>
-          <button class="cta" onClick={()=>collapseItems()}>Collapse Items</button>
         </div>
         <ul class="eventList"></ul>
         
@@ -76,15 +74,61 @@ function fillList() {
   for (const event of data.events) {
 
     const listItem:HTMLElement = document.createElement("LI");
-    listItem.innerHTML=`<h2>${event.title}</h2>
+
+    listItem.innerHTML=`<h2 class="eventTitle">${event.title}</h2>
+                        <div class="info">
                         <h3>${event.location}</h3>
-                        <p>${(convertDate(event.date))}</p>`
-    console.log(event);
+                        <p>${(convertDate(event.date))}</p>
+                        </div>
+                        <div class="details" style='display:none'>
+                        <p><h4>Date: </h4>${(convertDate(event.date))}</p>
+                        <p><h4>Time: </h4>${event.time}</p>
+                        <p><h4>Location: </h4>${event.location}</p>
+                        <p><h4>Description: </h4>${event.description}<p>
+                        </div>`
+                        
+    listItem.querySelector(".eventTitle").addEventListener("click", (ev)=>expandItem(ev.target));
     listElement.appendChild(listItem);
+    
   }
 
 }
+function expandItem(heading:any) {
+  
+  const listItem=heading.parentElement as HTMLElement;
+  const info = listItem.querySelector(".info") as HTMLElement;
+  const details = listItem.querySelector(".details") as HTMLElement;
+
+  if (details.style.display=="none") {
+  info.style.display="none";
+  details.style.display="contents";
+  } else {
+    console.log("okay?");
+    info.style.display="contents";
+    details.style.display="none";
+  }
+}
+
+
+function convertDate(date:string) {
+
+const dateComponents:Array<string> = date.split("-");
+
+return dateComponents[2]+"."+ dateComponents[1]+"."+ dateComponents[0];
+
+}
+
+/*
+
+function addButtons() {
+  componentElement.innerHTML+= `
+          <button class="cta" onClick={()=>expandItems()}>Expand Items</button>
+          <button class="cta" onClick={()=>collapseItems()}>Collapse Items</button>
+          `
+}
+
 function expandItems() {
+  
   const listElements = componentElement.querySelectorAll("LI") as unknown as Array<HTMLLIElement>;
   let i:number=0;
   for (const event of data.events) {
@@ -111,14 +155,4 @@ function collapseItems() {
     i++;
   }
 }
-
-function convertDate(date:string) {
-
-const dateComponents:Array<string> = date.split("-");
-
-return dateComponents[2]+"."+ dateComponents[1]+"."+ dateComponents[0];
-
-}
-
-
-
+*/
