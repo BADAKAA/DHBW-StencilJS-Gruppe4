@@ -34,10 +34,10 @@ export namespace Components {
         "middle": string;
     }
     interface SearchBar {
+        "component": string;
         "element": string;
         "google": string;
         "position": string;
-        "type": string;
         "width": string;
     }
 }
@@ -109,10 +109,10 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface SearchBar {
+        "component"?: string;
         "element"?: string;
         "google"?: string;
         "position"?: string;
-        "type"?: string;
         "width"?: string;
     }
     interface IntrinsicElements {
