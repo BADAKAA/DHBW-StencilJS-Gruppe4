@@ -1,16 +1,18 @@
 import { Component, Host, h } from '@stencil/core';
 
 //fetch event data
-let eventData:any;
-let eventInformation:any;
+let eventData: any;
 fetch('../data/event-data.json')
-.then(results => results.json())
-.then(data => {eventData=data.events})
-.then(()=>fillList())
+  .then(results => results.json())
+  .then(data => {
+    eventData = data.events;
+    fillList();
+    console.log(`%cEvent data was last updated ${data.lastUpdated}.`, "color:darkgreen; font-weight:bold; font-family:'Open Sans', sans-serif;line-height:20pt")
+  })
 
 let componentElement: ShadowRoot;
 let listElement: HTMLUListElement;
-let expanded:boolean=false;
+let expanded: boolean = false;
 @Component({
   tag: 'event-list',
   styleUrl: 'event-list.css',
@@ -38,12 +40,12 @@ function referenceObjects() {
 
 function fillList() {
 
-  listElement.innerHTML="";
+  listElement.innerHTML = "";
   for (const event of eventData) {
 
     const listItem: HTMLElement = document.createElement("LI");
 
-    listItem.innerHTML =`<h2 class="eventTitle">${event.title}</h2>
+    listItem.innerHTML = `<h2 class="eventTitle">${event.title}</h2>
                         <div class="info">
                         <h3>${event.location}</h3>
                         <p>${(convertDate(event.date))}</p>
@@ -84,7 +86,7 @@ function convertDate(date: string) {
 //This code adds a button to collapse or expand all elements.
 //To use it, call the addButton() function in componentDidLoad().
 let detailButton: HTMLElement;
-let sortButton:HTMLElement;
+let sortButton: HTMLElement;
 
 function addButtons() {
   detailButton = document.createElement("p");
@@ -94,7 +96,7 @@ function addButtons() {
   sortButton = document.createElement("p");
   sortButton.textContent = "Sort Items";
   sortButton.classList.add("sortButton");
-  
+
   componentElement.insertBefore(detailButton, listElement);
   componentElement.insertBefore(sortButton, listElement);
 
@@ -118,47 +120,46 @@ function expandAllItems() {
       info.style.display = "none";
       details.style.display = "contents";
       detailButton.textContent = "Hide Details";
-    } else if (expanded){
+    } else if (expanded) {
       info.style.display = "contents";
       details.style.display = "none";
       detailButton.textContent = "Show Details";
     }
   }
-  expanded=!expanded;
+  expanded = !expanded;
 }
 
 function sortItems() {
-  eventInformation=eventData;
+
 
   if (sortButton.textContent.includes("↓")) {
     sortButton.textContent = "Sort Items ↑";
-    eventInformation.sort(compareDescending);
+    eventData.sort(compareDescending);
 
   } else {
     sortButton.textContent = "Sort Items ↓";
-    eventInformation.sort(compareAscending);
+    eventData.sort(compareAscending);
   }
-  eventData = eventInformation;
+
   fillList();
 }
 
-function compareAscending( a, b ) {
-  //sorting function from https://stackoverflow.com/a/1129270
-  if ( a.date < b.date ){
+function compareAscending(a, b) {
+  //sorting function adapted from https://stackoverflow.com/a/1129270
+  if (a.date < b.date) {
     return -1;
   }
-  if ( a.date > b.date ){
+  if (a.date > b.date) {
     return 1;
   }
   return 0;
 }
 
-function compareDescending( a, b ) {
-  //sorting function from https://stackoverflow.com/a/1129270
-  if ( a.date > b.date ){
+function compareDescending(a, b) {
+  if (a.date > b.date) {
     return -1;
   }
-  if ( a.date < b.date ){
+  if (a.date < b.date) {
     return 1;
   }
   return 0;
