@@ -115,7 +115,6 @@ function search() {
   const childElements: Array<HTMLElement>=getChildren();
 
   for (const element of childElements) {
-    element.style.transition = "opacity 1s";
     //search for string value and disable all elements not containing it
     if (!element.textContent.toLowerCase().includes(input)) {
       element.style.position = "absolute";

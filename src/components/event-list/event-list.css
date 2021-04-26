@@ -15,7 +15,6 @@ h2 {
   color: #1a1a1a;
   font-size: 30pt;
   margin: 0 0 -15px 0;
-  cursor: pointer;
   display: block;
 }
 h3 {
@@ -33,6 +32,12 @@ li {
 
   padding: 0px 10px 10px 30px;
   margin: 20px 20px;
+  transition: opacity 1s, border-width 0.5s;
+
+  cursor: pointer;
+}
+li:hover {
+  border-width: 1px 1px 1px 12px;
 }
 
 h4 {

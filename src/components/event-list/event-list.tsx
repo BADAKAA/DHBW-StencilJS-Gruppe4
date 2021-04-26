@@ -54,14 +54,13 @@ function fillList() {
                         <p><h4>Time: </h4>${event.time} Uhr</p>
                         <p><h4>Description: </h4>${event.description}<p>
                         </div>`
-    listItem.querySelector(".eventTitle").addEventListener("click", (ev) => expandItem(ev.target));
+    listItem.addEventListener("click", () => expandItem(listItem));
     listElement.appendChild(listItem);
   }
 }
 
-function expandItem(heading: any) {
+function expandItem(listItem: HTMLElement) {
 
-  const listItem = heading.parentElement as HTMLElement;
   const info = listItem.querySelector(".info") as HTMLElement;
   const details = listItem.querySelector(".details") as HTMLElement;
 
