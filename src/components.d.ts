@@ -34,6 +34,7 @@ export namespace Components {
         "middle": string;
     }
     interface SearchBar {
+        "color": string;
         "component": string;
         "element": string;
         "google": string;
@@ -109,6 +110,7 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface SearchBar {
+        "color"?: string;
         "component"?: string;
         "element"?: string;
         "google"?: string;

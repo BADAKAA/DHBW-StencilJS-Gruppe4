@@ -19,6 +19,7 @@ export class SearchBar {
   @Prop() position: string;
   @Prop() component: string;
   @Prop() element: string;
+  @Prop() color:string;
   @Prop() width: string;
   @Prop() google: string;
 
@@ -58,6 +59,9 @@ export class SearchBar {
         console.log('%c Please input a valid width. Permitted units: "px", "%", "vw" ("vw"="%")', "color:orange; font-weight:bold;font-family:'Open sans'");
         throw new Error('Please input a valid width. Permitted units: "px", "%", "vw" ("vw"="%")');
       }
+    }
+    if (this.color) {
+      searchIcon.style.background=this.color;
     }
   }
 }
