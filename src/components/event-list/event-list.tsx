@@ -1,47 +1,12 @@
-const data: any = {
-  "lastupdated": "2021-04-25",
-  "events": [
-    {
-      "title": "Jacob Collier World Tour",
-      "date": "2022-02-16",
-      "time": "18:00",
-      "location": "Frankfurt",
-      "description": "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart."
-    },
-    {
-      "title": "Ballroom Party",
-      "date": "2022-08-02",
-      "time": "20:00",
-      "location": "Berlin",
-      "description": "I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents."
-    },
-    {
-      "title": "Cory Henry Live",
-      "date": "2022-01-31",
-      "time": "19:00",
-      "location": "Stuttgart",
-      "description": "I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now."
-    },
-    {
-      "title": "Rhetoric Mastery Seminar",
-      "date": "2021-12-14",
-      "time": "09:30",
-      "location": "Munich",
-      "description": "When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary."
-    },
-    {
-      "title": "Democracy and the Age of Big Data and AI",
-      "date": "2021-09-16",
-      "time": "17:00",
-      "location": "London",
-      "description": "I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine."
-    }
-  ]
-};
-
-
-
 import { Component, Host, h } from '@stencil/core';
+
+//fetch event data
+let eventData:any;
+let eventInformation:any;
+fetch('../data/event-data.json')
+.then(results => results.json())
+.then(data => {eventData=data.events})
+.then(()=>fillList())
 
 let componentElement: ShadowRoot;
 let listElement: HTMLUListElement;
@@ -62,10 +27,8 @@ export class EventList {
   }
   componentDidLoad() {
     referenceObjects();
-    fillList();
-    addButton();
+    addButtons();
   }
-
 }
 
 function referenceObjects() {
@@ -75,7 +38,8 @@ function referenceObjects() {
 
 function fillList() {
 
-  for (const event of data.events) {
+  listElement.innerHTML="";
+  for (const event of eventData) {
 
     const listItem: HTMLElement = document.createElement("LI");
 
@@ -121,15 +85,25 @@ function convertDate(date: string) {
 //This code adds a button to collapse or expand all elements.
 //To use it, call the addButton() function in componentDidLoad().
 let detailButton: HTMLElement;
+let sortButton:HTMLElement;
 
-function addButton() {
+function addButtons() {
   detailButton = document.createElement("p");
   detailButton.textContent = "Show Details";
   detailButton.classList.add("detailButton");
+
+  sortButton = document.createElement("p");
+  sortButton.textContent = "Sort Items";
+  sortButton.classList.add("sortButton");
+  
   componentElement.insertBefore(detailButton, listElement);
+  componentElement.insertBefore(sortButton, listElement);
 
   detailButton = componentElement.querySelector(".detailButton");
   detailButton.addEventListener("click", expandAllItems);
+
+  sortButton = componentElement.querySelector(".sortButton");
+  sortButton.addEventListener("click", sortItems);
 }
 
 function expandAllItems() {
@@ -152,4 +126,41 @@ function expandAllItems() {
     }
   }
   expanded=!expanded;
+}
+
+function sortItems() {
+  eventInformation=eventData;
+
+  if (sortButton.textContent.includes("↓")) {
+    sortButton.textContent = "Sort Items ↑";
+    eventInformation.sort(compareDescending);
+
+  } else {
+    sortButton.textContent = "Sort Items ↓";
+    eventInformation.sort(compareAscending);
+  }
+  eventData = eventInformation;
+  fillList();
+}
+
+function compareAscending( a, b ) {
+  //sorting function from https://stackoverflow.com/a/1129270
+  if ( a.date < b.date ){
+    return -1;
+  }
+  if ( a.date > b.date ){
+    return 1;
+  }
+  return 0;
+}
+
+function compareDescending( a, b ) {
+  //sorting function from https://stackoverflow.com/a/1129270
+  if ( a.date > b.date ){
+    return -1;
+  }
+  if ( a.date < b.date ){
+    return 1;
+  }
+  return 0;
 }

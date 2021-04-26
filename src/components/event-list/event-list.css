@@ -67,7 +67,21 @@ p {
   color:#1a1a1a;
 }
 
-.buttonFrame{
-  text-align: center;
-  margin-top: 0;
+
+.sortButton {
+  position: absolute;
+  transform: translate(0,-130%);
+  transition: background 0.2s ease-in;
+  margin: 0 60px 0 0;
+  right:0px;
+
+
+  cursor: pointer;
+  color:#404040;
+  font-size: 12pt;
+  font-weight:light;
+  font-family: 'Open Sans', 'Catamaran', sans-serif;
+}
+.sortButton:hover {
+  color:#1a1a1a;
 }
