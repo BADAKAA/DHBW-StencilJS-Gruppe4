@@ -6,27 +6,18 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface DatePicker {
+        "dayNames": string[];
+        "maxDate": string;
+        "minDate": string;
+        "monthNames": string[];
+        "showFillDays": boolean;
+    }
     interface EventList {
     }
     interface ExampleComponent {
         "exampleProp": string;
         "exampleToUpperCase": () => Promise<void>;
-    }
-    interface FaqComponent {
-        "answer": string;
-        "question": string;
-    }
-    interface FlipCard {
-        "colorback"?: string;
-        "colorfront"?: string;
-        "date"?: string;
-        "description"?: string;
-        "img": string;
-        "name"?: string;
-        "place"?: string;
-        "textback"?: string;
-        "textfront"?: string;
-        "turnable": boolean;
     }
     interface ImageSlider {
         "autoplay"?: string;
@@ -49,11 +40,6 @@ export namespace Components {
          */
         "middle": string;
     }
-    interface MySmlink {
-        "icon": string;
-        "link": string;
-        "name": string;
-    }
     interface SearchBar {
         "color": string;
         "component": string;
@@ -64,6 +50,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLDatePickerElement extends Components.DatePicker, HTMLStencilElement {
+    }
+    var HTMLDatePickerElement: {
+        prototype: HTMLDatePickerElement;
+        new (): HTMLDatePickerElement;
+    };
     interface HTMLEventListElement extends Components.EventList, HTMLStencilElement {
     }
     var HTMLEventListElement: {
@@ -75,18 +67,6 @@ declare global {
     var HTMLExampleComponentElement: {
         prototype: HTMLExampleComponentElement;
         new (): HTMLExampleComponentElement;
-    };
-    interface HTMLFaqComponentElement extends Components.FaqComponent, HTMLStencilElement {
-    }
-    var HTMLFaqComponentElement: {
-        prototype: HTMLFaqComponentElement;
-        new (): HTMLFaqComponentElement;
-    };
-    interface HTMLFlipCardElement extends Components.FlipCard, HTMLStencilElement {
-    }
-    var HTMLFlipCardElement: {
-        prototype: HTMLFlipCardElement;
-        new (): HTMLFlipCardElement;
     };
     interface HTMLImageSliderElement extends Components.ImageSlider, HTMLStencilElement {
     }
@@ -100,12 +80,6 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
-    interface HTMLMySmlinkElement extends Components.MySmlink, HTMLStencilElement {
-    }
-    var HTMLMySmlinkElement: {
-        prototype: HTMLMySmlinkElement;
-        new (): HTMLMySmlinkElement;
-    };
     interface HTMLSearchBarElement extends Components.SearchBar, HTMLStencilElement {
     }
     var HTMLSearchBarElement: {
@@ -113,38 +87,29 @@ declare global {
         new (): HTMLSearchBarElement;
     };
     interface HTMLElementTagNameMap {
+        "date-picker": HTMLDatePickerElement;
         "event-list": HTMLEventListElement;
         "example-component": HTMLExampleComponentElement;
-        "faq-component": HTMLFaqComponentElement;
-        "flip-card": HTMLFlipCardElement;
         "image-slider": HTMLImageSliderElement;
         "my-component": HTMLMyComponentElement;
-        "my-smlink": HTMLMySmlinkElement;
         "search-bar": HTMLSearchBarElement;
     }
 }
 declare namespace LocalJSX {
+    interface DatePicker {
+        "dayNames"?: string[];
+        "maxDate"?: string;
+        "minDate"?: string;
+        "monthNames"?: string[];
+        "onDayChanged"?: (event: CustomEvent<CalendarEntry>) => void;
+        "onMonthChanged"?: (event: CustomEvent<CalendarEntry>) => void;
+        "showFillDays"?: boolean;
+    }
     interface EventList {
     }
     interface ExampleComponent {
         "exampleProp"?: string;
         "onExampleEvent"?: (event: CustomEvent<string>) => void;
-    }
-    interface FaqComponent {
-        "answer"?: string;
-        "question"?: string;
-    }
-    interface FlipCard {
-        "colorback"?: string;
-        "colorfront"?: string;
-        "date"?: string;
-        "description"?: string;
-        "img"?: string;
-        "name"?: string;
-        "place"?: string;
-        "textback"?: string;
-        "textfront"?: string;
-        "turnable"?: boolean;
     }
     interface ImageSlider {
         "autoplay"?: string;
@@ -167,11 +132,6 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
-    interface MySmlink {
-        "icon"?: string;
-        "link"?: string;
-        "name"?: string;
-    }
     interface SearchBar {
         "color"?: string;
         "component"?: string;
@@ -181,13 +141,11 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     interface IntrinsicElements {
+        "date-picker": DatePicker;
         "event-list": EventList;
         "example-component": ExampleComponent;
-        "faq-component": FaqComponent;
-        "flip-card": FlipCard;
         "image-slider": ImageSlider;
         "my-component": MyComponent;
-        "my-smlink": MySmlink;
         "search-bar": SearchBar;
     }
 }
@@ -195,13 +153,11 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "date-picker": LocalJSX.DatePicker & JSXBase.HTMLAttributes<HTMLDatePickerElement>;
             "event-list": LocalJSX.EventList & JSXBase.HTMLAttributes<HTMLEventListElement>;
             "example-component": LocalJSX.ExampleComponent & JSXBase.HTMLAttributes<HTMLExampleComponentElement>;
-            "faq-component": LocalJSX.FaqComponent & JSXBase.HTMLAttributes<HTMLFaqComponentElement>;
-            "flip-card": LocalJSX.FlipCard & JSXBase.HTMLAttributes<HTMLFlipCardElement>;
             "image-slider": LocalJSX.ImageSlider & JSXBase.HTMLAttributes<HTMLImageSliderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
-            "my-smlink": LocalJSX.MySmlink & JSXBase.HTMLAttributes<HTMLMySmlinkElement>;
             "search-bar": LocalJSX.SearchBar & JSXBase.HTMLAttributes<HTMLSearchBarElement>;
         }
     }
