@@ -1,4 +1,7 @@
-import { Component, h, Prop, State, Event, Watch } from '@stencil/core';
+import { Component, h, Prop, State, Event, Watch, EventEmitter } from '@stencil/core';
+import { CalendarEntry } from '../../utils/calendar-entry';
+import { Calendar} from '../../utils/calendar';
+
 //https://pguso.medium.com/create-a-calendar-with-stencil-js-web-component-deb091456df3 
 @Component({
   tag: 'date-picker',

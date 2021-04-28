@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { CalendarEntry } from "./utils/calendar-entry";
 export namespace Components {
     interface DatePicker {
         "dayNames": string[];
