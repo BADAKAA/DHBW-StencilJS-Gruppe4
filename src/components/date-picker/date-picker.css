@@ -1,11 +1,11 @@
 .calendar {
-  width: 50%;
+  width: 20%;
   font-family: Arial, sans-serif;
   padding: 1rem;
 }
 
 .calendar > * {
-  line-height: 3.5rem;
+  line-height: 2.5rem;
 }
 
 header {
@@ -60,7 +60,7 @@ header {
 
 /** Material style **/
 .material .days-in-month span:hover:not(.disabled) i:not(.selected) {
-  background: #e6d2f1;
+  background: #941C2f;
   border-radius: 50%;
 }
 
@@ -71,7 +71,7 @@ header {
 }
 
 .material .days-in-month i.selected {
-  background: #902dc6;
+  background: #941C2f;
   color: #fff;
   border-radius: 50%;
 }
