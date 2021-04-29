@@ -28,32 +28,32 @@ header {
   cursor: pointer;
 }
 
-.day-names {
+.month-names {
   display: flex;
 }
 
-.days-in-month {
+.months-in-year {
   display: flex;
   flex-wrap: wrap;
 }
 
-.days-in-month span {
+.months-in-year span {
   cursor: pointer;
   position: relative;
 }
 
-.days-in-month i {
+.months-in-year i {
   padding: .8rem;
   font-style: normal;
   position: relative;
   width: 100%;
 }
 
-.days-in-month i.padding-single-digit {
+.months-in-year i.padding-single-digit {
   padding: .8rem 1.1rem;
 }
 
-.days-in-month span.disabled {
+.months-in-year span.disabled {
   color: #ccc;
   cursor: default;
 }
@@ -64,19 +64,19 @@ header {
   border-radius: 50%;
 }
 
-.material .days-in-month i.active {
+.material .months-in-year i.active {
   border: 2px solid #000;
   border-radius: 50%;
   padding: .6rem;
 }
 
-.material .days-in-month i.selected {
+.material .months-in-year i.selected {
   background: #941C2f;
   color: #fff;
   border-radius: 50%;
 }
 
-.material .days-in-month i.has-event:before {
+.material .months-in-year i.has-event:before {
   content: ' \25CF';
   font-size: .7rem;
   position: absolute;
@@ -85,11 +85,11 @@ header {
   color: #902dc6;
 }
 
-.material .days-in-month i.selected.has-event:before {
+.material .months-in-year i.selected.has-event:before {
   color: #fff;
 }
 
-.material .days-in-month i.active.has-event:before {
+.material .months-in-year i.active.has-event:before {
   top: .1rem;
   left: 1.1rem;
 }

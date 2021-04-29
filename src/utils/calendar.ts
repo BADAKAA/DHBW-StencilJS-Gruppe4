@@ -3,77 +3,68 @@ import { CalendarEntry } from './calendar-entry';
 export class Calendar {
   readonly year: number;
   readonly month: number;
-  readonly daysInCalendarWithFiveRows = 42;
-  readonly daysInCalendarWithFourRows = 35;
-  readonly daysInCalendarWithThreeRows = 28;
+  readonly monthsInCalendarWithThreeRows = 12;
 
-  public daysInCalendar = this.daysInCalendarWithFourRows;
+  public monthInCalendar = this.monthsInCalendarWithThreeRows;
 
   private fillStartCount = 0;
   private fillEndCount = 0;
-  private currentMonthCount: number;
+  private currentYearCount: number;
   private fillCount = [6, 0, 1, 2, 3, 4, 5];
 
-  constructor(year: number, month: number) {
+  /*constructor(year: number) {
     this.year = year;
-    this.month = month;
-  }
+  }*/
 
-  public getCalendarDays(): number[] {
-    const daysOfCurrentMonth = this.getDaysOfCurrentMonth();
-    const fillStartCount = this.fillCount[this.getFirstDayOfMonth()];
-    const fillEndCount = this.daysInCalendarWithFourRows - (daysOfCurrentMonth.length + fillStartCount);
+  public getCalendarMonths(): number[] {
+    const monthsOfCurrentYear = this.getMonthsOfCurrentYear();
+    const fillStartCount = this.fillCount[this.getFirstMonthOfYear()];
+    const fillEndCount = this.monthsInCalendarWithThreeRows - (monthsOfCurrentYear.length + fillStartCount);
 
-    this.currentMonthCount = daysOfCurrentMonth.length;
+    this.currentYearCount = monthsOfCurrentYear.length;
     this.fillStartCount = fillStartCount;
     this.fillEndCount = fillEndCount;
 
-    const fillStart = fillStartCount > 0 ? this.getDaysOfLastMonth(fillStartCount) : [];
-    const fillEnd = this.getDaysOfNextMonth(fillEndCount);
+    const fillStart = fillStartCount > 0 ? this.getMonthsOfLastYear(fillStartCount) : [];
+    const fillEnd = this.getMonthsOfNextYear(fillEndCount);
 
 
-    return fillStart.concat(daysOfCurrentMonth).concat(fillEnd);
+    return fillStart.concat(monthsOfCurrentYear).concat(fillEnd);
   }
 
-  private getDaysOfCurrentMonth(): number[] {
-    return this.getDaysOfMonth(this.month);
+  private getMonthsOfCurrentYear(): number[] {
+    return this.getMonthsOfYear(this.year);
   }
 
-  private getDaysOfLastMonth(fillStartCount: number): number[] {
-    const daysOfMonth = this.getDaysOfMonth(this.month - 1);
+  private getMonthsOfLastYear(fillStartCount: number): number[] {
+    const monthsOfYear = this.getMonthsOfYear(this.year - 1);
 
-    return daysOfMonth.slice(-fillStartCount);
+    return monthsOfYear.slice(-fillStartCount);
   }
 
-  private getDaysOfNextMonth(endCount: number): number[] {
-    const daysOfMonth = this.getDaysOfMonth(this.month + 1);
+  private getMonthsOfNextYear(endCount: number): number[] {
+    const monthsOfYear = this.getMonthsOfYear(this.year + 1);
 
     let slicedDays;
-    if (endCount <= -1) {
-      endCount = this.daysInCalendarWithFiveRows - (this.currentMonthCount + this.fillStartCount);
-      slicedDays = daysOfMonth.slice(0, endCount);
-      this.daysInCalendar = this.daysInCalendarWithFiveRows;
-      this.fillEndCount = endCount;
-    } else if (endCount === 7 && (this.currentMonthCount + this.fillStartCount) === 28) {
-      endCount = this.daysInCalendarWithThreeRows - (this.currentMonthCount + this.fillStartCount);
-      slicedDays = daysOfMonth.slice(0, endCount);
-      this.daysInCalendar = this.daysInCalendarWithThreeRows;
+     if (endCount === 7 && (this.currentYearCount + this.fillStartCount) === 28) {
+      endCount = this.monthsInCalendarWithThreeRows - (this.currentYearCount + this.fillStartCount);
+      slicedDays = monthsOfYear.slice(0, endCount);
+      this.monthInCalendar = this.monthsInCalendarWithThreeRows;
       this.fillEndCount = endCount;
     } else {
-      slicedDays = daysOfMonth.slice(0, endCount);
+      slicedDays = monthsOfYear.slice(0, endCount);
     }
-
     return slicedDays;
   }
 
-  private getDaysOfMonth(month: number): number[] {
-    const daysOfMonth = new Date(this.year, month, 0).getDate();
+  private getMonthsOfYear(year: number): number[] {
+    const monthsOfYear = new Date(year, 0).getDate();
 
-    return Array.from({length: daysOfMonth}, (_, i) => i + 1);
+    return Array.from({length: monthsOfYear}, (_, i) => i + 1);
   }
 
-  public getFirstDayOfMonth(): number {
-    return new Date(this.year, this.month - 1, 1).getDay();
+  public getFirstMonthOfYear(): number {
+    return new Date(this.year - 1, 1).getMonth(); //mus die 1 nach dem Komme evtl weg?
   }
 
   public getFillStartCount(): number {
@@ -86,9 +77,8 @@ export class Calendar {
 
   public static getToday(): CalendarEntry {
     return {
-      day: new Date().getDate(),
-      month: new Date().getMonth() + 1,
-      year: new Date().getFullYear()
+      month: new Date().getDate(),
+      year: new Date().getFullYear() + 1,
     };
   }
 }

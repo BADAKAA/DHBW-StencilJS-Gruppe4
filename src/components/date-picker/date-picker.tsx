@@ -12,19 +12,17 @@ import { Calendar} from '../../utils/calendar';
 
 export class DatePicker {
 
-  @Prop() minDate:string;
-  @Prop() maxDate:string;
-  @Prop() dayNames = [
-    'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'
-  ];
   @Prop() monthNames = [
-    'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
+    'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'
+  ];
+  @Prop() yearNames = [
+    '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'
   ];
   @Prop() showFillDays = true;
 
 
 @State() date = Calendar.getToday();
-@State() daysInMonth: number[];
+@State() MonthInYear: number[];
 @State() selectedDate: CalendarEntry;
 @State() eventDates = [];
 
@@ -33,17 +31,18 @@ private fillEndCount: number;
 readonly today: CalendarEntry;
 
 @Event({
-  eventName: 'dayChanged',
-  composed: true,
-  cancelable: true,
-  bubbles: true,
-}) dayChanged: EventEmitter<CalendarEntry>;
+  eventName?: 'monthChanged',
+  bubbles?: true,
+  cancelable?: true,
+  composed?: true,
+}) monthChanged: EventEmitter<CalendarEntry>;
+  
 @Event({
-  eventName: 'monthChanged',
-  composed: true,
-  cancelable: true,
-  bubbles: true,
-}) monthChanged: EventEmitter<CalendarEntry>; 
+  eventName: 'yearChanged',
+  bubbles?: true,
+  cancelable?: true,
+  composed?: true,
+}) yearChanged: EventEmitter<CalendarEntry>;
   
   
 constructor() {
@@ -51,9 +50,9 @@ constructor() {
 }
 
 //when the date gets changed, watchDate will change the selected date and give it another styling
-@Watch('date')
+@Watch('month')
 watchDate(date: CalendarEntry): void {
-  if ('month' in date && 'year' in date) {
+  if ('year' in date) {
     this.selectedDate = date;
   }
 }
@@ -64,106 +63,100 @@ componentWillLoad() {
 
 
 
-
-
-setCalendarDetails(): void {
-  const date = this.getValidDate();
-  const calendar = new Calendar(date.year, date.month);
-  this.daysInMonth = calendar.getCalendarDays();
-
-  this.fillStartCount = calendar.getFillStartCount();
-  this.fillEndCount = (calendar.daysInCalendar - calendar.getFillEndCount());
-}
-
 getValidDate(): CalendarEntry {
   let date = this.date;
   if (!('month' in this.date && 'year' in this.date)) {
     date = this.today;
   }
-
   return date;
 }
 
-dayChangedHandler(calendarEntry: CalendarEntry): void {
-  this.dayChanged.emit(calendarEntry);
+
+setCalendarDetails(): void {
+  const date = this.getValidDate();
+  const calendar = new Calendar(date.year);
+  this.MonthInYear = calendar.getCalendarMonths();
+
+  
+
+monthChangedHandler(calendarEntry: CalendarEntry): void {
+ let event = this.monthChanged.emit(calendarEntry);
 }
 
-daySelectedHandler = (day): void => {
+monthSelectedHandler = (month): void => {
   this.selectedDate = {
-    day,
     month: this.date.month,
     year: this.date.year
   };
-  this.dayChangedHandler(this.selectedDate);
+  this.monthChangedHandler(this.selectedDate);
 }
 
-monthChangedHandler(calendarEntry: CalendarEntry): void {
-  this.monthChanged.emit(calendarEntry);
+yearChangedHandler(calendarEntry: CalendarEntry): void {
+  this.yearChanged.emit(calendarEntry);
 }
 
-switchToPreviousMonth = (): void => {
-  if (this.date.month !== 1) {
-    this.date.month -= 1;
-  } else {
-    this.date.month = 12;
+
+
+
+
+
+switchToPreviousYear = (): void => {
+  if (this.date.year !== 1) {
     this.date.year -= 1;
+  } else {
+    this.date.year = 10;
   }
 
   if (typeof this.date !== 'undefined') {
-    delete this.date.day;
+    delete this.date.month;
   }
 
   this.setCalendarDetails();
-  this.monthChangedHandler(this.date);
+  this.yearChangedHandler(this.date);
 }
 
-switchToNextMonth = (): void => {
-  if (this.date.month !== 12) {
+switchToNextyear = (): void => {
+  //wenn ich auf weiterklicke, dann
     this.date.month += 1;
-  } else {
-    this.date.month = 1;
-    this.date.year += 1;
   }
 
-  delete this.date.day;
+  delete this.date.month;
 
   this.setCalendarDetails();
   this.monthChangedHandler(this.date);
 }
 
-getDigitClassNames = (day: number, month: number, year: number, index: number): string => {
+getDigitClassNames = (month: number, year: number, index: number): string => {
   let classNameDigit = [];
-  if (day.toString().length === 1) {
+  if (month.toString().length === 1) {
     classNameDigit.push('padding-single-digit');
   }
 
-  if (this.isToday(day, month, year, index)) {
+  if (this.isToday(month, year, index)) {
     classNameDigit.push('active');
   }
 
-  if (this.isSelectedDay(day, index)) {
+  if (this.isSelectedMonth(month, index)) {
     classNameDigit.push('selected');
   }
 
-  if (this.eventDates.includes(day)) {
+  if (this.eventDates.includes(month)) {
     classNameDigit.push('has-event');
   }
 
   return classNameDigit.join(' ');
 }
 
-isToday(day: number, month: number, year: number, index: number): boolean {
-  return this.today.day === day
-    && this.today.month === month
+isToday(month: number, year: number, index: number): boolean {
+  return this.today.month === month
     && this.today.year === year
     && this.today.year === year
     && !(index < this.fillStartCount || index >= this.fillEndCount);
 }
 
-isSelectedDay(day: number, index: number) {
+isSelectedMonth(month:number, index: number) {
   return typeof this.selectedDate !== 'undefined'
-    && this.selectedDate.day === day
-    && this.selectedDate.month === this.date.month
+    && this.selectedDate.month === month
     && this.selectedDate.year === this.date.year
     && !(index < this.fillStartCount || index >= this.fillEndCount);
 }
@@ -176,29 +169,29 @@ isSelectedDay(day: number, index: number) {
     return (
       <div class="calendar material">
       <header>
-        <span onClick={this.switchToPreviousMonth}>
+        <span onClick={this.switchToPreviousYear}>
           {'<'}
         </span>
-        <span>{this.monthNames[date.month - 1]} {date.year}</span>
-        <span onClick={this.switchToNextMonth}>
+        <span>{this.yearNames[date.year - 1]}</span>
+        <span onClick={this.switchToNextYear}>
            {'>'}
         </span>
       </header>
-      <div class="day-names">
-        {this.dayNames.map(dayName => <span>{dayName}</span>)}
+      <div class="month-names">
+        {this.monthNames.map(monthName => <span>{monthName}</span>)}
       </div>
-      <div class="days-in-month">
-        {this.daysInMonth.map((day, index) => {
-          const classNameDigit = this.getDigitClassNames(day, date.month, date.year, index);
+      <div class="months-in-year">
+        {this.MonthInYear.map((month, index) => {
+          const classNameDigit = this.getDigitClassNames(month, date.year, index);
           if (index < this.fillStartCount || index >= this.fillEndCount) {
             return (
-              <span class="disabled">{this.showFillDays ? day : ''}</span>
+              <span class="disabled">{this.showFillDays ? month : ''}</span>
             );
           } else {
             return (
-              <span onClick={() => this.daySelectedHandler(day)}>
+              <span onClick={() => this.monthSelectedHandler(month)}>
                 <i class={classNameDigit}>
-                  {day}
+                  {month}
                 </i>
               </span>
             );
