@@ -21,7 +21,7 @@ h1,h2,h3,h4 {
     font-family: 'Catamaran', sans-serif;
 }
 h1 {
-    font-weight: 900;
+    font-weight: 300;
     color: var(--custom-black);
     font-size: 48pt;
 }
