@@ -1,0 +1,40 @@
+{
+    "lastupdated": "2021-04-25",
+    "events": [
+      {
+        "title": "Jacob Collier World Tour",
+        "date": "2022-02-16",
+        "time": "18:00",
+        "location": "Frankfurt",
+        "description": "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart."
+      },
+      {
+        "title": "Ballroom Evening",
+        "date": "2022-08-02",
+        "time": "20:00",
+        "location": "Berlin",
+        "description": "I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents."
+      },
+      {
+        "title": "Cory Henry Live",
+        "date": "2022-01-31",
+        "time": "19:00",
+        "location": "Stuttgart",
+        "description": "I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now."
+      },
+      {
+        "title": "Rhetoric Mastery Seminar",
+        "date": "2021-12-14",
+        "time": "09:30",
+        "location": "Munich",
+        "description": "When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary."
+      },
+      {
+        "title": "Democracy and the Age of Big Data and AI",
+        "date": "2021-09-16",
+        "time": "17:00",
+        "location": "London",
+        "description": "I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine."
+      }
+    ]
+}
