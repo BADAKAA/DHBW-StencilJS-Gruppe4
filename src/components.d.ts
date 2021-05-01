@@ -13,6 +13,8 @@ export namespace Components {
         "exampleToUpperCase": () => Promise<void>;
     }
     interface FlipCard {
+        "date"?: string;
+        "description"?: string;
         "img"?: string;
         "name": string;
         "place"?: string;
@@ -102,6 +104,8 @@ declare namespace LocalJSX {
         "onExampleEvent"?: (event: CustomEvent<string>) => void;
     }
     interface FlipCard {
+        "date"?: string;
+        "description"?: string;
         "img"?: string;
         "name"?: string;
         "place"?: string;

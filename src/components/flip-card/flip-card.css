@@ -48,7 +48,23 @@
   text-align: left;
 }
 
+.back h2{
+  margin-left: 20px;
+}
+.back h3{
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.backInput p{
+  margin: 40px 10px 10px 10px;
+}
+
+.backInput {
+  margin: 0 10px 0 10px;
+}
+
 .flipcard-mouseenter .content {
-    transform: rotateY( 180deg);
-    transition: transform 0.5s;
+    transform: rotateY(540deg);
+    transition: transform 1s;
 }

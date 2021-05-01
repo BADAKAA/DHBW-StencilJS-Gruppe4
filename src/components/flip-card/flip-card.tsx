@@ -11,6 +11,8 @@ export class FlipCard {
   @Prop() turnable: boolean;
   @Prop() img?: string;
   @Prop() place?: string;
+  @Prop() date?: string;
+  @Prop() description?: string;
 
 @State() flipcard: string;
 
@@ -37,7 +39,11 @@ handleMouseLeave() {
             </div>
             <div class="back">
             {this.name && <h2> {this.name} </h2>}
-            {this.place && <h3> 📍 {this.place} </h3>}
+            <div class="backInput">
+              {this.place && <h3> 📍 {this.place} </h3>}
+              {this.date && <h3> 📅 {this.date} </h3>}
+              {this.description && <p> Bla{this.description}</p>}
+            </div>
             </div>
           </div>
         </div>
