@@ -6,7 +6,7 @@
   width: 400px;
   height: 500px;
   perspective: 500px;
-  margin: 10px 10px 10px 10px;
+  margin: 20px 20px 20px 20px;
 }
 .content {
   position: absolute;
@@ -50,12 +50,12 @@
 
 .back h2{
   font-family: 'Catamaran', sans-serif;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 .back h3{
   font-family: 'Catamaran', sans-serif;
   font-size: 16px;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .backInput p{
