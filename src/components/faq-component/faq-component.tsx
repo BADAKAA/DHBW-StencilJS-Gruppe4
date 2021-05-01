@@ -24,6 +24,7 @@ export class FaqComponent {
     return (
       <Host>
         <div id="faqCard">
+          <h2 id="faqBoxHeading">FAQ</h2>
           <div id="heading">
             Text
           </div>
@@ -51,6 +52,7 @@ function defineObjectReferences() {
 
   heading.addEventListener("click", makeAnswerInvisible);
 }
+
 
 function makeAnswerInvisible() {
   textBody.style.visibility = "hidden";
