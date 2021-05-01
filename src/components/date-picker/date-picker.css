@@ -8,11 +8,28 @@
   font-size: 16pt;
 }
 
-span{
+
+.Header{
   font-size: 20pt;
   font-family: 'Catamaran', sans-serif;
-  margin-left: 95px;
   font-weight: 750;
+}
+
+#previous{
+  float:left;
+  margin-left: 20px;
+  cursor:pointer;
+}
+
+#year{
+margin-left: 75px;
+}
+
+
+#next{
+  float: right;
+  margin-right: 20px;
+  cursor: pointer;
 }
 
 .monthBoxes{
@@ -29,5 +46,6 @@ span{
 .monthBoxes:hover{
   background-color: #941C2F;
   color: #fffcf9;
-  border-radius: 50%;
+  border-radius: 4px;
 }
+

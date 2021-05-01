@@ -43,15 +43,19 @@ initialiseMonths(datePickerFrame:HTMLDivElement){
     return (
       <Host>
       <div class='datePicker'>
-            <span>
+        <div class= 'Header'>
+            <span id= 'previous'>
             {'<'}
+            </span>
+            <span id='year'>
             {'2021'}
+            </span>
+            <span id= 'next'>
             {'>'}
             </span>
+        </div>
         <div id= 'datePickerFrame' >
 
-        
-        
         </div>
       </div>
       </Host>
@@ -62,5 +66,6 @@ initialiseMonths(datePickerFrame:HTMLDivElement){
 function monthClicked(ev: MouseEvent) {
   const monthElement = ev.target as HTMLDivElement;
   const monthContent = monthElement.textContent as string;
+  monthElement.style.background= '#941C2F';
+  monthElement.style.color='#fffcf9';
 }
-
