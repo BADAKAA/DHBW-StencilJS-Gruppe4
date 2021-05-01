@@ -12,6 +12,12 @@ export namespace Components {
         "exampleProp": string;
         "exampleToUpperCase": () => Promise<void>;
     }
+    interface FlipCard {
+        "img"?: string;
+        "name": string;
+        "place"?: string;
+        "turnable": boolean;
+    }
     interface ImageSlider {
         "autoplay"?: string;
         "height": string;
@@ -55,6 +61,12 @@ declare global {
         prototype: HTMLExampleComponentElement;
         new (): HTMLExampleComponentElement;
     };
+    interface HTMLFlipCardElement extends Components.FlipCard, HTMLStencilElement {
+    }
+    var HTMLFlipCardElement: {
+        prototype: HTMLFlipCardElement;
+        new (): HTMLFlipCardElement;
+    };
     interface HTMLImageSliderElement extends Components.ImageSlider, HTMLStencilElement {
     }
     var HTMLImageSliderElement: {
@@ -76,6 +88,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "event-list": HTMLEventListElement;
         "example-component": HTMLExampleComponentElement;
+        "flip-card": HTMLFlipCardElement;
         "image-slider": HTMLImageSliderElement;
         "my-component": HTMLMyComponentElement;
         "search-bar": HTMLSearchBarElement;
@@ -87,6 +100,12 @@ declare namespace LocalJSX {
     interface ExampleComponent {
         "exampleProp"?: string;
         "onExampleEvent"?: (event: CustomEvent<string>) => void;
+    }
+    interface FlipCard {
+        "img"?: string;
+        "name"?: string;
+        "place"?: string;
+        "turnable"?: boolean;
     }
     interface ImageSlider {
         "autoplay"?: string;
@@ -120,6 +139,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "event-list": EventList;
         "example-component": ExampleComponent;
+        "flip-card": FlipCard;
         "image-slider": ImageSlider;
         "my-component": MyComponent;
         "search-bar": SearchBar;
@@ -131,6 +151,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "event-list": LocalJSX.EventList & JSXBase.HTMLAttributes<HTMLEventListElement>;
             "example-component": LocalJSX.ExampleComponent & JSXBase.HTMLAttributes<HTMLExampleComponentElement>;
+            "flip-card": LocalJSX.FlipCard & JSXBase.HTMLAttributes<HTMLFlipCardElement>;
             "image-slider": LocalJSX.ImageSlider & JSXBase.HTMLAttributes<HTMLImageSliderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "search-bar": LocalJSX.SearchBar & JSXBase.HTMLAttributes<HTMLSearchBarElement>;
