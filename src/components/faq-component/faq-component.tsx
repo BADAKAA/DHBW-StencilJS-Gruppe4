@@ -45,3 +45,9 @@ function defineObjectReferences() {
   body = componentElement.querySelector(".body");
   answer = componentElement.querySelector(".answer");
 }
+
+/*heading.addEventListener("click", makeAnswerInvisible);
+
+function makeAnswerInvisible(){
+  body.style.display = "none";
+}*/
