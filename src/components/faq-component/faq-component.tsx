@@ -10,6 +10,16 @@ export class FaqComponent {
   render() {
     return (
       <Host>
+        <div class="faq-card">
+          <div class="heading">
+            <div>
+              Text
+            </div>
+          </div>
+          <div class="body">
+            <p class="answer">blabla</p>
+          </div>
+        </div>
         <slot></slot>
       </Host>
     );
