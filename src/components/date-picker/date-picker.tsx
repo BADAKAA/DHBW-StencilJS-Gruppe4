@@ -1,4 +1,4 @@
-import { Component, h, Host, Element} from '@stencil/core';
+import { Prop, Component, h, Host, Element} from '@stencil/core';
 
 const monthNames:Array <string> = [
   'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'
@@ -17,13 +17,28 @@ const  yearNames:Array <string> = [
 
 export class DatePicker {
 
+  @Prop() color:string;
+  @Prop() width:string;
+
   @Element() el: HTMLElement;
 
 
   
   componentDidLoad(){
-   const datePickerFrame= this.el.shadowRoot.querySelector('#datePickerFrame') as  HTMLDivElement; //wenn die component geladen hat, wird ein Div element genommen und die Monate dargestellt  
+   const datePickerFrame= this.el.shadowRoot.querySelector('#datePickerFrame') as  HTMLDivElement; //wenn die component geladen hat, wird ein Div element genommen und darin die Monate dargestellt  
    this.initialiseMonths(datePickerFrame);
+
+  if (this.width) {
+    if (this.width.includes("px") || this.width.includes("%") || this.width.includes("vw")) {
+      //.style.width = this.width;
+    } else {
+      console.log('%c Please input a valid width. Permitted units: "px", "%", "vw" ("vw"="%")', "color:orange; font-weight:bold;font-family:'Open sans'");
+      throw new Error('Please input a valid width. Permitted units: "px", "%", "vw" ("vw"="%")');
+    }
+  }
+  if (this.color) {
+    //.style.background=this.color;
+  }
   }
 
 initialiseMonths(datePickerFrame:HTMLDivElement){

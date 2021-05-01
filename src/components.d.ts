@@ -7,6 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface DatePicker {
+        "color": string;
+        "width": string;
     }
     interface EventList {
     }
@@ -92,6 +94,8 @@ declare global {
 }
 declare namespace LocalJSX {
     interface DatePicker {
+        "color"?: string;
+        "width"?: string;
     }
     interface EventList {
     }
