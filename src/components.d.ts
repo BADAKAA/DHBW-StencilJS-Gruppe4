@@ -13,6 +13,8 @@ export namespace Components {
         "exampleToUpperCase": () => Promise<void>;
     }
     interface FaqComponent {
+        "answer": string;
+        "question": string;
     }
     interface ImageSlider {
         "autoplay"?: string;
@@ -98,6 +100,8 @@ declare namespace LocalJSX {
         "onExampleEvent"?: (event: CustomEvent<string>) => void;
     }
     interface FaqComponent {
+        "answer"?: string;
+        "question"?: string;
     }
     interface ImageSlider {
         "autoplay"?: string;
