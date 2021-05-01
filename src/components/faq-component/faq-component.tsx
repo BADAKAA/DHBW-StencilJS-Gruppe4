@@ -21,14 +21,14 @@ export class FaqComponent {
   render() {
     return (
       <Host>
-        <div class="faqCard">
-          <div class="heading">
+        <div id="faqCard">
+          <div id="heading">
             <div>
               Text
             </div>
           </div>
-          <div class="textBody">
-            <p class="answerText">blabla</p>
+          <div id="textBody">
+            <p id="answerText">blabla</p>
           </div>
         </div>
         <slot></slot>
@@ -43,10 +43,10 @@ function initializeFAQ() {
 
 function defineObjectReferences() {
   componentElement = document.querySelector("faq-component").shadowRoot;
-  faqCard = componentElement.querySelector(".faqCard");
-  heading = componentElement.querySelector(".heading");
-  textBody = componentElement.querySelector(".textBody");
-  answerText = componentElement.querySelector(".answerText");
+  faqCard = componentElement.querySelector("#faqCard");
+  heading = componentElement.querySelector("#heading");
+  textBody = componentElement.querySelector("#textBody");
+  answerText = componentElement.querySelector("#answerText");
 
   heading.addEventListener("click", makeAnswerInvisible);
 }
