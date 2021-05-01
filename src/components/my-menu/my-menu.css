@@ -1,0 +1,40 @@
+:host {
+  display: block;
+  color: red;
+  
+}
+html {
+  scroll-behavior: smooth;
+}
+:host>div{
+  overflow: auto;
+  padding:75px;
+  text-align:center;
+  position: sticky; 
+  top:0 ;
+  
+  
+}
+:host>div>button {
+  background-color: #247Ba0;
+  border: 1px solid #fffcfe;
+  color:#fffcfe;
+  font-family: 'Catamaran', sans-serif;
+  padding:10px 20px;
+  font-size:12px;
+  text-decoration:none;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  text-align:center;
+  width: 30%;
+ 
+  
+  
+}
+:host>div>button:hover{
+  border:none;
+  background:#fffcfe;
+  padding:20px 20px;
+  color: #247Ba0;
+  border: 1px solid #247Ba0;
+}
