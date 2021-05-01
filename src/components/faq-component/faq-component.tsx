@@ -1,9 +1,10 @@
 import { Component, Host, h, Prop } from '@stencil/core';
+let faqQuestion:string;
+let faqAnswer:string;
+
 let componentElement:ShadowRoot;
-let faqCard:HTMLDivElement;
 let heading:HTMLDivElement;
 let textBody:HTMLDivElement;
-let answerText:HTMLParagraphElement;
 @Component({
   tag: 'faq-component',
   styleUrl: 'faq-component.css',
@@ -14,8 +15,9 @@ export class FaqComponent {
   @Prop() question:string;
   @Prop() answer:string; 
 
-  componentDidLoad() {
-    initializeFAQ()
+  constructor(){
+    faqQuestion = this.question;
+    faqAnswer = this.answer;
   }
 
   render() {
@@ -23,9 +25,7 @@ export class FaqComponent {
       <Host>
         <div id="faqCard">
           <div id="heading">
-            <div>
-              Text
-            </div>
+            Text
           </div>
           <div id="textBody">
             <p id="answerText">blabla</p>
@@ -35,6 +35,9 @@ export class FaqComponent {
       </Host>
     );
   }
+  componentDidLoad() {
+    initializeFAQ()
+  }
 }
 
 function initializeFAQ() {
@@ -43,20 +46,19 @@ function initializeFAQ() {
 
 function defineObjectReferences() {
   componentElement = document.querySelector("faq-component").shadowRoot;
-  faqCard = componentElement.querySelector("#faqCard");
   heading = componentElement.querySelector("#heading");
   textBody = componentElement.querySelector("#textBody");
-  answerText = componentElement.querySelector("#answerText");
 
   heading.addEventListener("click", makeAnswerInvisible);
 }
 
-function makeAnswerInvisible(){
+function makeAnswerInvisible() {
   textBody.style.visibility = "hidden";
 
   heading.addEventListener("click", makeAnswerVisible);
 }
 
-function makeAnswerVisible(){
+function makeAnswerVisible() {
   textBody.style.visibility = "visible";
 }
+
