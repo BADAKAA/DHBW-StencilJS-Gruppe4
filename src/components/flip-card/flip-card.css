@@ -15,19 +15,18 @@
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   transition: transform 1s;
   transform-style: preserve-3d;
-  padding: 0 5px 0 5px;
   text-align: center;
   justify-content: center;
 }
 
 .content img {
-  width: 380px;
-  height: 380px;
+  width: 370px;
+  height: 370px;
   object-fit: cover;
 }
 
 .content h2 {
-  font-family: "https://fonts.gstatic.com";
+  font-family: 'Catamaran', sans-serif;
   font-size: 30px;
 }
 
@@ -49,14 +48,17 @@
 }
 
 .back h2{
+  font-family: 'Catamaran', sans-serif;
   margin-left: 20px;
 }
 .back h3{
+  font-family: 'Catamaran', sans-serif;
   font-size: 16px;
   margin-left: 10px;
 }
 
 .backInput p{
+  font-family: 'Catamaran', sans-serif;
   margin: 40px 10px 10px 10px;
 }
 
@@ -64,7 +66,7 @@
   margin: 0 10px 0 10px;
 }
 
-.flipcard-mouseenter .content {
-    transform: rotateY(540deg);
+.flipcard-mouseover .content {
+    transform: rotateY(180deg);
     transition: transform 1s;
 }
