@@ -1,8 +1,12 @@
-import { Component, h, Prop, Host, Element} from '@stencil/core';
+import { Component, h, Host, Element} from '@stencil/core';
 
 const monthNames:Array <string> = [
   'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'
 ]; 
+
+const  yearNames:Array <string> = [
+  '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'
+];
 
 @Component({
   tag: 'date-picker',
@@ -13,16 +17,12 @@ const monthNames:Array <string> = [
 
 export class DatePicker {
 
-  @Prop() yearNames = [
-    '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'
-  ];
-  
   @Element() el: HTMLElement;
 
 
   
   componentDidLoad(){
-   const datePickerFrame=  this.el.shadowRoot.querySelector('#datePickerFrame') as  HTMLDivElement; //wenn die component geladen hat, wird ein Div element genommen und die Monate dargestellt  
+   const datePickerFrame= this.el.shadowRoot.querySelector('#datePickerFrame') as  HTMLDivElement; //wenn die component geladen hat, wird ein Div element genommen und die Monate dargestellt  
    this.initialiseMonths(datePickerFrame);
   }
 
@@ -66,6 +66,16 @@ initialiseMonths(datePickerFrame:HTMLDivElement){
 function monthClicked(ev: MouseEvent) {
   const monthElement = ev.target as HTMLDivElement;
   const monthContent = monthElement.textContent as string;
+  clearMonthColor();
   monthElement.style.background= '#941C2F';
   monthElement.style.color='#fffcf9';
+}
+
+function clearMonthColor(){
+  
+  const allMonths= document.querySelector('date-picker').shadowRoot.querySelectorAll('.monthBoxes') as unknown as Array <HTMLDivElement>;
+  for(const monthBox of allMonths){
+    monthBox.style.background='';
+    monthBox.style.color='black';
+}
 }

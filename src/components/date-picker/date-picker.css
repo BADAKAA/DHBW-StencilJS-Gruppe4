@@ -1,5 +1,5 @@
 .datePicker{
-  width: 270px;
+  width: 330px;
   position: relative;
   margin: 50px;
   margin-left: 350px;
@@ -13,6 +13,7 @@
   font-size: 20pt;
   font-family: 'Catamaran', sans-serif;
   font-weight: 750;
+  margin-top: 5px;
 }
 
 #previous{
@@ -22,7 +23,7 @@
 }
 
 #year{
-margin-left: 75px;
+margin-left: 103px;
 }
 
 
@@ -33,12 +34,14 @@ margin-left: 75px;
 }
 
 .monthBoxes{
+  width: 45px;
+  text-align: center;
   font-family: 'Open Sans', sans-serif;
   display: inline-block;
   padding: 8px;
   cursor: pointer;
   margin: 4px;
-  margin-left: 6px;
+  margin-left: 13px;
   margin-right: 6px;
   margin-bottom: 12px;
 }
@@ -46,6 +49,5 @@ margin-left: 75px;
 .monthBoxes:hover{
   background-color: #941C2F;
   color: #fffcf9;
-  border-radius: 4px;
 }
 
