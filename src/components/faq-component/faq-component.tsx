@@ -1,11 +1,19 @@
 import { Component, Host, h } from '@stencil/core';
-
+let componentElement:ShadowRoot;
+let faqCard:HTMLDivElement;
+let heading:HTMLDivElement;
+let body:HTMLDivElement;
+let answer:HTMLParagraphElement;
 @Component({
   tag: 'faq-component',
   styleUrl: 'faq-component.css',
   shadow: true,
 })
 export class FaqComponent {
+
+  componentDidLoad() {
+    initializeFAQ()
+  }
 
   render() {
     return (
@@ -24,5 +32,16 @@ export class FaqComponent {
       </Host>
     );
   }
+}
 
+function initializeFAQ() {
+  defineObjectReferences()
+}
+
+function defineObjectReferences() {
+  componentElement = document.querySelector("faq-component").shadowRoot;
+  faqCard = componentElement.querySelector(".faq-card");
+  heading = componentElement.querySelector(".heading");
+  body = componentElement.querySelector(".body");
+  answer = componentElement.querySelector(".answer");
 }
