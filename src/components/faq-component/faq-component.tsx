@@ -2,7 +2,7 @@ import { Component, Host, h } from '@stencil/core';
 let componentElement:ShadowRoot;
 let faqCard:HTMLDivElement;
 let heading:HTMLDivElement;
-let body:HTMLDivElement;
+let textBody:HTMLDivElement;
 let answer:HTMLParagraphElement;
 @Component({
   tag: 'faq-component',
@@ -18,13 +18,13 @@ export class FaqComponent {
   render() {
     return (
       <Host>
-        <div class="faq-card">
+        <div class="faqCard">
           <div class="heading">
             <div>
               Text
             </div>
           </div>
-          <div class="body">
+          <div class="textBody">
             <p class="answer">blabla</p>
           </div>
         </div>
@@ -40,14 +40,16 @@ function initializeFAQ() {
 
 function defineObjectReferences() {
   componentElement = document.querySelector("faq-component").shadowRoot;
-  faqCard = componentElement.querySelector(".faq-card");
+  faqCard = componentElement.querySelector(".faqCard");
   heading = componentElement.querySelector(".heading");
-  body = componentElement.querySelector(".body");
+  textBody = componentElement.querySelector(".textBody");
   answer = componentElement.querySelector(".answer");
+
+  heading.addEventListener("click", makeAnswerInvisible);
 }
 
-/*heading.addEventListener("click", makeAnswerInvisible);
+
 
 function makeAnswerInvisible(){
-  body.style.display = "none";
-}*/
+  textBody.style.display = "none";
+}
