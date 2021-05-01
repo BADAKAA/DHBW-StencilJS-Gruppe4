@@ -6,6 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface EventList {
+    }
     interface ExampleComponent {
         "exampleProp": string;
         "exampleToUpperCase": () => Promise<void>;
@@ -14,10 +16,10 @@ export namespace Components {
     }
     interface ImageSlider {
         "autoplay"?: string;
-        "height"?: string;
+        "height": string;
         "sources": string;
-        "time": string;
-        "width"?: string;
+        "time"?: string;
+        "width": string;
     }
     interface MyComponent {
         /**
@@ -33,8 +35,22 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface SearchBar {
+        "color": string;
+        "component": string;
+        "element": string;
+        "google": string;
+        "position": string;
+        "width": string;
+    }
 }
 declare global {
+    interface HTMLEventListElement extends Components.EventList, HTMLStencilElement {
+    }
+    var HTMLEventListElement: {
+        prototype: HTMLEventListElement;
+        new (): HTMLEventListElement;
+    };
     interface HTMLExampleComponentElement extends Components.ExampleComponent, HTMLStencilElement {
     }
     var HTMLExampleComponentElement: {
@@ -59,14 +75,24 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLSearchBarElement extends Components.SearchBar, HTMLStencilElement {
+    }
+    var HTMLSearchBarElement: {
+        prototype: HTMLSearchBarElement;
+        new (): HTMLSearchBarElement;
+    };
     interface HTMLElementTagNameMap {
+        "event-list": HTMLEventListElement;
         "example-component": HTMLExampleComponentElement;
         "faq-component": HTMLFaqComponentElement;
         "image-slider": HTMLImageSliderElement;
         "my-component": HTMLMyComponentElement;
+        "search-bar": HTMLSearchBarElement;
     }
 }
 declare namespace LocalJSX {
+    interface EventList {
+    }
     interface ExampleComponent {
         "exampleProp"?: string;
         "onExampleEvent"?: (event: CustomEvent<string>) => void;
@@ -94,21 +120,33 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface SearchBar {
+        "color"?: string;
+        "component"?: string;
+        "element"?: string;
+        "google"?: string;
+        "position"?: string;
+        "width"?: string;
+    }
     interface IntrinsicElements {
+        "event-list": EventList;
         "example-component": ExampleComponent;
         "faq-component": FaqComponent;
         "image-slider": ImageSlider;
         "my-component": MyComponent;
+        "search-bar": SearchBar;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "event-list": LocalJSX.EventList & JSXBase.HTMLAttributes<HTMLEventListElement>;
             "example-component": LocalJSX.ExampleComponent & JSXBase.HTMLAttributes<HTMLExampleComponentElement>;
             "faq-component": LocalJSX.FaqComponent & JSXBase.HTMLAttributes<HTMLFaqComponentElement>;
             "image-slider": LocalJSX.ImageSlider & JSXBase.HTMLAttributes<HTMLImageSliderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "search-bar": LocalJSX.SearchBar & JSXBase.HTMLAttributes<HTMLSearchBarElement>;
         }
     }
 }
