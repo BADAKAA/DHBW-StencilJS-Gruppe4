@@ -5,14 +5,10 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { CalendarEntry } from "./utils/calendar-entry";
 export namespace Components {
     interface DatePicker {
-        "dayNames": string[];
-        "maxDate": string;
-        "minDate": string;
         "monthNames": string[];
-        "showFillDays": boolean;
+        "yearNames": string[];
     }
     interface EventList {
     }
@@ -98,13 +94,8 @@ declare global {
 }
 declare namespace LocalJSX {
     interface DatePicker {
-        "dayNames"?: string[];
-        "maxDate"?: string;
-        "minDate"?: string;
         "monthNames"?: string[];
-        "onDayChanged"?: (event: CustomEvent<CalendarEntry>) => void;
-        "onMonthChanged"?: (event: CustomEvent<CalendarEntry>) => void;
-        "showFillDays"?: boolean;
+        "yearNames"?: string[];
     }
     interface EventList {
     }
