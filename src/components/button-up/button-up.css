@@ -3,15 +3,25 @@
 }
 
 button{
+  position:absolute;
   font-family: 'Catamaran', sans-serif;
-  font-size: 150%;
+  font-size: 200%;
   cursor: pointer;
-  margin: 1% 1% 1% 1%;
+  margin-top: 1%;
+  margin-bottom: 50%;
+  margin-left: 50%;
   text-align: center;
+  height: 60px;
+  width: 60px;
 
   color: #FFFCF9;
   background-color: #BFBFBF;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgb(172, 172, 172);
-  border-color: #BFBFBF
+  border-radius: 50%;
+  border: none;
+  /*box-shadow: 0 0 5px rgb(172, 172, 172);*/
+  border-color: #BFBFBF;
+}
+
+button:hover{
+  background-color: #941C2F;
 }

@@ -4,8 +4,6 @@ let componentElement: ShadowRoot;
 let elementBackground: HTMLElement;
 let elementHover: HTMLElement;
 
-
-
 @Component({
   tag: 'button-up',
   styleUrl: 'button-up.css',
@@ -62,17 +60,6 @@ export class ButtonUp {
     elementBackground = componentElement.querySelector("#buttonUp");
     if(this.colorbackground){
       elementBackground.style.backgroundColor = this.colorbackground;
-    }
+    } 
   }
-  /*componentDidLoad(){
-    /*elementBackground = componentElement.querySelector("button");
-    elementText = componentElement.querySelector("button");
-
-    if(this.colorbackground){
-      elementBackground.style.background = this.colorbackground;
-    }
-    if(this.colortext){
-      elementText.style.color = this.colortext;
-    }
-  }*/
 }
