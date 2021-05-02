@@ -1,16 +1,19 @@
 import { Component, Host, h } from '@stencil/core';
 
 @Component({
-  tag: 'buttom-up',
-  styleUrl: 'buttom-up.css',
+  tag: 'button-up',
+  styleUrl: 'button-up.css',
   shadow: true,
 })
+
 export class ButtomUp {
 
   render() {
     return (
       <Host>
-        <slot></slot>
+        <div class="button">
+          <button>Hallo</button>
+        </div>
       </Host>
     );
   }
