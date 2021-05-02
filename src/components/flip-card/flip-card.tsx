@@ -41,10 +41,9 @@ googleMaps(){
 }
 
 meme(){
-  window.open("https://it.memedroid.com/memes/detail/2585030/Is-this-lost");
+  window.open("https://entwicklergate.de/t/lustige-entwickler-programmierer-memes/371");
   
 }
-
 
   render() {
     return (
@@ -90,7 +89,7 @@ meme(){
       backgroundBack.style.backgroundColor = this.colorback;
       }
   }
-  
+
 }
 
 
