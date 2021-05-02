@@ -10,13 +10,14 @@ export class CookieBanner {
 
   @Prop() heading:string;
   @Prop() bannertext:string;
+  @Prop() cookielink?:string;
 
   render() {
     return (
       <Host>
         <div class="container">
-          <p>{this.heading && <p>{this.heading}</p>}</p>
-          <p>{this.bannertext && <p>{this.bannertext}</p>}</p>
+          {this.heading && <p>{this.heading}</p>}
+          {this.bannertext && <p>{this.bannertext}</p>}
         </div>
         <slot></slot>
       </Host>

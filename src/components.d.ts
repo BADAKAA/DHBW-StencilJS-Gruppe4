@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface CookieBanner {
         "bannertext": string;
+        "cookielink"?: string;
         "heading": string;
     }
     interface EventList {
@@ -95,6 +96,7 @@ declare global {
 declare namespace LocalJSX {
     interface CookieBanner {
         "bannertext"?: string;
+        "cookielink"?: string;
         "heading"?: string;
     }
     interface EventList {
