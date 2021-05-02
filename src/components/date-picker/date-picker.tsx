@@ -33,6 +33,9 @@ export class DatePicker {
    const datePickerFrame= this.el.shadowRoot.querySelector('#datePickerFrame') as  HTMLDivElement; //wenn die component geladen hat, wird ein Div element genommen und darin die Monate dargestellt  
    this.initialiseMonths(datePickerFrame);
 
+   const headerYears= this.el.shadowRoot.querySelector('.Header') as HTMLDivElement;
+   this.initialiseYears(headerYears);
+
    componentElement = document.querySelector('date-picker').shadowRoot;
    elementWidth= componentElement.querySelector('.datePicker');
    elementBackground= componentElement.querySelector('.datePicker');
@@ -63,6 +66,14 @@ initialiseMonths(datePickerFrame:HTMLDivElement){
   }
 };
 
+initialiseYears(headerYears:HTMLDivElement){
+
+  for(const years of yearNames){
+    const yearBox = document.createElement('DIV') as HTMLDivElement;
+    yearBox.textContent = years;
+    headerYears.appendChild(yearBox);
+  }
+}
 
 
   render() {
