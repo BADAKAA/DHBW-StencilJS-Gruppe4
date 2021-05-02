@@ -51,11 +51,12 @@ function defineObjectReferences() {
 
 
 function makeAnswerInvisible() {
-  textBody.style.display = "none";
-  heading.addEventListener("click", makeAnswerVisible);
+  if (textBody.style.display =="contents") {
+    textBody.style.display = "none"
+  }
+  else {
+    textBody.style.display = "contents";
+  }
 }
 
-function makeAnswerVisible() {
-  textBody.style.display = "";
-}
 
