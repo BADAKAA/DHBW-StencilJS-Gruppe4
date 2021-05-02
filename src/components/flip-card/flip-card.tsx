@@ -44,19 +44,6 @@ meme(){
   
 }
 
-componentDidLoad(){
-    componentElement = document.querySelector("flip-card").shadowRoot;
-    backgroundFront = componentElement.querySelector(".front");
-    backgroundBack = componentElement.querySelector(".back");
-
-    console.log(this.colorback);  
-    if(this.colorfront){
-    backgroundFront.style.backgroundColor = this.colorfront;
-    }
-    if(this.colorback){
-      backgroundBack.style.backgroundColor = this.colorback;
-      }
-  }
 
   render() {
     return (
@@ -88,7 +75,20 @@ componentDidLoad(){
       </Host>
     );
   }
+  
+  componentDidLoad(){
+    componentElement = document.querySelector("flip-card").shadowRoot;
+    backgroundFront = componentElement.querySelector(".front");
+    backgroundBack = componentElement.querySelector(".back");
 
+    console.log(this.colorback);  
+    if(this.colorfront){
+    backgroundFront.style.backgroundColor = this.colorfront;
+    }
+    if(this.colorback){
+      backgroundBack.style.backgroundColor = this.colorback;
+      }
+  }
   
 }
 
