@@ -50,7 +50,7 @@
 
 .back h2{
   font-family: 'Catamaran', sans-serif;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 .back h3{
   font-family: 'Catamaran', sans-serif;
@@ -72,6 +72,6 @@
 }
 
 .flipcard-mouseover .content {
-    transform: rotateY(180deg);
-    transition: transform 1s;
+  transform: rotateY(180deg);
+  transition: transform 1s;
 }

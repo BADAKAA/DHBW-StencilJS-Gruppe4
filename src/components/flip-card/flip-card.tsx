@@ -3,6 +3,8 @@ import { Component, Host, h, Prop, State, Element } from '@stencil/core';
 let componentElement: ShadowRoot;
 let backgroundFront: HTMLDivElement;
 let backgroundBack: HTMLDivElement;
+let textFront: HTMLDivElement;
+let textBack: HTMLDivElement;
 
 @Component({
   tag: 'flip-card',
@@ -20,6 +22,8 @@ export class FlipCard {
 @Prop() description?: string;
 @Prop() colorfront?: string;
 @Prop() colorback?: string;
+@Prop() textfront?: string;
+@Prop() textback?: string;
 
 @Element() el: HTMLElement;
 
@@ -80,6 +84,8 @@ meme(){
     componentElement = this.el.shadowRoot;
     backgroundFront = componentElement.querySelector(".front");
     backgroundBack = componentElement.querySelector(".back");
+    textFront = componentElement.querySelector(".front");
+    textBack = componentElement.querySelector(".back");
 
     console.log(this.colorback);  
     if(this.colorfront){
@@ -87,6 +93,12 @@ meme(){
     }
     if(this.colorback){
       backgroundBack.style.backgroundColor = this.colorback;
+      }
+    if(this.textfront){
+      textFront.style.color = this.textfront;
+      }
+    if(this.textback){
+      textBack.style.color = this.textback;
       }
   }
 

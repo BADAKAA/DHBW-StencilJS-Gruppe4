@@ -20,6 +20,8 @@ export namespace Components {
         "img"?: string;
         "name": string;
         "place"?: string;
+        "textback"?: string;
+        "textfront"?: string;
         "turnable": boolean;
     }
     interface ImageSlider {
@@ -113,6 +115,8 @@ declare namespace LocalJSX {
         "img"?: string;
         "name"?: string;
         "place"?: string;
+        "textback"?: string;
+        "textfront"?: string;
         "turnable"?: boolean;
     }
     interface ImageSlider {
