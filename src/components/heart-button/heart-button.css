@@ -2,15 +2,18 @@
   display: block;
 }
 
-.heartButton{
+#heartButton{
   cursor:pointer;
   width: 45px;
   height: 45px;
-  background-color: #941C2F;
+  background-color:#100B00;
   border-radius: 4px;
   color: white;
   font-size: 30px;
   text-align: center;
-  margin-bottom: 2px;
+  margin-top: 10px;
+  margin-bottom: 3px;
+  margin-left: 50px;
   box-shadow: none;
+  border:none;
 }
