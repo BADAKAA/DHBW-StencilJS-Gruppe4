@@ -12,6 +12,10 @@ export namespace Components {
         "exampleProp": string;
         "exampleToUpperCase": () => Promise<void>;
     }
+    interface HeartButton {
+        "color": string;
+        "width": string;
+    }
     interface ImageSlider {
         "autoplay"?: string;
         "height": string;
@@ -55,6 +59,12 @@ declare global {
         prototype: HTMLExampleComponentElement;
         new (): HTMLExampleComponentElement;
     };
+    interface HTMLHeartButtonElement extends Components.HeartButton, HTMLStencilElement {
+    }
+    var HTMLHeartButtonElement: {
+        prototype: HTMLHeartButtonElement;
+        new (): HTMLHeartButtonElement;
+    };
     interface HTMLImageSliderElement extends Components.ImageSlider, HTMLStencilElement {
     }
     var HTMLImageSliderElement: {
@@ -76,6 +86,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "event-list": HTMLEventListElement;
         "example-component": HTMLExampleComponentElement;
+        "heart-button": HTMLHeartButtonElement;
         "image-slider": HTMLImageSliderElement;
         "my-component": HTMLMyComponentElement;
         "search-bar": HTMLSearchBarElement;
@@ -87,6 +98,10 @@ declare namespace LocalJSX {
     interface ExampleComponent {
         "exampleProp"?: string;
         "onExampleEvent"?: (event: CustomEvent<string>) => void;
+    }
+    interface HeartButton {
+        "color"?: string;
+        "width"?: string;
     }
     interface ImageSlider {
         "autoplay"?: string;
@@ -120,6 +135,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "event-list": EventList;
         "example-component": ExampleComponent;
+        "heart-button": HeartButton;
         "image-slider": ImageSlider;
         "my-component": MyComponent;
         "search-bar": SearchBar;
@@ -131,6 +147,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "event-list": LocalJSX.EventList & JSXBase.HTMLAttributes<HTMLEventListElement>;
             "example-component": LocalJSX.ExampleComponent & JSXBase.HTMLAttributes<HTMLExampleComponentElement>;
+            "heart-button": LocalJSX.HeartButton & JSXBase.HTMLAttributes<HTMLHeartButtonElement>;
             "image-slider": LocalJSX.ImageSlider & JSXBase.HTMLAttributes<HTMLImageSliderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "search-bar": LocalJSX.SearchBar & JSXBase.HTMLAttributes<HTMLSearchBarElement>;
