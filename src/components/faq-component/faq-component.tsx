@@ -2,7 +2,6 @@ import { Component, Host, h, Prop } from '@stencil/core';
 let componentElement:ShadowRoot;
 let heading:HTMLDivElement;
 let textBody:HTMLDivElement;
-let icon:HTMLSpanElement;
 @Component({
   tag: 'faq-component',
   styleUrl: 'faq-component.css',
@@ -17,13 +16,10 @@ export class FaqComponent {
     return (
       <Host>
         <div id="faqCard">
-          <div id="heading">
+          <div class="heading">
             {this.question && <p>{this.question}</p>}
           </div>
-          <div>
-            <span class="icon">&#9650;</span>
-          </div>
-          <div id="textBody">
+          <div class="textBody">
             <p id="answerText">{this.answer && <p>{this.answer}</p>}</p>
           </div>
         </div>
@@ -42,14 +38,11 @@ function initializeFAQ() {
 
 function defineObjectReferences() {
   componentElement = document.querySelector("faq-component").shadowRoot;
-  heading = componentElement.querySelector("#heading");
-  textBody = componentElement.querySelector("#textBody");
-  icon = componentElement.querySelector(".icon");
+  heading = componentElement.querySelector(".heading");
+  textBody = componentElement.querySelector(".textBody");
 
   heading.addEventListener("click", makeAnswerInvisible);
-  icon.addEventListener("click", makeAnswerInvisible);
 }
-
 
 function makeAnswerInvisible() {
   if (textBody.style.display =="contents") {
