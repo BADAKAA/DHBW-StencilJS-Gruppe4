@@ -20,6 +20,8 @@ export namespace Components {
         "width": string;
     }
     interface ButtonUp {
+        "colorbackground"?: string;
+        "colortext"?: string;
         "name": string;
     }
     interface EventList {
@@ -205,6 +207,8 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     interface ButtonUp {
+        "colorbackground"?: string;
+        "colortext"?: string;
         "name"?: string;
     }
     interface EventList {
