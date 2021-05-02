@@ -16,9 +16,16 @@
   color: #FFFCF9;
   padding-left: 15px;
   padding-top: 5px;
-  border-bottom: 1px solid #100B00;
+  padding-bottom: 4px;
   width: 90%;
   cursor: pointer;
+}
+
+.icon {
+  position: absolute;
+  margin-left: 900px;
+  margin-top: -40px;
+  color: #FFFCF9;
 }
 
 #answerText {
