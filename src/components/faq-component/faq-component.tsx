@@ -51,16 +51,17 @@ function defineObjectReferences() {
   textBody = componentElement.querySelector("#textBody");
 
   heading.addEventListener("click", makeAnswerInvisible);
+  
 }
 
 
 function makeAnswerInvisible() {
-  textBody.style.visibility = "hidden";
+  textBody.style.display = "none";
 
   heading.addEventListener("click", makeAnswerVisible);
 }
 
 function makeAnswerVisible() {
-  textBody.style.visibility = "visible";
+  textBody.style.display = "";
 }
 

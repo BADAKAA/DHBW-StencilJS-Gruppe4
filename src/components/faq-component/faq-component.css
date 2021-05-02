@@ -22,11 +22,14 @@
   font-weight: 600;
   color: #941C2F;
   padding-bottom: 5px;
+  padding-left: 15px;
   border-bottom: 1px solid #100B00;
   width: 90%;
 }
 
-#answer {
-  border-bottom: 1px solid #100B00;
+#answerText {
+  padding-left: 15px;
 }
+
+
 
