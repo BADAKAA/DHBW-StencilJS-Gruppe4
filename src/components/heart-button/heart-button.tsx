@@ -1,9 +1,8 @@
-import { Component, Host, h, Prop, Event, EventEmitter, Listen } from '@stencil/core';
+import { Component, Host, h, Prop, Element } from '@stencil/core';
 
-/*let componentElement:ShadowRoot;
+let componentElement:ShadowRoot;
 let buttonWidth:HTMLDivElement;
-let buttonHeight:HTMLDivElement; */
-
+let buttonHeight:HTMLDivElement;
 
 @Component({
   tag: 'heart-button',
@@ -13,25 +12,21 @@ let buttonHeight:HTMLDivElement; */
 
 
 export class HeartButton {
-/*
+
 @Prop() width:string;
-@Prop() height:string;*/
+@Prop() height:string;
 
-
-@Event() changeColor: EventEmitter;
-
-@Listen('changeColor')
-  public changeBtnColor() {
-    const btnColor = document.querySelector('.heartButton') as HTMLElement;
-    btnColor.style.background='#941C2F;'; /*Wie bindet man hier die property farbe ein?*/
-  }
+@Element() el: HTMLElement;
 
 
 componentDidLoad(){
-/*
-componentElement = document.querySelector(".likeButton").shadowRoot;
-buttonWidth = componentElement.querySelector(".likeButton");
-buttonHeight= componentElement.querySelector(".likeButton");
+  const heartButton= this.el.shadowRoot.querySelector('#heartButton') as  HTMLDivElement;  
+  this.initialiseButton(heartButton);
+  
+
+componentElement = document.querySelector('heart-button').shadowRoot;
+buttonWidth = componentElement.querySelector('.button');
+buttonHeight= componentElement.querySelector('.button');
 
 if (this.width) {
   if (this.width.includes("px") || this.width.includes("%") || this.width.includes("vw")) {
@@ -50,25 +45,42 @@ if (this.height) {
     throw new Error('Please input a valid width. Permitted units: "px", "%", "vw" ("vw"="%")');
   }
 }
-*/
 
 
 }
 
-/*btnClicked(){
-  const btnColor = document.querySelector('.heartButton') as HTMLElement;
-  btnColor.style.color='#941C2F;';
-}*/
+initialiseButton(heartButton:HTMLDivElement){
+const likeButton = document.createElement('DIV') as HTMLDivElement;
+likeButton.className='button';
+likeButton.textContent = '♡';
+likeButton.addEventListener('click', (ev)=> buttonClicked(ev) );
+heartButton.appendChild(likeButton);
+}
 
 
   render(){
     return (
       <Host>
-        <div class='likeButton' onClick={() => this.changeColor.emit()} /*onClick={() => {this.btnClicked()}}*/>
-        <p class='heartButton'>&#9825;</p>
+        <div id='heartButton'>
+        
         </div>
       </Host>
     );
 }
 
 }
+
+function buttonClicked(ev: MouseEvent) {
+  const buttonElement = ev.target as HTMLDivElement;
+  const buttonContent = buttonElement.textContent as string;
+  buttonElement.style.background= '#941C2F';
+  buttonElement.style.color='#fffcf9';
+ /* clearButton();*/
+}
+
+
+/*function clearButton(){
+  const unlike = document.querySelector('.button') as HTMLDivElement;
+    this.unlike.style.background='black';
+    this.unlike.style.color='white';
+}*/
