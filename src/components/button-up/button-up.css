@@ -10,11 +10,8 @@ button{
   text-align: center;
 
   color: #FFFCF9;
-  background-color: #888888;
-  border-radius: 2px;
-  box-shadow: 5px 10px 18px #888888 ;
-}
-
-button:hover{
-  background: #941C2F;
+  background-color: #BFBFBF;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgb(172, 172, 172);
+  border-color: #BFBFBF
 }
