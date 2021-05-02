@@ -1,9 +1,8 @@
-import { Component, Host, h, Prop, State } from '@stencil/core';
+import { Component, Host, h, Prop, State, Element } from '@stencil/core';
 
 let componentElement: ShadowRoot;
 let backgroundFront: HTMLDivElement;
 let backgroundBack: HTMLDivElement;
-
 
 @Component({
   tag: 'flip-card',
@@ -21,6 +20,8 @@ export class FlipCard {
 @Prop() description?: string;
 @Prop() colorfront?: string;
 @Prop() colorback?: string;
+
+@Element() el: HTMLElement;
 
 @State() flipcard?: string;
 
@@ -77,7 +78,7 @@ meme(){
   }
   
   componentDidLoad(){
-    componentElement = document.querySelector("flip-card").shadowRoot;
+    componentElement = this.el.shadowRoot;
     backgroundFront = componentElement.querySelector(".front");
     backgroundBack = componentElement.querySelector(".back");
 
