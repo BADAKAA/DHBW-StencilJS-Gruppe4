@@ -4,24 +4,18 @@
 
 #faqCard {
   margin-top: 10px;
-  margin-right: 200px;
-  margin-left: 200px;
+  margin-right: 800px;
   background-color: #FFFCF9;
-  box-shadow: 60px -16px #941C2F;
-}
-
-#faqBoxHeading {
-  font-family: 'Catamaran', sans-serif;
-  font-size: 36px;
-  margin-bottom: 15px;
 }
 
 #heading {
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   font-weight: 600;
-  color: #941C2F;
+  background-color: #941C2F;
+  color: #FFFCF9;
   padding-left: 15px;
+  padding-top: 5px;
   border-bottom: 1px solid #100B00;
   width: 90%;
   cursor: pointer;

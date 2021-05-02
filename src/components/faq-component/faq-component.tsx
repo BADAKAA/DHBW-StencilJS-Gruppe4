@@ -16,7 +16,6 @@ export class FaqComponent {
     return (
       <Host>
         <div id="faqCard">
-          <h2 id="faqBoxHeading">FAQ</h2>
           <div id="heading">
             {this.question && <p>{this.question}</p>}
           </div>
