@@ -13,8 +13,6 @@ export namespace Components {
         "exampleToUpperCase": () => Promise<void>;
     }
     interface HeartButton {
-        "color": string;
-        "width": string;
     }
     interface ImageSlider {
         "autoplay"?: string;
@@ -100,8 +98,6 @@ declare namespace LocalJSX {
         "onExampleEvent"?: (event: CustomEvent<string>) => void;
     }
     interface HeartButton {
-        "color"?: string;
-        "width"?: string;
     }
     interface ImageSlider {
         "autoplay"?: string;

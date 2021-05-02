@@ -1,8 +1,8 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import { Component, Host, h } from '@stencil/core';
 
-let componentElement:ShadowRoot;
-let buttonColor:string;
-let buttonWidth:string;
+/*let componentElement:ShadowRoot;
+let buttonColor:string; <-falsch HTMLElement
+let buttonWidth:string;*/
 
 @Component({
   tag: 'heart-button',
@@ -13,16 +13,17 @@ let buttonWidth:string;
 
 export class HeartButton {
 
-@Prop() width:string;
-@Prop() color:string;
+/*@Prop() width:string;
+@Prop() color:string;*/
 
 componentDidLoad(){
-  componentElement = document.querySelector("").shadowRoot;
+  /*componentElement = document.querySelector("").shadowRoot;
   buttonWidth = componentElement.querySelector("");
-  buttonColor = componentElement.querySelector("");
+  buttonColor = componentElement.querySelector("");*/
   
 
-  if (this.width) {
+
+  /*if (this.width) {
     if (this.width.includes("px") || this.width.includes("%") || this.width.includes("vw")) {
       buttonWidth.style.width = this.width;
     } else {
@@ -35,22 +36,21 @@ componentDidLoad(){
     buttonColor.style.background=this.color;
   }
   
+}*/
+
+function buttonClicked(){
+  const changeColor = document.querySelector('.heartButton') as HTMLElement;
+  changeColor.style.background='#941C2F';
+  console.log('das ist jetzt bunt'); 
 }
 
-function likeEvent(){
-  const changeColor = document.querySelector('.heartButton') as HTMLButtonElement;
-  changeColor.style.background='#941C2F'; 
-}
 
 
-
-  render() {
+  render(){
     return (
       <Host>
-        <button class='heartButton'>&#9825;</button>
-        <slot></slot>
+        <button class='heartButton' onClick={this.buttonClicked}>&#9825;</button>
       </Host>
     );
   }
-
 }
