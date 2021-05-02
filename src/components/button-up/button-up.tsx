@@ -3,6 +3,7 @@ import { Component, Host, h, Prop } from '@stencil/core';
 let componentElement: ShadowRoot;
 let elementBackground: HTMLElement;
 let elementHover: HTMLElement;
+let elementText: HTMLElement;
 
 @Component({
   tag: 'button-up',
@@ -58,8 +59,12 @@ export class ButtonUp {
   componentDidLoad(){
     componentElement = document.querySelector("button-up").shadowRoot;
     elementBackground = componentElement.querySelector("#buttonUp");
+    elementText = componentElement.querySelector("#buttonUp")
     if(this.colorbackground){
       elementBackground.style.backgroundColor = this.colorbackground;
+    } 
+    if(this.colortext){
+      elementText.style.color = this.colortext;
     } 
   }
 }
