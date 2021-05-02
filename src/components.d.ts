@@ -21,6 +21,7 @@ export namespace Components {
     }
     interface ButtonUp {
         "colorbackground"?: string;
+        "colorhover"?: string;
         "colortext"?: string;
         "name": string;
     }
@@ -208,6 +209,7 @@ declare namespace LocalJSX {
     }
     interface ButtonUp {
         "colorbackground"?: string;
+        "colorhover"?: string;
         "colortext"?: string;
         "name"?: string;
     }
