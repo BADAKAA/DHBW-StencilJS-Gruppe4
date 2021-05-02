@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'button-up',
@@ -8,11 +8,13 @@ import { Component, Host, h } from '@stencil/core';
 
 export class ButtomUp {
 
+  @Prop() name: string;
+
   render() {
     return (
       <Host>
         <div class="button">
-          <button>Hallo</button>
+          <button>{this.name}</button>
         </div>
       </Host>
     );
