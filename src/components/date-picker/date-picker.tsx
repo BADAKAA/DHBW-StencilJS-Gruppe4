@@ -8,6 +8,11 @@ const  yearNames:Array <string> = [
   '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'
 ];
 
+let componentElement: ShadowRoot;
+let elementWidth: HTMLDivElement;
+let elementBackground: HTMLDivElement;
+
+
 @Component({
   tag: 'date-picker',
   styleUrl: 'date-picker.css',
@@ -17,7 +22,7 @@ const  yearNames:Array <string> = [
 
 export class DatePicker {
 
-  @Prop() color:string;
+  @Prop() backgroundcolor:string;
   @Prop() width:string;
 
   @Element() el: HTMLElement;
@@ -28,18 +33,24 @@ export class DatePicker {
    const datePickerFrame= this.el.shadowRoot.querySelector('#datePickerFrame') as  HTMLDivElement; //wenn die component geladen hat, wird ein Div element genommen und darin die Monate dargestellt  
    this.initialiseMonths(datePickerFrame);
 
+   componentElement = document.querySelector('date-picker').shadowRoot;
+   elementWidth= componentElement.querySelector('.datePicker');
+   elementBackground= componentElement.querySelector('.datePicker');
+
   if (this.width) {
     if (this.width.includes("px") || this.width.includes("%") || this.width.includes("vw")) {
-      //.style.width = this.width;
+      elementWidth.style.width = this.width;
     } else {
       console.log('%c Please input a valid width. Permitted units: "px", "%", "vw" ("vw"="%")', "color:orange; font-weight:bold;font-family:'Open sans'");
       throw new Error('Please input a valid width. Permitted units: "px", "%", "vw" ("vw"="%")');
     }
   }
-  if (this.color) {
-    //.style.background=this.color;
+  
+  if(this.backgroundcolor){
+    elementBackground.style.background=this.backgroundcolor;
   }
-  }
+
+}
 
 initialiseMonths(datePickerFrame:HTMLDivElement){
  
