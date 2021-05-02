@@ -19,6 +19,8 @@ export namespace Components {
         "element": string;
         "width": string;
     }
+    interface ButtomUp {
+    }
     interface EventList {
         "buttons": boolean;
     }
@@ -104,6 +106,12 @@ declare global {
     var HTMLDatePickerElement: {
         prototype: HTMLDatePickerElement;
         new (): HTMLDatePickerElement;
+    }
+    interface HTMLButtomUpElement extends Components.ButtomUp, HTMLStencilElement {
+    }
+    var HTMLButtomUpElement: {
+        prototype: HTMLButtomUpElement;
+        new (): HTMLButtomUpElement;
     };
     interface HTMLEventListElement extends Components.EventList, HTMLStencilElement {
     }
@@ -168,6 +176,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "cookie-banner": HTMLCookieBannerElement;
         "date-picker": HTMLDatePickerElement;
+        "buttom-up": HTMLButtomUpElement;
         "event-list": HTMLEventListElement;
         "example-component": HTMLExampleComponentElement;
         "faq-component": HTMLFaqComponentElement;
@@ -193,6 +202,8 @@ declare namespace LocalJSX {
         "component"?: string;
         "element"?: string;
         "width"?: string;
+    }
+    interface ButtomUp {
     }
     interface EventList {
         "buttons"?: boolean;
@@ -271,6 +282,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "cookie-banner": CookieBanner;
         "date-picker": DatePicker;
+        "buttom-up": ButtomUp;
         "event-list": EventList;
         "example-component": ExampleComponent;
         "faq-component": FaqComponent;
@@ -289,6 +301,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "cookie-banner": LocalJSX.CookieBanner & JSXBase.HTMLAttributes<HTMLCookieBannerElement>;
             "date-picker": LocalJSX.DatePicker & JSXBase.HTMLAttributes<HTMLDatePickerElement>;
+            "buttom-up": LocalJSX.ButtomUp & JSXBase.HTMLAttributes<HTMLButtomUpElement>;
             "event-list": LocalJSX.EventList & JSXBase.HTMLAttributes<HTMLEventListElement>;
             "example-component": LocalJSX.ExampleComponent & JSXBase.HTMLAttributes<HTMLExampleComponentElement>;
             "faq-component": LocalJSX.FaqComponent & JSXBase.HTMLAttributes<HTMLFaqComponentElement>;
