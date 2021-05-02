@@ -17,7 +17,7 @@ export class FlipCard {
 @Prop() place?: string;
 @Prop() date?: string;
 @Prop() description?: string;
-@Prop() backgroundFront?: string;
+@Prop() background?: string;
 
 @State() flipcard?: string;
 
@@ -27,6 +27,8 @@ handleMouseOver() {
 }
 
 handleMouseOut() {
+  console.log(this.background);
+  
   this.flipcard = "flipcard";
 }
 
@@ -43,10 +45,10 @@ meme(){
 
 componentDidLoad(){
     componentElement = document.querySelector("flip-card").shadowRoot;
-    backgroundColor = componentElement.querySelector("front");
-    console.log(this.backgroundFront);  
-    if(this.backgroundFront){
-    backgroundColor.style.background = this.backgroundFront;
+    backgroundColor = componentElement.querySelector(".front");
+    console.log(this.background);  
+    if(this.background){
+    backgroundColor.style.backgroundColor = this.background;
     }
   }
 
