@@ -22,7 +22,7 @@ export class HeartButton {
 
 @Listen('changeColor')
   public changeBtnColor() {
-    const btnColor = document.querySelector('#heartButton') as HTMLElement;
+    const btnColor = document.querySelector('.heartButton') as HTMLElement;
     btnColor.style.background='#941C2F;'; /*Wie bindet man hier die property farbe ein?*/
   }
 
@@ -65,7 +65,7 @@ if (this.height) {
     return (
       <Host>
         <div class='likeButton' onClick={() => this.changeColor.emit()} /*onClick={() => {this.btnClicked()}}*/>
-        <p id='heartButton'>&#9825;</p>
+        <p class='heartButton'>&#9825;</p>
         </div>
       </Host>
     );
