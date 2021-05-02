@@ -1,7 +1,4 @@
 import { Component, Host, h, Prop } from '@stencil/core';
-let faqQuestion:string;
-let faqAnswer:string;
-
 let componentElement:ShadowRoot;
 let heading:HTMLDivElement;
 let textBody:HTMLDivElement;
@@ -15,21 +12,16 @@ export class FaqComponent {
   @Prop() question:string;
   @Prop() answer:string; 
 
-  constructor(){
-    faqQuestion = this.question;
-    faqAnswer = this.answer;
-  }
-
   render() {
     return (
       <Host>
         <div id="faqCard">
           <h2 id="faqBoxHeading">FAQ</h2>
           <div id="heading">
-            Text
+            {this.question && <p>{this.question}</p>}
           </div>
           <div id="textBody">
-            <p id="answerText">blabla</p>
+            <p id="answerText">{this.answer && <p>{this.answer}</p>}</p>
           </div>
         </div>
         <slot></slot>
