@@ -1,5 +1,8 @@
 import { Component, Host, h, Prop, State } from '@stencil/core';
 
+let componentElement: ShadowRoot;
+let backgroundColor: HTMLDivElement;
+
 @Component({
   tag: 'flip-card',
   styleUrl: 'flip-card.css',
@@ -14,8 +17,9 @@ export class FlipCard {
 @Prop() place?: string;
 @Prop() date?: string;
 @Prop() description?: string;
+@Prop() backgroundFront?: string;
 
-@State() flipcard: string;
+@State() flipcard?: string;
 
 
 handleMouseOver() {
@@ -37,6 +41,15 @@ meme(){
   
 }
 
+componentDidLoad(){
+    componentElement = document.querySelector("flip-card").shadowRoot;
+    backgroundColor = componentElement.querySelector("front");
+    console.log(this.backgroundFront);  
+    if(this.backgroundFront){
+    backgroundColor.style.background = this.backgroundFront;
+    }
+  }
+
   render() {
     return (
       <Host>
@@ -49,7 +62,6 @@ meme(){
           <div class="flipcard">
             <div class="content">
               <div class="front">
-              
                 {this.img && <img src={this.img}></img>}
                 {this.name && <h2> {this.name} </h2>}
               </div>
@@ -69,5 +81,8 @@ meme(){
     );
   }
 
+  
 }
 
+
+ 
