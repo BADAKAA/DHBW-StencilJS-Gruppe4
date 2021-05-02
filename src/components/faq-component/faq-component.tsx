@@ -47,6 +47,7 @@ function defineObjectReferences() {
   icon = componentElement.querySelector(".icon");
 
   heading.addEventListener("click", makeAnswerInvisible);
+  icon.addEventListener("click", makeAnswerInvisible);
 }
 
 
