@@ -6,6 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface CookieBanner {
+        "bannertext": string;
+        "heading": string;
+    }
     interface EventList {
     }
     interface ExampleComponent {
@@ -43,6 +47,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLCookieBannerElement extends Components.CookieBanner, HTMLStencilElement {
+    }
+    var HTMLCookieBannerElement: {
+        prototype: HTMLCookieBannerElement;
+        new (): HTMLCookieBannerElement;
+    };
     interface HTMLEventListElement extends Components.EventList, HTMLStencilElement {
     }
     var HTMLEventListElement: {
@@ -74,6 +84,7 @@ declare global {
         new (): HTMLSearchBarElement;
     };
     interface HTMLElementTagNameMap {
+        "cookie-banner": HTMLCookieBannerElement;
         "event-list": HTMLEventListElement;
         "example-component": HTMLExampleComponentElement;
         "image-slider": HTMLImageSliderElement;
@@ -82,6 +93,10 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface CookieBanner {
+        "bannertext"?: string;
+        "heading"?: string;
+    }
     interface EventList {
     }
     interface ExampleComponent {
@@ -118,6 +133,7 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     interface IntrinsicElements {
+        "cookie-banner": CookieBanner;
         "event-list": EventList;
         "example-component": ExampleComponent;
         "image-slider": ImageSlider;
@@ -129,6 +145,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "cookie-banner": LocalJSX.CookieBanner & JSXBase.HTMLAttributes<HTMLCookieBannerElement>;
             "event-list": LocalJSX.EventList & JSXBase.HTMLAttributes<HTMLEventListElement>;
             "example-component": LocalJSX.ExampleComponent & JSXBase.HTMLAttributes<HTMLExampleComponentElement>;
             "image-slider": LocalJSX.ImageSlider & JSXBase.HTMLAttributes<HTMLImageSliderElement>;
