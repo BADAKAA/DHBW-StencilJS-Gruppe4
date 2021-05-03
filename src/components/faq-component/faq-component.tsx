@@ -28,12 +28,8 @@ export class FaqComponent {
     );
   }
   componentDidLoad() {
-    initializeFAQ()
+    defineObjectReferences()
   }
-}
-
-function initializeFAQ() {
-  defineObjectReferences()
 }
 
 function defineObjectReferences() {
