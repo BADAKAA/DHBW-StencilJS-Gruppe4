@@ -3,13 +3,9 @@
 }
 
 button{
-  position:absolute;
   font-family: 'Catamaran', sans-serif;
   font-size: 200%;
   cursor: pointer;
-  margin-top: 1%;
-  margin-bottom: 50%;
-  margin-left: 50%;
   text-align: center;
   height: 60px;
   width: 60px;
@@ -20,6 +16,12 @@ button{
   border: none;
   /*box-shadow: 0 0 5px rgb(172, 172, 172);*/
   border-color: #BFBFBF;
+}
+
+.button{
+  position: relative;
+  padding: 10px 0 10px 0;
+  text-align: center;
 }
 
 button:hover{
