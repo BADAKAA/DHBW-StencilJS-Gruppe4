@@ -70,28 +70,36 @@ initialiseYears(headerYears:HTMLDivElement){
 
   for(const years of yearNames){
     const yearBox = document.createElement('DIV') as HTMLDivElement;
+    yearBox.className='yearBoxes';
     yearBox.textContent = years;
     headerYears.appendChild(yearBox);
   }
 }
 
+/*showPreviousYear(){
+  let yearNumbers = document.
+}
+
+showNextYear(){
+
+}*/
 
   render() {
     return (
       <Host>
       <div class='datePicker'>
         <div class= 'Header'>
-            <span id= 'previous'>
+            <span id= 'previous' /*onClick={() => this.showPreviousYear()}*/>
             {'<'}
             </span>
             <span id='year'>
             {'2021'}
             </span>
-            <span id= 'next'>
+            <span id= 'next' /*onClick={() => this.showNextYear()}*/>
             {'>'}
             </span>
         </div>
-        <div id= 'datePickerFrame' >
+        <div id='datePickerFrame'>
 
         </div>
       </div>
@@ -113,6 +121,6 @@ function clearMonthColor(){
   const allMonths= document.querySelector('date-picker').shadowRoot.querySelectorAll('.monthBoxes') as unknown as Array <HTMLDivElement>;
   for(const monthBox of allMonths){
     monthBox.style.background='';
-    monthBox.style.color='black';
+    monthBox.style.color='';
 }
 }
