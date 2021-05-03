@@ -27,7 +27,7 @@
 }
 
 p .link {
-  text-decoration: underline blue;
+  text-decoration: underline #100B00;
   cursor: pointer;
 }
 
