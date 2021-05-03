@@ -13,6 +13,7 @@ export namespace Components {
         "exampleToUpperCase": () => Promise<void>;
     }
     interface HeartButton {
+        "backgroundcolor": string;
         "height": string;
         "width": string;
     }
@@ -100,6 +101,7 @@ declare namespace LocalJSX {
         "onExampleEvent"?: (event: CustomEvent<string>) => void;
     }
     interface HeartButton {
+        "backgroundcolor"?: string;
         "height"?: string;
         "width"?: string;
     }

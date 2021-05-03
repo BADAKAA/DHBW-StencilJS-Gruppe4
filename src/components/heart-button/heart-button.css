@@ -2,14 +2,14 @@
   display: block;
 }
 
-.button{
+#likeBtn{
   cursor:pointer;
   width: 45px;
   height: 45px;
   background-color:#100B00;
   border-radius: 4px;
   color: white;
-  font-size: 200%;
+  font-size: 150%;
   text-align: center;
   /*object-fit: fill;*/
   margin-top: 10px;
