@@ -15,11 +15,10 @@ export class CookieBanner {
   @Prop() bannertext:string;
   @Prop() buttontext:string;
   @Prop() linkguidelines?:string;
+  @Prop() link?:string;
 
   linkGuidelines() {
-    const link = this.linkguidelines;
-    const url = "https://www.airbnb.de/help/article/2855/datenschutzerkl%C3%A4rung" + link;
-    window.open(url);
+    window.open(this.link);
   }
 
   render() {

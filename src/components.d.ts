@@ -10,6 +10,7 @@ export namespace Components {
         "bannertext": string;
         "buttontext": string;
         "heading": string;
+        "link"?: string;
         "linkguidelines"?: string;
     }
     interface EventList {
@@ -17,6 +18,10 @@ export namespace Components {
     interface ExampleComponent {
         "exampleProp": string;
         "exampleToUpperCase": () => Promise<void>;
+    }
+    interface FaqComponent {
+        "answer": string;
+        "question": string;
     }
     interface ImageSlider {
         "autoplay"?: string;
@@ -67,6 +72,12 @@ declare global {
         prototype: HTMLExampleComponentElement;
         new (): HTMLExampleComponentElement;
     };
+    interface HTMLFaqComponentElement extends Components.FaqComponent, HTMLStencilElement {
+    }
+    var HTMLFaqComponentElement: {
+        prototype: HTMLFaqComponentElement;
+        new (): HTMLFaqComponentElement;
+    };
     interface HTMLImageSliderElement extends Components.ImageSlider, HTMLStencilElement {
     }
     var HTMLImageSliderElement: {
@@ -89,6 +100,7 @@ declare global {
         "cookie-banner": HTMLCookieBannerElement;
         "event-list": HTMLEventListElement;
         "example-component": HTMLExampleComponentElement;
+        "faq-component": HTMLFaqComponentElement;
         "image-slider": HTMLImageSliderElement;
         "my-component": HTMLMyComponentElement;
         "search-bar": HTMLSearchBarElement;
@@ -99,6 +111,7 @@ declare namespace LocalJSX {
         "bannertext"?: string;
         "buttontext"?: string;
         "heading"?: string;
+        "link"?: string;
         "linkguidelines"?: string;
     }
     interface EventList {
@@ -106,6 +119,10 @@ declare namespace LocalJSX {
     interface ExampleComponent {
         "exampleProp"?: string;
         "onExampleEvent"?: (event: CustomEvent<string>) => void;
+    }
+    interface FaqComponent {
+        "answer"?: string;
+        "question"?: string;
     }
     interface ImageSlider {
         "autoplay"?: string;
@@ -140,6 +157,7 @@ declare namespace LocalJSX {
         "cookie-banner": CookieBanner;
         "event-list": EventList;
         "example-component": ExampleComponent;
+        "faq-component": FaqComponent;
         "image-slider": ImageSlider;
         "my-component": MyComponent;
         "search-bar": SearchBar;
@@ -152,6 +170,7 @@ declare module "@stencil/core" {
             "cookie-banner": LocalJSX.CookieBanner & JSXBase.HTMLAttributes<HTMLCookieBannerElement>;
             "event-list": LocalJSX.EventList & JSXBase.HTMLAttributes<HTMLEventListElement>;
             "example-component": LocalJSX.ExampleComponent & JSXBase.HTMLAttributes<HTMLExampleComponentElement>;
+            "faq-component": LocalJSX.FaqComponent & JSXBase.HTMLAttributes<HTMLFaqComponentElement>;
             "image-slider": LocalJSX.ImageSlider & JSXBase.HTMLAttributes<HTMLImageSliderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "search-bar": LocalJSX.SearchBar & JSXBase.HTMLAttributes<HTMLSearchBarElement>;
