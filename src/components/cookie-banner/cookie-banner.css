@@ -26,6 +26,11 @@
   margin-top: 1px;
 }
 
+p .link {
+  text-decoration: underline blue;
+  cursor: pointer;
+}
+
 .buttons {
   cursor: pointer;
 }

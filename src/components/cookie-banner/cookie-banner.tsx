@@ -14,6 +14,13 @@ export class CookieBanner {
   @Prop() heading:string;
   @Prop() bannertext:string;
   @Prop() buttontext:string;
+  @Prop() linkguidelines?:string;
+
+  linkGuidelines() {
+    const link = this.linkguidelines;
+    const url = "https://www.airbnb.de/help/article/2855/datenschutzerkl%C3%A4rung" + link;
+    window.open(url);
+  }
 
   render() {
     return (
@@ -23,6 +30,7 @@ export class CookieBanner {
             <button id="closeButton" class="buttons">&#10005;</button>
             <p class="heading">{this.heading && <p>{this.heading}</p>}</p>
             <p>{this.bannertext && <p>{this.bannertext}</p>}</p>
+            <p onClick={() => this.linkGuidelines()} class="link">{this.linkguidelines && <p>{this.linkguidelines}</p>}</p>
             <button id="acceptButton" class="buttons">{this.buttontext && <p>{this.buttontext}</p>}</button>
           </div>
         </div>
@@ -31,12 +39,8 @@ export class CookieBanner {
     );
   }
   componentDidLoad() {
-    initializeSlider()
+    defineObjectReferences();
   }
-}
-
-function initializeSlider() {
-  defineObjectReferences();
 }
 
 function defineObjectReferences() {

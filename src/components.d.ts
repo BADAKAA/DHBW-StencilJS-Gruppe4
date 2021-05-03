@@ -10,6 +10,7 @@ export namespace Components {
         "bannertext": string;
         "buttontext": string;
         "heading": string;
+        "linkguidelines"?: string;
     }
     interface EventList {
     }
@@ -98,6 +99,7 @@ declare namespace LocalJSX {
         "bannertext"?: string;
         "buttontext"?: string;
         "heading"?: string;
+        "linkguidelines"?: string;
     }
     interface EventList {
     }
