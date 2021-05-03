@@ -34,11 +34,13 @@ export namespace Components {
         "middle": string;
     }
     interface MyMenu {
+        "href": string;
+        "id": string;
+        "link": string;
         "name": string;
     }
     interface MySmlink {
-        "aussehen": string;
-        "icon": String;
+        "icon": string;
         "link": string;
         "name": string;
     }
@@ -133,11 +135,14 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface MyMenu {
+        "href"?: string;
+        "id"?: string;
+        "link"?: string;
         "name"?: string;
+        "onScroll"?: (event: CustomEvent<any>) => void;
     }
     interface MySmlink {
-        "aussehen"?: string;
-        "icon"?: String;
+        "icon"?: string;
         "link"?: string;
         "name"?: string;
     }

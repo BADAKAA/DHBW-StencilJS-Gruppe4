@@ -6,35 +6,50 @@
 html {
   scroll-behavior: smooth;
 }
-:host>div{
-  overflow: auto;
-  padding:75px;
-  text-align:center;
-  position: sticky; 
-  top:0 ;
-  
+leiste{
+  height: 25px;
+  Width: 100%;
+  background-color:#941c2f;
+ 
+
+}
+my-menu{
+  float: left;
+  position:fixed;
   
 }
-:host>div>button {
+.button {
   background-color: #247Ba0;
   border: 1px solid #fffcfe;
   color:#fffcfe;
   font-family: 'Catamaran', sans-serif;
-  padding:10px 20px;
   font-size:12px;
-  text-decoration:none;
   letter-spacing:2px;
   text-transform:uppercase;
   text-align:center;
   width: 30%;
- 
-  
+  box-sizing: border-box;
+  float: left;
+  position:relative;
+  height: 25px;
   
 }
-:host>div>button:hover{
-  border:none;
+
+  
+button:hover{
+  
   background:#fffcfe;
-  padding:20px 20px;
   color: #247Ba0;
-  border: 1px solid #247Ba0;
+  border: solid #247Ba0;
 }
+.footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+
+ 
+  text-align: center;
+}
+
