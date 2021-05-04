@@ -1,24 +1,21 @@
 :host {
   display: block;
-  width:40px;
-  height: 40px;
+  
 }
 
-.btn{
-  color: blue;
+.smlink{
+  
+  float: left;
+  box-sizing: border-box;
+  margin: 10px
 }
-.btn.instagram{
-  color:red;
-}
-.btn.facebook{
-  color:blue;
-}
-.btn.twitter{
-  color:plum;
+img{
+  width: 50px;
+  height: 50 px;
 }
 
-:host>button:hover{
-  opacity: 0.5;
+.smlink:hover{
+  opacity: 50%;
 }
 
 /*
