@@ -1,14 +1,6 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, Element, h } from '@stencil/core';
 
-//fetch event data
 let eventData: any;
-fetch('../data/event-data.json')
-  .then(results => results.json())
-  .then(data => {
-    eventData = data.events;
-    fillList();
-    console.log(`%cEvent data was last updated ${data.lastUpdated}.`, "color:darkgreen; font-weight:bold; font-family:'Open Sans', sans-serif;line-height:20pt")
-  })
 
 let componentElement: ShadowRoot;
 let listElement: HTMLUListElement;
@@ -19,7 +11,7 @@ let expanded: boolean = false;
   shadow: true,
 })
 export class EventList {
-
+  @Element() el:HTMLElement;
   render() {
     return (
       <Host>
@@ -28,13 +20,21 @@ export class EventList {
     );
   }
   componentDidLoad() {
-    referenceObjects();
+    referenceObjects(this.el);  
+    //Event data is fetched AFTER elements have been referenced. Otherwise, there would be nowhere to append elements in fillList()
+    fetch('../data/event-data.json')
+      .then(results => results.json())
+      .then(data => {
+      eventData = data.events;
+      fillList();
+      console.log(`%cEvent data was last updated ${data.lastUpdated}.`, "color:darkgreen; font-family:'Open Sans', sans-serif;line-height:20pt")
+      })
     addButtons();
   }
 }
 
-function referenceObjects() {
-  componentElement = document.querySelector("event-list").shadowRoot;
+function referenceObjects(hostElement:HTMLElement) {
+  componentElement = hostElement.shadowRoot;
   listElement = componentElement.querySelector("ul");
 }
 
@@ -58,6 +58,7 @@ function fillList() {
                         </div>`
     listItem.addEventListener("click", () => expandItem(listItem));
     listElement.appendChild(listItem);
+    
   }
 }
 
@@ -79,12 +80,19 @@ function expandItem(listItem: HTMLElement) {
 function convertDate(date: string) {
 
   const dateComponents: Array<string> = date.split("-");
-  return dateComponents[2] + "." + dateComponents[1] + "." + dateComponents[0];
+  const convertedDate:Date = new Date(date);
+  return getDay(convertedDate.getDay()) +", "+ dateComponents[2] + "." + dateComponents[1] + "." + dateComponents[0];
 }
 
+function getDay(weekdayNumber:number):string {
 
-//This code adds a button to collapse or expand all elements.
-//To use it, call the addButton() function in componentDidLoad().
+  const weekdays:Array<string> = [
+    "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+  ]
+  return weekdays[weekdayNumber];
+}
+//This code adds a buttons to collapse or expand all elements and to sort items.
+//It is used by calling the  the addButton() function in componentDidLoad().
 let detailButton: HTMLElement;
 let sortButton: HTMLElement;
 
