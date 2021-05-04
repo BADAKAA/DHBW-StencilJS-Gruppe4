@@ -15,6 +15,7 @@ export namespace Components {
     interface HeartButton {
         "backgroundcolor": string;
         "height": string;
+        "icon": string;
         "iconsize": string;
         "width": string;
     }
@@ -104,6 +105,7 @@ declare namespace LocalJSX {
     interface HeartButton {
         "backgroundcolor"?: string;
         "height"?: string;
+        "icon"?: string;
         "iconsize"?: string;
         "width"?: string;
     }

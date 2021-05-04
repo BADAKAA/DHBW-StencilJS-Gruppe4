@@ -18,6 +18,7 @@ export class HeartButton {
 @Prop() width:string;
 @Prop() height:string;
 @Prop() backgroundcolor:string;
+@Prop() icon:string;
 @Prop() iconsize:string;
 
 @Element() el: HTMLElement;
@@ -27,7 +28,7 @@ componentDidLoad(){
   componentElement = document.querySelector('heart-button').shadowRoot;
   buttonWidth = componentElement.querySelector('#likeBtn');
   buttonHeight= componentElement.querySelector('#likeBtn');
-  iconSize= componentElement.querySelector('#likeBtn')
+  iconSize= componentElement.querySelector('#likeBtn');
 
 if (this.width) {
   if (this.width.includes("px") || this.width.includes("%") || this.width.includes("vw")) {
@@ -69,7 +70,7 @@ buttonClicked(){
         <div class='heartButton'
         onClick={() => this.buttonClicked()}
         >
-        <button id='likeBtn'>&#10084;</button>
+        <button id='likeBtn'>{this.icon}</button>
         </div>
       </Host>
     );
