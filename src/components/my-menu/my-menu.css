@@ -35,6 +35,9 @@ button:hover{
   color:#941c2f;
   
 }
+button.selected{
+  color:aqua
+}
 .footer{
   position: fixed;
   left: 0;

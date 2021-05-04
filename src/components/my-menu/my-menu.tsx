@@ -22,7 +22,8 @@ export class MyMenu {
 
   //Event welches ausgelöst wird, sobald ein button click erfolgt
   event(){
-    let clicked_id = this.id;     //get the id of the caller element (button)
+    let clicked_id = this.id; 
+                                   //get the id of the caller element (button)
     if(clicked_id == "event"){    //wenn die ID des buttons "event" ist
       events();                   //führe Methode events() aus
     }
@@ -63,8 +64,8 @@ function persönlicheEvents(){
 function events(){
   const events = document.querySelector('#event_text');
   events.scrollIntoView({behavior: 'smooth'})
-  
-}
+  events.className = 'selected';
+};
 
 
   
