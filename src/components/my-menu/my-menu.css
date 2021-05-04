@@ -1,0 +1,46 @@
+:host {
+  display: block; 
+  position: sticky;
+}
+
+my-menu{
+  
+  
+  overflow: hidden ;
+  display: block;
+}
+.button {
+  background-color: #941c2f;
+  border: 1px solid #941c2f;
+  color:#fffcfe;
+  font-family: 'Catamaran', 'open-sans';
+  font-size:36px;
+  font-weight:500;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  text-align:center;
+  width:33.33%;
+  box-sizing: border-box;
+  
+  height: 55px;
+  display: block;
+  float: left;
+  position: sticky;
+}
+
+  
+button:hover{
+  
+  background:#fffcfe;
+  color: #941c2f;
+  border: solid #941c2f;
+  text-shadow: 1px 1px;
+}
+button:active{
+  background:#fffcfe;
+  color: #941c2f;
+  border: solid #941c2f;
+}
+
+
+
