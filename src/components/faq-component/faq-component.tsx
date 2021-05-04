@@ -1,7 +1,9 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import { Component, Host, h, Prop, Element, State} from '@stencil/core';
+import { getId } from '../../utils/faqCounter';
 let componentElement:ShadowRoot;
 let heading:HTMLDivElement;
 let textBody:HTMLDivElement;
+let id:string;
 @Component({
   tag: 'faq-component',
   styleUrl: 'faq-component.css',
@@ -11,29 +13,32 @@ export class FaqComponent {
 
   @Prop() question:string;
   @Prop() answer:string; 
+  @Element() el:HTMLElement;
+  @State () faqcomponent?: string;
 
   render() {
     return (
       <Host>
-        <div id="faqCard">
+        <div class={this.faqcomponent} id="faqCard">
           <div class="heading">
-            {this.question && <p>{this.question}</p>}
+            <p>{this.question}</p>
           </div>
           <div class="textBody">
-            <p id="answerText">{this.answer && <p>{this.answer}</p>}</p>
+            <p id="answerText">{this.answer}</p>
           </div>
         </div>
-        <slot></slot>
       </Host>
     );
   }
   componentDidLoad() {
-    defineObjectReferences()
+    id = getId();
+    this.el.id = id;
+    componentElement = document.querySelector("#" + id).shadowRoot;
+    defineObjectReferences();
   }
 }
 
 function defineObjectReferences() {
-  componentElement = document.querySelector("faq-component").shadowRoot;
   heading = componentElement.querySelector(".heading");
   textBody = componentElement.querySelector(".textBody");
 
@@ -41,6 +46,8 @@ function defineObjectReferences() {
 }
 
 function makeAnswerInvisible() {
+  console.log(textBody);
+  
   if (textBody.style.display =="contents") {
     textBody.style.display = "none"
   }
