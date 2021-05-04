@@ -1,46 +1,52 @@
 :host {
   display: block;
-  color: red;
+  
   
 }
 html {
   scroll-behavior: smooth;
 }
+
 leiste{
   height: 25px;
   Width: 100%;
   background-color:#941c2f;
- 
-
-}
-my-menu{
-  float: left;
-  position:fixed;
   
 }
-.button {
-  background-color: #247Ba0;
-  border: 1px solid #fffcfe;
-  color:#fffcfe;
+.my-menu{
+  float: left;
+  position:absolute;
+  width: 100%;
+  margin: auto;
+  z-index: 7;
   font-family: 'Catamaran', sans-serif;
-  font-size:12px;
+}
+.button {
+  background-color: #941c2f;
+  border: #941c2f;
+  color:#fffcfe;
+  font-family: 'Catamaran', 'open-sans';
+  font-weight: 500;
+  font-size:36px;
   letter-spacing:2px;
   text-transform:uppercase;
   text-align:center;
-  width: 30%;
-  box-sizing: border-box;
+  width: 33%;
+  position:fixed;
+  z-index:999;
   float: left;
-  position:relative;
-  height: 25px;
-  
+ 
+  height: 55px;
+  margin: auto;
+  align-items: center;
 }
 
   
 button:hover{
   
   background:#fffcfe;
-  color: #247Ba0;
-  border: solid #247Ba0;
+  color:#941c2f;
+  
 }
 .footer{
   position: fixed;

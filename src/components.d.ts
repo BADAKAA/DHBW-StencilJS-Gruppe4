@@ -40,7 +40,8 @@ export namespace Components {
         "name": string;
     }
     interface MySmlink {
-        "icon": string;
+        "aussehen": string;
+        "icon": String;
         "link": string;
         "name": string;
     }
@@ -142,7 +143,8 @@ declare namespace LocalJSX {
         "onScroll"?: (event: CustomEvent<any>) => void;
     }
     interface MySmlink {
-        "icon"?: string;
+        "aussehen"?: string;
+        "icon"?: String;
         "link"?: string;
         "name"?: string;
     }
