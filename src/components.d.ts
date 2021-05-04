@@ -40,8 +40,7 @@ export namespace Components {
         "name": string;
     }
     interface MySmlink {
-        "aussehen": string;
-        "icon": String;
+        "icon": string;
         "link": string;
         "name": string;
     }
