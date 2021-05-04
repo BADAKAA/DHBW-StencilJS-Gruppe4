@@ -4,6 +4,7 @@ let componentElement:ShadowRoot;
 let buttonWidth:HTMLDivElement;
 let buttonHeight:HTMLDivElement;
 let buttonBackground:HTMLElement
+let iconSize:HTMLElement;
 
 @Component({
   tag: 'heart-button',
@@ -17,18 +18,16 @@ export class HeartButton {
 @Prop() width:string;
 @Prop() height:string;
 @Prop() backgroundcolor:string;
+@Prop() iconsize:string;
 
 @Element() el: HTMLElement;
 
 
 componentDidLoad(){
-  const heartButton= this.el.shadowRoot.querySelector('.heartButton') as  HTMLDivElement;  
- /* this.initialiseButton(heartButton);*/
-  
-
-componentElement = document.querySelector('heart-button').shadowRoot;
-buttonWidth = componentElement.querySelector('#likeBtn');
-buttonHeight= componentElement.querySelector('#likeBtn');
+  componentElement = document.querySelector('heart-button').shadowRoot;
+  buttonWidth = componentElement.querySelector('#likeBtn');
+  buttonHeight= componentElement.querySelector('#likeBtn');
+  iconSize= componentElement.querySelector('#likeBtn')
 
 if (this.width) {
   if (this.width.includes("px") || this.width.includes("%") || this.width.includes("vw")) {
@@ -48,16 +47,13 @@ if (this.height) {
   }
 }
 
+if (this.iconsize){
+  iconSize.style.fontSize=this.iconsize;
+}
 
 }
 
-/*initialiseButton(heartButton:HTMLDivElement){
-const likeButton = document.createElement('DIV') as HTMLDivElement;
-likeButton.className='button';
-likeButton.textContent = '♡';
-likeButton.addEventListener('click', (ev)=> buttonClicked(ev) );
-heartButton.appendChild(likeButton);
-}*/
+
 buttonClicked(){
   componentElement = document.querySelector('heart-button').shadowRoot;
   buttonBackground = componentElement.querySelector('#likeBtn');
