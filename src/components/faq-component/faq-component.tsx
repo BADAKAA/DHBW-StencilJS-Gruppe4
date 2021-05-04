@@ -1,9 +1,8 @@
-import { Component, Host, h, Prop, Element, State} from '@stencil/core';
-import { getId } from '../../utils/faqCounter';
+import { Component, Host, h, Prop, Element} from '@stencil/core';
 let componentElement:ShadowRoot;
-let heading:HTMLDivElement;
-let textBody:HTMLDivElement;
-let id:string;
+let questionElement:HTMLDivElement;
+
+
 @Component({
   tag: 'faq-component',
   styleUrl: 'faq-component.css',
@@ -14,14 +13,13 @@ export class FaqComponent {
   @Prop() question:string;
   @Prop() answer:string; 
   @Element() el:HTMLElement;
-  @State () faqcomponent?: string;
 
   render() {
     return (
       <Host>
-        <div class={this.faqcomponent} id="faqCard">
+        <div class="faqCard">
           <div class="heading">
-            <p>{this.question}</p>
+            <p class="question">{this.question}</p>
           </div>
           <div class="textBody">
             <p id="answerText">{this.answer}</p>
@@ -31,23 +29,21 @@ export class FaqComponent {
     );
   }
   componentDidLoad() {
-    id = getId();
-    this.el.id = id;
-    componentElement = document.querySelector("#" + id).shadowRoot;
+    componentElement = this.el.shadowRoot;
     defineObjectReferences();
   }
 }
 
 function defineObjectReferences() {
-  heading = componentElement.querySelector(".heading");
-  textBody = componentElement.querySelector(".textBody");
+  questionElement = componentElement.querySelector(".question");
 
-  heading.addEventListener("click", makeAnswerInvisible);
+  questionElement.addEventListener("click", (ev) => makeAnswerInvisible(ev));
 }
 
-function makeAnswerInvisible() {
+function makeAnswerInvisible(ev:MouseEvent) {
+  const targetElement = ev.target as HTMLElement;
+  const textBody = targetElement.parentElement.parentElement.querySelector(".textBody") as HTMLDivElement;
   console.log(textBody);
-  
   if (textBody.style.display =="contents") {
     textBody.style.display = "none"
   }

@@ -2,7 +2,7 @@
   display: block;
 }
 
-#faqCard {
+.faqCard {
   margin-top: 10px;
   margin-right: 800px;
   background-color: #FFFCF9;
@@ -18,7 +18,6 @@
   padding-top: 5px;
   padding-bottom: 4px;
   width: 90%;
-  cursor: pointer;
 }
 
 #answerText {
@@ -30,4 +29,10 @@ p {
   margin-bottom: 10px;
 }
 
+.question {
+  cursor: pointer;
+}
 
+.textBody {
+  display: none;
+}
