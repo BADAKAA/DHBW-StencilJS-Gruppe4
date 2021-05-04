@@ -6,6 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface DatePicker {
+        "backgroundcolor": string;
+        "width": string;
+    }
     interface EventList {
     }
     interface ExampleComponent {
@@ -51,6 +55,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLDatePickerElement extends Components.DatePicker, HTMLStencilElement {
+    }
+    var HTMLDatePickerElement: {
+        prototype: HTMLDatePickerElement;
+        new (): HTMLDatePickerElement;
+    };
     interface HTMLEventListElement extends Components.EventList, HTMLStencilElement {
     }
     var HTMLEventListElement: {
@@ -88,6 +98,7 @@ declare global {
         new (): HTMLSearchBarElement;
     };
     interface HTMLElementTagNameMap {
+        "date-picker": HTMLDatePickerElement;
         "event-list": HTMLEventListElement;
         "example-component": HTMLExampleComponentElement;
         "heart-button": HTMLHeartButtonElement;
@@ -97,6 +108,10 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface DatePicker {
+        "backgroundcolor"?: string;
+        "width"?: string;
+    }
     interface EventList {
     }
     interface ExampleComponent {
@@ -141,6 +156,7 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     interface IntrinsicElements {
+        "date-picker": DatePicker;
         "event-list": EventList;
         "example-component": ExampleComponent;
         "heart-button": HeartButton;
@@ -153,6 +169,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "date-picker": LocalJSX.DatePicker & JSXBase.HTMLAttributes<HTMLDatePickerElement>;
             "event-list": LocalJSX.EventList & JSXBase.HTMLAttributes<HTMLEventListElement>;
             "example-component": LocalJSX.ExampleComponent & JSXBase.HTMLAttributes<HTMLExampleComponentElement>;
             "heart-button": LocalJSX.HeartButton & JSXBase.HTMLAttributes<HTMLHeartButtonElement>;
