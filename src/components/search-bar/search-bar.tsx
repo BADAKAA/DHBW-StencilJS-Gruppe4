@@ -1,7 +1,7 @@
 //The main logic fpr the search bar comes from this tutorial:
 //https://www.youtube.com/watch?v=3NG8zy0ywIk
 
-import { Component, Host, h, Prop } from '@stencil/core';
+import { Component, Host, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
 import { getSearchedElement } from '../../utils/findElement';
 import { resetSearch, searchElement } from '../../utils/searchElement';
 //variables to control this component
@@ -28,6 +28,10 @@ export class SearchBar {
   @Prop() width: string;
   @Prop() google: string;
 
+  @Element() el: HTMLElement;
+  @Event() searchCleared: EventEmitter<string>;
+
+
   render() {
     return (
       <Host>
@@ -38,9 +42,10 @@ export class SearchBar {
       </Host>
     );
   }
+
   componentDidLoad() {
     //declare variables to control this component
-    componentElement = document.querySelector("search-bar").shadowRoot;
+    componentElement = this.el.shadowRoot;
     searchBarContainer = componentElement.querySelector(".searchBarContainer");
     searchIcon = componentElement.querySelector(".searchIcon");
     searchBar = componentElement.querySelector("#searchBar");
@@ -102,20 +107,22 @@ function search() {
   const input: string = searchBar.value.toLowerCase();
   if (input != "") {
     searchIcon.src = "/assets/clear.png";
-    resetSearch(searchedElement);
+    searchElement(searchedElement, input);
   } else {
     clearSearch();
   }
-  searchElement(searchedElement, input);
+  
 }
 
 
 
 
 function clearSearch() {
-  resetSearch(searchedElement);
+  if(searchBar.value!="") {
+  resetSearch();
   searchBar.value = "";
   searchIcon.src = "/assets/search.png";
+  }
 }
 
 function googleSearch() {
