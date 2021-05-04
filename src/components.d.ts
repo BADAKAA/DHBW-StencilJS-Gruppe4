@@ -12,6 +12,22 @@ export namespace Components {
         "exampleProp": string;
         "exampleToUpperCase": () => Promise<void>;
     }
+    interface FaqComponent {
+        "answer": string;
+        "question": string;
+    }
+    interface FlipCard {
+        "colorback"?: string;
+        "colorfront"?: string;
+        "date"?: string;
+        "description"?: string;
+        "img": string;
+        "name"?: string;
+        "place"?: string;
+        "textback"?: string;
+        "textfront"?: string;
+        "turnable": boolean;
+    }
     interface ImageSlider {
         "autoplay"?: string;
         "height": string;
@@ -32,6 +48,11 @@ export namespace Components {
           * The middle name
          */
         "middle": string;
+    }
+    interface MySmlink {
+        "icon": string;
+        "link": string;
+        "name": string;
     }
     interface SearchBar {
         "color": string;
@@ -55,6 +76,18 @@ declare global {
         prototype: HTMLExampleComponentElement;
         new (): HTMLExampleComponentElement;
     };
+    interface HTMLFaqComponentElement extends Components.FaqComponent, HTMLStencilElement {
+    }
+    var HTMLFaqComponentElement: {
+        prototype: HTMLFaqComponentElement;
+        new (): HTMLFaqComponentElement;
+    };
+    interface HTMLFlipCardElement extends Components.FlipCard, HTMLStencilElement {
+    }
+    var HTMLFlipCardElement: {
+        prototype: HTMLFlipCardElement;
+        new (): HTMLFlipCardElement;
+    };
     interface HTMLImageSliderElement extends Components.ImageSlider, HTMLStencilElement {
     }
     var HTMLImageSliderElement: {
@@ -67,6 +100,12 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLMySmlinkElement extends Components.MySmlink, HTMLStencilElement {
+    }
+    var HTMLMySmlinkElement: {
+        prototype: HTMLMySmlinkElement;
+        new (): HTMLMySmlinkElement;
+    };
     interface HTMLSearchBarElement extends Components.SearchBar, HTMLStencilElement {
     }
     var HTMLSearchBarElement: {
@@ -76,8 +115,11 @@ declare global {
     interface HTMLElementTagNameMap {
         "event-list": HTMLEventListElement;
         "example-component": HTMLExampleComponentElement;
+        "faq-component": HTMLFaqComponentElement;
+        "flip-card": HTMLFlipCardElement;
         "image-slider": HTMLImageSliderElement;
         "my-component": HTMLMyComponentElement;
+        "my-smlink": HTMLMySmlinkElement;
         "search-bar": HTMLSearchBarElement;
     }
 }
@@ -87,6 +129,22 @@ declare namespace LocalJSX {
     interface ExampleComponent {
         "exampleProp"?: string;
         "onExampleEvent"?: (event: CustomEvent<string>) => void;
+    }
+    interface FaqComponent {
+        "answer"?: string;
+        "question"?: string;
+    }
+    interface FlipCard {
+        "colorback"?: string;
+        "colorfront"?: string;
+        "date"?: string;
+        "description"?: string;
+        "img"?: string;
+        "name"?: string;
+        "place"?: string;
+        "textback"?: string;
+        "textfront"?: string;
+        "turnable"?: boolean;
     }
     interface ImageSlider {
         "autoplay"?: string;
@@ -109,6 +167,11 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface MySmlink {
+        "icon"?: string;
+        "link"?: string;
+        "name"?: string;
+    }
     interface SearchBar {
         "color"?: string;
         "component"?: string;
@@ -120,8 +183,11 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "event-list": EventList;
         "example-component": ExampleComponent;
+        "faq-component": FaqComponent;
+        "flip-card": FlipCard;
         "image-slider": ImageSlider;
         "my-component": MyComponent;
+        "my-smlink": MySmlink;
         "search-bar": SearchBar;
     }
 }
@@ -131,8 +197,11 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "event-list": LocalJSX.EventList & JSXBase.HTMLAttributes<HTMLEventListElement>;
             "example-component": LocalJSX.ExampleComponent & JSXBase.HTMLAttributes<HTMLExampleComponentElement>;
+            "faq-component": LocalJSX.FaqComponent & JSXBase.HTMLAttributes<HTMLFaqComponentElement>;
+            "flip-card": LocalJSX.FlipCard & JSXBase.HTMLAttributes<HTMLFlipCardElement>;
             "image-slider": LocalJSX.ImageSlider & JSXBase.HTMLAttributes<HTMLImageSliderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "my-smlink": LocalJSX.MySmlink & JSXBase.HTMLAttributes<HTMLMySmlinkElement>;
             "search-bar": LocalJSX.SearchBar & JSXBase.HTMLAttributes<HTMLSearchBarElement>;
         }
     }
