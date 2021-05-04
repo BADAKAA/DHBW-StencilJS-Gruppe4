@@ -24,6 +24,10 @@ export namespace Components {
         "textfront"?: string;
         "turnable": boolean;
     }
+    interface FaqComponent {
+        "answer": string;
+        "question": string;
+    }
     interface ImageSlider {
         "autoplay"?: string;
         "height": string;
@@ -72,6 +76,12 @@ declare global {
     var HTMLFlipCardElement: {
         prototype: HTMLFlipCardElement;
         new (): HTMLFlipCardElement;
+    }
+    interface HTMLFaqComponentElement extends Components.FaqComponent, HTMLStencilElement {
+    }
+    var HTMLFaqComponentElement: {
+        prototype: HTMLFaqComponentElement;
+        new (): HTMLFaqComponentElement;
     };
     interface HTMLImageSliderElement extends Components.ImageSlider, HTMLStencilElement {
     }
@@ -95,6 +105,7 @@ declare global {
         "event-list": HTMLEventListElement;
         "example-component": HTMLExampleComponentElement;
         "flip-card": HTMLFlipCardElement;
+        "faq-component": HTMLFaqComponentElement;
         "image-slider": HTMLImageSliderElement;
         "my-component": HTMLMyComponentElement;
         "search-bar": HTMLSearchBarElement;
@@ -118,6 +129,10 @@ declare namespace LocalJSX {
         "textback"?: string;
         "textfront"?: string;
         "turnable"?: boolean;
+    }
+    interface FaqComponent {
+        "answer"?: string;
+        "question"?: string;
     }
     interface ImageSlider {
         "autoplay"?: string;
@@ -152,6 +167,7 @@ declare namespace LocalJSX {
         "event-list": EventList;
         "example-component": ExampleComponent;
         "flip-card": FlipCard;
+        "faq-component": FaqComponent;
         "image-slider": ImageSlider;
         "my-component": MyComponent;
         "search-bar": SearchBar;
@@ -164,6 +180,7 @@ declare module "@stencil/core" {
             "event-list": LocalJSX.EventList & JSXBase.HTMLAttributes<HTMLEventListElement>;
             "example-component": LocalJSX.ExampleComponent & JSXBase.HTMLAttributes<HTMLExampleComponentElement>;
             "flip-card": LocalJSX.FlipCard & JSXBase.HTMLAttributes<HTMLFlipCardElement>;
+            "faq-component": LocalJSX.FaqComponent & JSXBase.HTMLAttributes<HTMLFaqComponentElement>;
             "image-slider": LocalJSX.ImageSlider & JSXBase.HTMLAttributes<HTMLImageSliderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "search-bar": LocalJSX.SearchBar & JSXBase.HTMLAttributes<HTMLSearchBarElement>;
