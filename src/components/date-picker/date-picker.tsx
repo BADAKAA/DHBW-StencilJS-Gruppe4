@@ -1,7 +1,8 @@
 import { Prop, Component, h, Host, Element } from '@stencil/core';
+import { getSearchedElement } from '../../utils/findElement';
 import { searchDate } from '../../utils/searchElement';
 
-const monthNames: Array<string> = [
+const monthNames: Array <string> = [
   'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'
 ];
 const year: number = new Date().getFullYear();
@@ -10,6 +11,7 @@ let componentElement: ShadowRoot;
 let datePickerElement: HTMLDivElement;
 let backgroundElement: HTMLDivElement;
 let yearBox: HTMLElement;
+let searchedElement: HTMLElement;
 /*let elementColor: HTMLDivElement;*/
 
 
@@ -31,7 +33,16 @@ export class DatePicker {
 
   @Element() el: HTMLElement;
 
+constructor(){
+  //code copied from search-bar.tsx to find searched element
+  const checkIfElementIsReady: number = setInterval(() => {
+    searchedElement = getSearchedElement(this.component, this.element);
 
+    if (searchedElement) {
+      clearInterval(checkIfElementIsReady);
+    }
+  }, 500);
+}
 
   componentDidLoad() {
     componentElement = this.el.shadowRoot;
@@ -107,11 +118,9 @@ export class DatePicker {
               onClick={() => changeYear('-')}>
               {'<'}
             </span>
-            <span id='year'>
-              {year}
-            </span>
+            <span id='year'>{year.toString()}</span>
             <span id='next'
-              onClick={() => changeYear('+')}>
+             onClick={() => changeYear('+')}>
               {'>'}
             </span>
           </div>
@@ -124,9 +133,6 @@ export class DatePicker {
     );
   }
 
-
-
-
 }
 
 function monthClicked(ev: MouseEvent) {
@@ -135,8 +141,9 @@ function monthClicked(ev: MouseEvent) {
   monthElement.style.background = '#941C2F';
   monthElement.style.color = '#fffcf9';
 
-  const month: number = monthNames.indexOf(monthElement.textContent, 1);
-  searchDate(month.toString() + "." + yearBox.textContent)
+  const month: number = monthNames.indexOf(monthElement.textContent);
+  searchDate(month.toString() + "." + yearBox.textContent, searchedElement);
+  console.log(month.toString() + "." + yearBox.textContent);
 }
 
 
@@ -163,4 +170,4 @@ function clearMonthColor() {
   }
 }
 
-//code copied from search-bar.tsx to find searched element
+

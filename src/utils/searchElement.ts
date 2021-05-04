@@ -7,7 +7,7 @@ export function searchElement(element?: HTMLElement, input?: string) {
 
     if(element) searchedElement=element;
     const childElements: Array<HTMLElement> = getChildren(searchedElement);
-    searchTerm = input;
+    if(input) searchTerm = input;
 
     for (const element of childElements) {
         //search for string value and disable all elements not containing it
