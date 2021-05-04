@@ -3,14 +3,11 @@ import { Prop, Component, h, Host, Element} from '@stencil/core';
 const monthNames:Array <string> = [
   'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'
 ]; 
-
-/*const  yearNames:Array <string> = [
-  '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'
-];*/
+ const year:number = new Date().getFullYear();
 
 let componentElement: ShadowRoot;
-let elementWidth: HTMLDivElement;
-let elementBackground: HTMLDivElement;
+let datePickerElement: HTMLDivElement;
+let backgroundElement: HTMLDivElement;
 /*let elementColor: HTMLDivElement;*/
 
 
@@ -40,12 +37,13 @@ export class DatePicker {
    this.initialiseYears(headerYears);*/
 
    componentElement = document.querySelector('date-picker').shadowRoot;
-   elementWidth= componentElement.querySelector('.datePicker');
-   elementBackground= componentElement.querySelector('#datePicker');
-  
+   datePickerElement= componentElement.querySelector('.datePicker');
+   backgroundElement= componentElement.querySelector('#datePicker');
+
+//taken from search-bar.tsx
   if (this.width) {
     if (this.width.includes("px") || this.width.includes("%") || this.width.includes("vw")) {
-      elementWidth.style.width = this.width;
+      datePickerElement.style.width = this.width;
     } else {
       console.log('%c Please input a valid width. Permitted units: "px", "%", "vw" ("vw"="%")', "color:orange; font-weight:bold;font-family:'Open sans'");
       throw new Error('Please input a valid width. Permitted units: "px", "%", "vw" ("vw"="%")');
@@ -53,7 +51,7 @@ export class DatePicker {
   }
   
   if(this.backgroundcolor){
-    elementBackground.style.background=this.backgroundcolor;
+    backgroundElement.style.background=this.backgroundcolor;
   }
 
 }
@@ -96,18 +94,21 @@ MouseOut(){
 }*/
 
 
+
   render() {
     return (
       <Host>
       <div class='datePicker'>
         <div class= 'Header'>
-            <span id= 'previous'>
+            <span id= 'previous'
+            onClick={() => changeYear('-')}>
             {'<'}
             </span>
             <span id='year'>
-            {'2021'}
+            {year}
             </span>
-            <span id= 'next'>
+            <span id= 'next'
+            onClick={() => changeYear('+')}>
             {'>'}
             </span>
         </div>
@@ -127,13 +128,33 @@ MouseOut(){
 
 function monthClicked(ev: MouseEvent) {
   const monthElement = ev.target as HTMLDivElement;
-  const monthContent = monthElement.textContent as string;
   clearMonthColor();
   monthElement.style.background= '#941C2F';
   monthElement.style.color='#fffcf9';
 
- 
+  const month:number = monthNames.indexOf(monthElement.textContent, 1);
+  
 }
+
+
+function changeYear(direction:string) {
+  const yearBox = componentElement.getElementById('year') as HTMLElement;
+  let year:number = parseInt(yearBox.textContent);
+  if(direction === '-'){
+    year--;
+  }
+
+  if(direction === '+'){
+    year++;
+  }
+
+  yearBox.textContent = year.toString();
+}
+
+
+
+  
+
 
 function clearMonthColor(){
   
