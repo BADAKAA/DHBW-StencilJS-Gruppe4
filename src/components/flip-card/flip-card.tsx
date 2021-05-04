@@ -14,9 +14,9 @@ let textBack: HTMLDivElement;
 
 export class FlipCard {
 
-@Prop() name: string;
+@Prop() name?: string;
 @Prop() turnable: boolean;
-@Prop() img?: string;
+@Prop() img: string;
 @Prop() place?: string;
 @Prop() date?: string;
 @Prop() description?: string;
@@ -87,7 +87,6 @@ meme(){
     textFront = componentElement.querySelector(".front");
     textBack = componentElement.querySelector(".back");
 
-    console.log(this.colorback);  
     if(this.colorfront){
     backgroundFront.style.backgroundColor = this.colorfront;
     }
