@@ -56,13 +56,14 @@ function location(){ //wird aufgerufen, wenn Button "location" geklickt wird
 }
  
 function persönlicheEvents(){
-  const persönlicheEvents = document.querySelector('#persönlicheEvents_text');
+  const persönlicheEvents = document.querySelector('#persönlicheEvents_text'); //speicher das ELement mit id location_text in location
   persönlicheEvents.scrollIntoView({behavior: 'smooth'});
 }
 
 function events(){
   const events = document.querySelector('#event_text');
   events.scrollIntoView({behavior: 'smooth'})
+  
 }
 
 

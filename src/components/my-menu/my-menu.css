@@ -1,44 +1,31 @@
 :host {
-  display: block;
-  
-  
-}
-html {
-  scroll-behavior: smooth;
+  display: block; 
+  position: sticky;
 }
 
-leiste{
-  height: 25px;
-  Width: 100%;
-  background-color:#941c2f;
+my-menu{
   
-}
-.my-menu{
-  float: left;
-  position:absolute;
-  width: 100%;
-  margin: auto;
-  z-index: 7;
-  font-family: 'Catamaran', sans-serif;
+  
+  overflow: hidden ;
+  display: block;
 }
 .button {
   background-color: #941c2f;
-  border: #941c2f;
+  border: 1px solid #941c2f;
   color:#fffcfe;
   font-family: 'Catamaran', 'open-sans';
-  font-weight: 500;
   font-size:36px;
+  font-weight:500;
   letter-spacing:2px;
   text-transform:uppercase;
   text-align:center;
-  width: 33%;
-  position:fixed;
-  z-index:999;
-  float: left;
- 
+  width:33.33%;
+  box-sizing: border-box;
+  
   height: 55px;
-  margin: auto;
-  align-items: center;
+  display: block;
+  float: left;
+  position: sticky;
 }
 
   

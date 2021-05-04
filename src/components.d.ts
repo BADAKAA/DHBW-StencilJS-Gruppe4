@@ -143,8 +143,7 @@ declare namespace LocalJSX {
         "onScroll"?: (event: CustomEvent<any>) => void;
     }
     interface MySmlink {
-        "aussehen"?: string;
-        "icon"?: String;
+        "icon"?: string;
         "link"?: string;
         "name"?: string;
     }
