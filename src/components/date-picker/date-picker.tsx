@@ -33,8 +33,9 @@ export class DatePicker {
    const datePickerFrame= this.el.shadowRoot.querySelector('#datePickerFrame') as  HTMLDivElement; //wenn die component geladen hat, wird ein Div element genommen und darin die Monate dargestellt  
    this.initialiseMonths(datePickerFrame);
 
+/* I started to show the years, but couldn't finish:
    const headerYears= this.el.shadowRoot.querySelector('.Header') as HTMLDivElement;
-   this.initialiseYears(headerYears);
+   this.initialiseYears(headerYears);*/
 
    componentElement = document.querySelector('date-picker').shadowRoot;
    elementWidth= componentElement.querySelector('.datePicker');
@@ -58,15 +59,15 @@ export class DatePicker {
 initialiseMonths(datePickerFrame:HTMLDivElement){
  
   for(const monthName of monthNames){
-     const monthBox = document.createElement('DIV') as HTMLDivElement; //wir erstellen ein neues Div-Element
-     monthBox.className='monthBoxes'; //mit dem class name 
-     monthBox.textContent =  monthName; //hat als content die monthNames
-     monthBox.addEventListener('click', (ev)=> monthClicked(ev) ); //clickevent
-     datePickerFrame.appendChild(monthBox);//monthBox an das div element
+     const monthBox = document.createElement('DIV') as HTMLDivElement; 
+     monthBox.className='monthBoxes'; 
+     monthBox.textContent =  monthName; 
+     monthBox.addEventListener('click', (ev)=> monthClicked(ev) ); 
+     datePickerFrame.appendChild(monthBox);
   }
 };
 
-initialiseYears(headerYears:HTMLDivElement){
+/*initialiseYears(headerYears:HTMLDivElement){
 
   for(const years of yearNames){
     const yearBox = document.createElement('DIV') as HTMLDivElement;
@@ -76,7 +77,7 @@ initialiseYears(headerYears:HTMLDivElement){
   }
 }
 
-/*showPreviousYear(){
+showPreviousYear(){
   let yearNumbers = document.
 }
 
