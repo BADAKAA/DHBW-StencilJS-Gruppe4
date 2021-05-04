@@ -54,7 +54,7 @@ export class SearchBar {
       elementToBeSearchedIn = this.element;
       //the search-bar component is initialised only when the element that is supposed to be searched is found.
       const checkIfElementIsReady: number = setInterval(() => {
-        searchedElement = getSearchedElement();
+        searchedElement = getSearchedElement(componentToBeSearchedIn, elementToBeSearchedIn);
 
         if (searchedElement) {
           initializeSearchBar();
