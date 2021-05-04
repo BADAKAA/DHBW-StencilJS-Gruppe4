@@ -5,9 +5,10 @@ let searchTerm:string="";
 
 export function searchElement(element?: HTMLElement, input?: string) {
 
-    if(element) searchedElement=element;
-    const childElements: Array<HTMLElement> = getChildren(searchedElement);
     if(input) searchTerm = input;
+    if(element) searchedElement=element;
+    resetSearch();
+    const childElements: Array<HTMLElement> = getChildren();
 
     for (const element of childElements) {
         //search for string value and disable all elements not containing it
@@ -19,10 +20,19 @@ export function searchElement(element?: HTMLElement, input?: string) {
     }
 }
 
+export function searchDate(date: string, element?:HTMLElement) {
+    searchedDate = date;
+    searchElement(element);
+}
 
-export function resetSearch(searchedElement: HTMLElement) {
+export function clearDateSearch() {
+    searchedDate = "";
+}
 
-    const childElements: Array<HTMLElement> = getChildren(searchedElement);
+
+export function resetSearch() {
+
+    const childElements: Array<HTMLElement> = getChildren();
 
     for (const element of childElements) {
         element.style.visibility = "visible";
@@ -31,14 +41,9 @@ export function resetSearch(searchedElement: HTMLElement) {
     }
 }
 
-export function getChildren(searchedElement: HTMLElement) {
+export function getChildren() {
     if (typeof searchedElement === typeof HTMLUListElement || typeof searchedElement === typeof HTMLOListElement) {
         return searchedElement.querySelectorAll("li") as unknown as Array<HTMLElement>;
     }
     return searchedElement.children as unknown as Array<HTMLElement>;
-}
-
-export function searchDate(date: string, element?:HTMLElement) {
-    searchedDate = date;
-    searchElement(element);
 }

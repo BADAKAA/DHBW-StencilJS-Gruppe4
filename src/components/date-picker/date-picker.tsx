@@ -3,14 +3,14 @@ import { getSearchedElement } from '../../utils/findElement';
 import { searchDate } from '../../utils/searchElement';
 
 const monthNames: Array <string> = [
-  'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'
+  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dez'
 ];
 const year: number = new Date().getFullYear();
 
+let yearBox: HTMLElement;
 let componentElement: ShadowRoot;
 let datePickerElement: HTMLDivElement;
 let backgroundElement: HTMLDivElement;
-let yearBox: HTMLElement;
 let searchedElement: HTMLElement;
 /*let elementColor: HTMLDivElement;*/
 
@@ -30,11 +30,10 @@ export class DatePicker {
   @Prop() component?: string;
   @Prop() element: string;
 
-
   @Element() el: HTMLElement;
 
 constructor(){
-  //code copied from search-bar.tsx to find searched element
+  //code to find searched element copied from search-bar.tsx 
   const checkIfElementIsReady: number = setInterval(() => {
     searchedElement = getSearchedElement(this.component, this.element);
 
@@ -141,7 +140,7 @@ function monthClicked(ev: MouseEvent) {
   monthElement.style.background = '#941C2F';
   monthElement.style.color = '#fffcf9';
 
-  const month: number = monthNames.indexOf(monthElement.textContent);
+  const month: number = monthNames.indexOf(monthElement.textContent) + 1;
   searchDate(month.toString() + "." + yearBox.textContent, searchedElement);
   console.log(month.toString() + "." + yearBox.textContent);
 }
@@ -169,5 +168,3 @@ function clearMonthColor() {
     monthBox.style.color = '';
   }
 }
-
-
