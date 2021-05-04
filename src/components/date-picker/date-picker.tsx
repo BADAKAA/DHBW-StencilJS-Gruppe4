@@ -4,13 +4,14 @@ const monthNames:Array <string> = [
   'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'
 ]; 
 
-const  yearNames:Array <string> = [
+/*const  yearNames:Array <string> = [
   '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'
-];
+];*/
 
 let componentElement: ShadowRoot;
 let elementWidth: HTMLDivElement;
 let elementBackground: HTMLDivElement;
+/*let elementColor: HTMLDivElement;*/
 
 
 @Component({
@@ -24,6 +25,7 @@ export class DatePicker {
 
   @Prop() backgroundcolor:string;
   @Prop() width:string;
+  @Prop() monthcolor:string;
 
   @Element() el: HTMLElement;
 
@@ -39,8 +41,8 @@ export class DatePicker {
 
    componentElement = document.querySelector('date-picker').shadowRoot;
    elementWidth= componentElement.querySelector('.datePicker');
-   elementBackground= componentElement.querySelector('.datePicker');
-
+   elementBackground= componentElement.querySelector('#datePicker');
+  
   if (this.width) {
     if (this.width.includes("px") || this.width.includes("%") || this.width.includes("vw")) {
       elementWidth.style.width = this.width;
@@ -77,36 +79,50 @@ initialiseMonths(datePickerFrame:HTMLDivElement){
   }
 }
 
-showPreviousYear(){
-  let yearNumbers = document.
+/*MouseOver(){
+  elementColor= componentElement.querySelector('.monthBoxes')
+
+  if(this.monthcolor){
+    elementColor.style.backgroundColor=this.monthcolor;
+  }
 }
 
-showNextYear(){
+MouseOut(){
+  elementColor= componentElement.querySelector('.monthBoxes')
 
+  if(this.monthcolor){
+    elementColor.style.backgroundColor="";
+  }
 }*/
+
 
   render() {
     return (
       <Host>
       <div class='datePicker'>
         <div class= 'Header'>
-            <span id= 'previous' /*onClick={() => this.showPreviousYear()}*/>
+            <span id= 'previous'>
             {'<'}
             </span>
             <span id='year'>
             {'2021'}
             </span>
-            <span id= 'next' /*onClick={() => this.showNextYear()}*/>
+            <span id= 'next'>
             {'>'}
             </span>
         </div>
-        <div id='datePickerFrame'>
-
+        <div id='datePickerFrame'
+        /*onMouseMove={() => this.MouseOver()}
+        onMouseOut={() => this.MouseOut()}*/>
         </div>
       </div>
       </Host>
     );
   }
+ 
+  
+
+
 }
 
 function monthClicked(ev: MouseEvent) {
@@ -115,6 +131,8 @@ function monthClicked(ev: MouseEvent) {
   clearMonthColor();
   monthElement.style.background= '#941C2F';
   monthElement.style.color='#fffcf9';
+
+ 
 }
 
 function clearMonthColor(){
@@ -124,4 +142,5 @@ function clearMonthColor(){
     monthBox.style.background='';
     monthBox.style.color='';
 }
+
 }
