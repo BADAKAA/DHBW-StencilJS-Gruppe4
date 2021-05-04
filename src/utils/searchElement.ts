@@ -38,7 +38,7 @@ export function getChildren(searchedElement: HTMLElement) {
     return searchedElement.children as unknown as Array<HTMLElement>;
 }
 
-export function searchDate(date: string) {
+export function searchDate(date: string, element?:HTMLElement) {
     searchedDate = date;
-    searchElement();
+    searchElement(element);
 }
