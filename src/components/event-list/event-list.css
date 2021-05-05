@@ -1,43 +1,69 @@
 :host {
   display: block;
 }
+h1,h2,h3 {
+  font-family: 'Catamaran', sans-serif;
+}
+
 .eventList {
   list-style: none;
   margin:0;
   padding: 0 30px 0 30px;
-}
-
-h1,h2,h3 {
-  font-family: 'Catamaran', sans-serif;
-}
-h2 {
-  font-weight: 700;
-  color: #1a1a1a;
-  font-size: 30pt;
-  margin: 0 0 -15px 0;
-  display: block;
-}
-h3 {
-  font-weight: 600;
-  color: #404040;
-  font-size: 20pt;
-  margin: -5px 0 -10px;
+  /*this font size controls all other list elements for maximum responsibility.*/
+  font-size: clamp(10pt,1.3vw,14pt);
 }
 
 li {
+  display:grid;
+  grid-template-columns: 1fr 5fr 3fr;
+  margin: 30px 30px;
+}
+
+.event {
   border-style: solid;
   border-color: #941C2F;
-  border-width: 1px 1px 1px 5px;
-  border-radius: 5px;
-
-  padding: 0px 10px 10px 30px;
-  margin: 20px 20px;
+  border-width: 0px 0px 0px 5px;
   transition: opacity 1s, border-width 0.3s;
-
+  padding-left: 30px;
   cursor: pointer;
 }
-li:hover {
-  border-width: 1px 1px 1px 12px;
+
+.event h2 {
+  font-weight: 700;
+  color: #1a1a1a;
+  font-size: 2em;
+  line-height: 1em;
+  margin: 0;
+  display: block;
+}
+.time {
+  margin: 0 0 2px 0;
+}
+.event:hover {
+  border-width: 0 0 0 12px;
+}
+.date {
+  text-align: center;
+}
+.dateNumber {
+  font-size:2em;
+  font-weight: 700;
+  margin-top:0;
+  line-height: 26pt;
+}
+.city {
+  display: inline-block;
+  font-weight: 700;
+  margin: 0;
+  min-width: 4em;
+}
+.info {
+  color: #404040;
+}
+p.weekday {
+  display: inline-block;
+  min-width: 4.5em;
+  margin: 0
 }
 
 h4 {
@@ -46,26 +72,23 @@ h4 {
   font-weight: bold;
   width:100px;
 }
-p {
-  margin: 5px 0 5px 0;
-}
 
 .details {
   display: none;
 }
 
-
-.detailButton {
-  position: absolute;
-  margin: 0 0 0 60px;
-  transform: translate(0,-130%);
-  transition: background 0.2s ease-in;
-  
-  cursor: pointer;
+.buttonFrame {
+  position: relative;
   color:#404040;
   font-size: 12pt;
-  font-weight:light;
+  margin: 0 60px 30px 60px;
+  transition: background 0.2s ease-in;
   font-family: 'Open Sans', 'Catamaran', sans-serif;
+}
+
+.detailButton {
+  display: inline-block;
+  cursor: pointer;
 }
 
 .detailButton:hover {
@@ -75,18 +98,26 @@ p {
 
 .sortButton {
   position: absolute;
-  transform: translate(0,-130%);
-  transition: background 0.2s ease-in;
-  margin: 0 60px 0 0;
   right:0px;
-
-
+  top:0px;
   cursor: pointer;
-  color:#404040;
-  font-size: 12pt;
-  font-weight:light;
-  font-family: 'Open Sans', 'Catamaran', sans-serif;
 }
 .sortButton:hover {
   color:#1a1a1a;
+}
+
+.yearHeader {
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  font-size: 1em;
+  left:50%;
+  width: 4em;
+  transform: translate(-50%,-50%);
+  background-color: var(--custom-white);
+  z-index: 1000;
+}
+
+hr {
+  opacity: 0.3;
 }

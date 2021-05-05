@@ -1,6 +1,7 @@
 :root {
     --app-example-var: black;
     --custom-black: #100B00;
+    --custom-white:#FFFCF9;
 }
 body {
     font-family: 'Open Sans', sans-serif;
@@ -8,7 +9,7 @@ body {
     margin:0;
 }
 .white {
-background: #FFFCF9;
+background: var(--custom-white);
 }
 .padding {
     padding:0px 20px 0 20px;

@@ -22,6 +22,7 @@ export namespace Components {
         "linkguidelines"?: string;
     }
     interface EventList {
+        "buttons": boolean;
     }
     interface ExampleComponent {
         "exampleProp": string;
@@ -199,6 +200,7 @@ declare namespace LocalJSX {
         "linkguidelines"?: string;
     }
     interface EventList {
+        "buttons"?: boolean;
     }
     interface ExampleComponent {
         "exampleProp"?: string;

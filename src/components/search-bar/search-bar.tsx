@@ -62,7 +62,7 @@ export class SearchBar {
         searchedElement = getSearchedElement(componentToBeSearchedIn, elementToBeSearchedIn);
 
         if (searchedElement) {
-          initializeSearchBar();
+          this.initializeSearchBar();
           clearInterval(checkIfElementIsReady);
         }
       }, 500);
@@ -72,56 +72,50 @@ export class SearchBar {
         componentNotFound();
       }, 10000);
     }
-    if (this.position) {
-      searchBarContainer.style.position = this.position;
-    }
+    if (this.position) searchBarContainer.style.position = this.position;
+
     if (this.width) {
       if (this.width.includes("px") || this.width.includes("%") || this.width.includes("vw")) {
         searchBarContainer.style.width = this.width;
       } else {
-        console.log('%cPlease input a valid width. Permitted units: "px", "%", "vw" ("vw"="%")', "color:orange; font-weight:bold;font-family:'Open sans'");
-        throw new Error('Please input a valid width. Permitted units: "px", "%", "vw" ("vw"="%")');
+        console.log('%cPlease input a valid width. Permitted units are: "px", "%", "vw" ("vw"="%")', "color:orange; font-weight:bold;font-family:'Open sans'");
+        throw new Error('Please input a valid width. Permitted units are: "px", "%", "vw" ("vw"="%")');
       }
     }
-    if (this.color) {
-      searchIcon.style.background = this.color;
+    if (this.color) searchIcon.style.background = this.color;
+    
+  }
+
+  search() {
+
+    const input: string = searchBar.value.toLowerCase();
+    if (input != "") {
+      searchIcon.src = "/assets/clear.png";
+      searchElement(searchedElement, input);
+    } else {
+      this.clearSearch();
+    }
+
+  }
+
+  clearSearch(ev?:MouseEvent) {
+    console.log(ev);
+    
+    if (searchBar.value != "") {
+      resetSearch();
+      searchBar.value = "";
+      searchIcon.src = "/assets/search.png";
+      this.searchCleared.emit("custom value"); 
     }
   }
-}
 
-function initializeSearchBar() {
-  searchBar.addEventListener("input", search);
-  searchIcon.addEventListener("click", clearSearch);
-  searchedElement = getSearchedElement(componentToBeSearchedIn,elementToBeSearchedIn);
-  console.log("%cSearch bar target found.\nThis is the element the seach bar is active in: ",
-    "color:darkgreen; font-weight:bold;font-family:'Open sans', sans-serif;line-height:12pt");
-  console.log(searchedElement);
-}
-
-
-
-
-
-function search() {
-
-  const input: string = searchBar.value.toLowerCase();
-  if (input != "") {
-    searchIcon.src = "/assets/clear.png";
-    searchElement(searchedElement, input);
-  } else {
-    clearSearch();
-  }
-  
-}
-
-
-
-
-function clearSearch() {
-  if(searchBar.value!="") {
-  resetSearch();
-  searchBar.value = "";
-  searchIcon.src = "/assets/search.png";
+  initializeSearchBar() {
+    searchBar.addEventListener("input", this.search);
+    searchIcon.addEventListener("click", ()=> this.clearSearch());
+    searchedElement = getSearchedElement(componentToBeSearchedIn, elementToBeSearchedIn);
+    console.log("%cSearch bar target found.\nThis is the element the seach bar is active in: ",
+      "color:darkgreen; font-weight:bold;font-family:'Open sans', sans-serif;line-height:12pt");
+    console.log(searchedElement);
   }
 }
 
