@@ -1,7 +1,7 @@
 :host {
   display: block;
 }
-h1,h2,h3 {
+h1,h2{
   font-family: 'Catamaran', sans-serif;
 }
 
@@ -10,37 +10,44 @@ h1,h2,h3 {
   margin:0;
   padding: 0 30px 0 30px;
   /*this font size controls all other list elements for maximum responsibility.*/
-  font-size: clamp(10pt,1.3vw,14pt);
+  font-size: clamp(10pt,1.1vw,14pt);
 }
 
 li {
   display:grid;
-  grid-template-columns: 1fr 5fr 3fr;
+  grid-template-columns: 1fr 6fr 3fr;
   margin: 30px 30px;
+  cursor: pointer;
 }
 
 .event {
   border-style: solid;
   border-color: #941C2F;
   border-width: 0px 0px 0px 5px;
-  transition: opacity 1s, border-width 0.3s;
+  transition: opacity 1s, border-width 0.5s,margin 0.5s;
   padding-left: 30px;
-  cursor: pointer;
+  padding-right: 2em;
 }
 
 .event h2 {
   font-weight: 700;
   color: #1a1a1a;
   font-size: 2em;
-  line-height: 1em;
-  margin: 0;
+  line-height: 1.3em;
   display: block;
+  cursor: pointer;
+  margin: 0;
+}
+
+.event:hover:not(.details) {
+  border-width: 0 0 0 10px;
+  margin-right: -5px;
 }
 .time {
-  margin: 0 0 2px 0;
-}
-.event:hover {
-  border-width: 0 0 0 12px;
+  font-weight: 400;
+  font-size: .9em;
+  margin: 0 0 0.5em 0;
+  color: #404044;
 }
 .date {
   text-align: center;
@@ -53,29 +60,75 @@ li {
 }
 .city {
   display: inline-block;
+  font-size: inherit;
   font-weight: 700;
   margin: 0;
   min-width: 4em;
 }
 .info {
   color: #404040;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
 }
 p.weekday {
   display: inline-block;
-  min-width: 4.5em;
+  min-width: 9em;
   margin: 0
 }
 
 h4 {
+  margin: 0 0 0.2em 0;
+  font-weight: normal;
+}
+.adress {
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.adress:hover {
+  transform:scale(1.005,1.005)
+}
+.clickDate {
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.clickDate:hover {
+  transform:scale(1.005,1.005)
+}
+
+h4::after{
+  content: "\a";
+  white-space: pre;
+}
+.detail {
   margin: 0;
   display: inline-block;
   font-weight: bold;
   width:100px;
 }
-
+.description {
+  text-align:justify;
+  font-size: 0.9em;
+}
 .details {
   display: none;
+  font-size: 0.9em;
 }
+.eventImage {
+  background-position: center;
+  background-size: cover;
+  background-position: top;
+  cursor:pointer;
+  transition: transform 0.5s;
+
+}
+li:hover .eventImage {
+  transform: translate(5px);
+}
+
+.eventImage:hover {
+  transform: scale(1.01,1.01) !important;
+}
+
 
 .buttonFrame {
   position: relative;
