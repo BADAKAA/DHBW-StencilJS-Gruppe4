@@ -12,7 +12,6 @@ let componentElement: ShadowRoot;
 let datePickerElement: HTMLDivElement;
 let backgroundElement: HTMLDivElement;
 let searchedElement: HTMLElement;
-/*let elementColor: HTMLDivElement;*/
 
 
 @Component({
@@ -26,29 +25,26 @@ export class DatePicker {
 
   @Prop() backgroundcolor: string;
   @Prop() width: string;
-  @Prop() monthcolor: string;
   @Prop() component?: string;
   @Prop() element: string;
 
   @Element() el: HTMLElement;
 
-constructor(){
-  //code to find searched element copied from search-bar.tsx 
-  const checkIfElementIsReady: number = setInterval(() => {
-    searchedElement = getSearchedElement(this.component, this.element);
-
-    if (searchedElement) {
-      clearInterval(checkIfElementIsReady);
-    }
-  }, 500);
-}
+  constructor(){
+    //code to find searched element copied from search-bar.tsx 
+    const checkIfElementIsReady: number = setInterval(() => {
+        searchedElement = getSearchedElement(this.component, this.element);
+        if (searchedElement) {
+        clearInterval(checkIfElementIsReady);
+        }
+    }, 500);
+  }
 
   componentDidLoad() {
     componentElement = this.el.shadowRoot;
     const datePickerFrame = componentElement.querySelector('#datePickerFrame') as HTMLDivElement; //wenn die component geladen hat, wird ein Div element genommen und darin die Monate dargestellt  
     this.initialiseMonths(datePickerFrame);
 
-    
     datePickerElement = componentElement.querySelector('.datePicker');
     backgroundElement = componentElement.querySelector('#datePicker');
     yearBox = componentElement.getElementById('year');
@@ -69,6 +65,7 @@ constructor(){
 
   }
 
+  //hier werden die Monate dargestellt
   initialiseMonths(datePickerFrame: HTMLDivElement) {
 
     for (const monthName of monthNames) {
@@ -80,34 +77,7 @@ constructor(){
     }
   };
 
-  /*initialiseYears(headerYears:HTMLDivElement){
-  
-    for(const years of yearNames){
-      const yearBox = document.createElement('DIV') as HTMLDivElement;
-      yearBox.className='yearBoxes';
-      yearBox.textContent = years;
-      headerYears.appendChild(yearBox);
-    }
-  }
-  
-  /*MouseOver(){
-    elementColor= componentElement.querySelector('.monthBoxes')
-  
-    if(this.monthcolor){
-      elementColor.style.backgroundColor=this.monthcolor;
-    }
-  }
-  
-  MouseOut(){
-    elementColor= componentElement.querySelector('.monthBoxes')
-  
-    if(this.monthcolor){
-      elementColor.style.backgroundColor="";
-    }
-  }*/
-
-
-
+ 
   render() {
     return (
       <Host>
@@ -117,15 +87,13 @@ constructor(){
               onClick={() => changeYear('-')}>
               {'<'}
             </span>
-            <span id='year'>{year.toString()}</span>
+            <span id='year'>{year}</span>
             <span id='next'
              onClick={() => changeYear('+')}>
               {'>'}
             </span>
           </div>
-          <div id='datePickerFrame'
-        /*onMouseMove={() => this.MouseOver()}
-        onMouseOut={() => this.MouseOut()}*/>
+          <div id='datePickerFrame'>
           </div>
         </div>
       </Host>
@@ -142,17 +110,16 @@ function monthClicked(ev: MouseEvent) {
 
   const month: number = monthNames.indexOf(monthElement.textContent) + 1;
   searchDate(month.toString() + "." + yearBox.textContent, searchedElement);
-  console.log(month.toString() + "." + yearBox.textContent);
 }
 
 
 function changeYear(direction: string) {
   let year: number = parseInt(yearBox.textContent);
-  if (direction === '-') {
+  if(direction === '-') {
     year--;
   }
 
-  if (direction === '+') {
+  if(direction === '+') {
     year++;
   }
 
@@ -161,7 +128,6 @@ function changeYear(direction: string) {
 
 
 function clearMonthColor() {
-
   const allMonths = document.querySelector('date-picker').shadowRoot.querySelectorAll('.monthBoxes') as unknown as Array<HTMLDivElement>;
   for (const monthBox of allMonths) {
     monthBox.style.background = '';

@@ -10,7 +10,6 @@ export namespace Components {
         "backgroundcolor": string;
         "component"?: string;
         "element": string;
-        "monthcolor": string;
         "width": string;
     }
     interface EventList {
@@ -130,7 +129,6 @@ declare namespace LocalJSX {
         "backgroundcolor"?: string;
         "component"?: string;
         "element"?: string;
-        "monthcolor"?: string;
         "width"?: string;
     }
     interface EventList {
@@ -181,6 +179,7 @@ declare namespace LocalJSX {
         "component"?: string;
         "element"?: string;
         "google"?: string;
+        "onSearchCleared"?: (event: CustomEvent<string>) => void;
         "position"?: string;
         "width"?: string;
     }
