@@ -6,6 +6,12 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface ButtonUp {
+        "colorbackground"?: string;
+        "colorhover"?: string;
+        "colortext"?: string;
+        "name": string;
+    }
     interface CookieBanner {
         "bannertext": string;
         "buttontext": string;
@@ -18,12 +24,6 @@ export namespace Components {
         "component"?: string;
         "element": string;
         "width": string;
-    }
-    interface ButtonUp {
-        "colorbackground"?: string;
-        "colorhover"?: string;
-        "colortext"?: string;
-        "name": string;
     }
     interface EventList {
         "buttons": boolean;
@@ -99,6 +99,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLButtonUpElement extends Components.ButtonUp, HTMLStencilElement {
+    }
+    var HTMLButtonUpElement: {
+        prototype: HTMLButtonUpElement;
+        new (): HTMLButtonUpElement;
+    };
     interface HTMLCookieBannerElement extends Components.CookieBanner, HTMLStencilElement {
     }
     var HTMLCookieBannerElement: {
@@ -110,12 +116,6 @@ declare global {
     var HTMLDatePickerElement: {
         prototype: HTMLDatePickerElement;
         new (): HTMLDatePickerElement;
-    }
-    interface HTMLButtonUpElement extends Components.ButtonUp, HTMLStencilElement {
-    }
-    var HTMLButtonUpElement: {
-        prototype: HTMLButtonUpElement;
-        new (): HTMLButtonUpElement;
     };
     interface HTMLEventListElement extends Components.EventList, HTMLStencilElement {
     }
@@ -178,9 +178,9 @@ declare global {
         new (): HTMLSearchBarElement;
     };
     interface HTMLElementTagNameMap {
+        "button-up": HTMLButtonUpElement;
         "cookie-banner": HTMLCookieBannerElement;
         "date-picker": HTMLDatePickerElement;
-        "button-up": HTMLButtonUpElement;
         "event-list": HTMLEventListElement;
         "example-component": HTMLExampleComponentElement;
         "faq-component": HTMLFaqComponentElement;
@@ -194,6 +194,12 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface ButtonUp {
+        "colorbackground"?: string;
+        "colorhover"?: string;
+        "colortext"?: string;
+        "name"?: string;
+    }
     interface CookieBanner {
         "bannertext"?: string;
         "buttontext"?: string;
@@ -206,12 +212,6 @@ declare namespace LocalJSX {
         "component"?: string;
         "element"?: string;
         "width"?: string;
-    }
-    interface ButtonUp {
-        "colorbackground"?: string;
-        "colorhover"?: string;
-        "colortext"?: string;
-        "name"?: string;
     }
     interface EventList {
         "buttons"?: boolean;
@@ -288,9 +288,9 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     interface IntrinsicElements {
+        "button-up": ButtonUp;
         "cookie-banner": CookieBanner;
         "date-picker": DatePicker;
-        "button-up": ButtonUp;
         "event-list": EventList;
         "example-component": ExampleComponent;
         "faq-component": FaqComponent;
@@ -307,9 +307,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "button-up": LocalJSX.ButtonUp & JSXBase.HTMLAttributes<HTMLButtonUpElement>;
             "cookie-banner": LocalJSX.CookieBanner & JSXBase.HTMLAttributes<HTMLCookieBannerElement>;
             "date-picker": LocalJSX.DatePicker & JSXBase.HTMLAttributes<HTMLDatePickerElement>;
-            "button-up": LocalJSX.ButtonUp & JSXBase.HTMLAttributes<HTMLButtonUpElement>;
             "event-list": LocalJSX.EventList & JSXBase.HTMLAttributes<HTMLEventListElement>;
             "example-component": LocalJSX.ExampleComponent & JSXBase.HTMLAttributes<HTMLExampleComponentElement>;
             "faq-component": LocalJSX.FaqComponent & JSXBase.HTMLAttributes<HTMLFaqComponentElement>;

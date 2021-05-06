@@ -3,9 +3,10 @@
 }
 
 .flipcardContainer {
-  width: 400px;
-  height: 500px;
+  width: clamp(100px, 20vw, 400px);
+  aspect-ratio: 4/5;
   perspective: 500px;
+  font-size: clamp(10pt, 1.5rem, 26pt);
 }
 .content {
   position: absolute;
@@ -19,15 +20,16 @@
 }
 
 .content img {
-  width: 370px;
-  height: 370px;
-  object-fit: cover;
+  width: 90%;
+  height: auto;
+  aspect-ratio: 1;
   margin-top: 25px;
 }
 
 .content h2 {
   font-family: 'Catamaran', sans-serif;
-  font-size: 30px;
+  font-size: 1.25em;
+  margin: 0.4em 0 0.4em 0;
 }
 
 .front,
@@ -49,25 +51,25 @@
 
 .back h2{
   font-family: 'Catamaran', sans-serif;
+  margin-top: 15px;
   margin-left: 20px;
 }
 .back h3{
   font-family: 'Catamaran', sans-serif;
-  font-size: 16px;
-  margin-left: 20px;
+  font-size: 0.75em;
+}
+.backInput{
+  margin: 1em 1em 0.5em 1em;
 }
 
 .backInput p{
   font-family: 'Catamaran', sans-serif;
-  margin: 40px 10px 10px 10px;
+  font-size: 0.75em;
+  text-align: justify;
 }
 
 .backInput element{
   cursor: pointer;
-}
-
-.backInput {
-  margin: 0 10px 0 10px;
 }
 
 .flipcard-mouseover .content {
