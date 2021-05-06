@@ -5,7 +5,6 @@
 }
 body {
     font-family: 'Open Sans', sans-serif;
-    background-color: var(--custom-white);
     padding-bottom: 0;
     margin:0;
 }
@@ -99,16 +98,21 @@ a {
 .gridHeader {
     display: grid;
     justify-items: center;
-    grid-template-columns: 2fr 6fr;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 300px;
     width: 100%;
 }
 
 footer {
     margin-bottom: 0;
-    margin-top: 30px;
-    width: 100%;
-    display: inline-block;
     height: 130px;
     background-color: var(--custom-black);
     color: var(--app-custom-white);
+    padding-left: 30px;
+}
+
+.impresseum {
+    color: #fffcfe;
+    font-family:'Catamaran', 'open-sans';
 }

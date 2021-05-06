@@ -3,7 +3,6 @@
   display: flex;
   justify-content: center;
   margin-bottom: 0px;
-  margin-top: 50px;
 }
 .datePicker{
   width: 330px;
@@ -14,7 +13,7 @@
   font-size: 16pt;
 }
 
-.Header{
+.Header {
   font-size: 20pt;
   font-family: 'Catamaran', sans-serif;
   font-weight: 750;
@@ -51,3 +50,6 @@
   color: #fffcf9;
 }
 
+#datePickerFrame {
+text-align: center;
+}

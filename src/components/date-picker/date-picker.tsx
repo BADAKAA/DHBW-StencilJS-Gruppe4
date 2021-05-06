@@ -1,6 +1,6 @@
 import { Prop, Component, h, Host, Element } from '@stencil/core';
 import { getSearchedElement } from '../../utils/findElement';
-import { clearDateSearch, searchDate } from '../../utils/searchElement';
+import { clearDateSearch, resetSearch, searchDate } from '../../utils/searchElement';
 
 const monthNames: Array <string> = [
   'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dez'
@@ -118,6 +118,7 @@ function monthClicked(ev: MouseEvent) {
   } else {
     clearMonthColor();
     clearDateSearch();
+    resetSearch();
   }
   
 

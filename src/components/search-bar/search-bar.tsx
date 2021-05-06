@@ -10,6 +10,7 @@ let searchBarContainer:HTMLElement;
 let searchBarFrame: HTMLDivElement;
 let searchIcon: HTMLImageElement;
 let searchBar: HTMLInputElement;
+
 //variables to store user input preperties
 let componentToBeSearchedIn: string;
 let elementToBeSearchedIn: string;
@@ -22,17 +23,18 @@ let searchedElement: HTMLElement;
 })
 
 export class SearchBar {
-  @Prop() position: string;
   @Prop() component: string;
   @Prop() element: string;
+  @Prop() position: string;
   @Prop() color: string;
   @Prop() width: string;
   @Prop() google: string;
   @Prop() offset?:string;
+  @Prop() justify?:string;
+  @Prop() margin:string;
 
   @Element() el: HTMLElement;
   @Event() searchCleared: EventEmitter<string>;
-
 
   render() {
     return (
@@ -78,16 +80,24 @@ export class SearchBar {
         componentNotFound();
       }, 10000);
     }
+
+    if (this.offset) searchBarFrame.style.transform+=` translateY(${this.offset})`;
+
+    if (this.position && this.position=="absolute") searchBarContainer.style.position="absolute"; 
     
-    if (this.position) { 
-      if (this.position=="absolute") {
-        searchBarFrame.style.transform="translateX(-50%)";
-        if (this.offset) searchBarFrame.style.transform+=` translateY(${this.offset})`;
-      }
-    } else {
-      searchBarContainer.style.height="60px";
-      searchBarFrame.style.transform="translate(0,0)";
+    if (this.margin) searchBarFrame.style.margin=this.margin; 
+
+    
+    if (this.justify) {
+      let justify="center";
+      
+      if (this.justify=="right") justify="flex-end";
+      if (this.justify=="left") justify="flex-start";
+      
+      searchBarContainer.style.justifyContent=justify;
     }
+    
+      
 
     if (this.width) {
       if (this.width.includes("px") || this.width.includes("%") || this.width.includes("vw")) {
@@ -97,16 +107,18 @@ export class SearchBar {
         throw new Error('Please input a valid width. Permitted units are: "px", "%", "vw" ("vw"="%")');
       }
     }
+    
+
     if (this.color) searchIcon.style.background = this.color;
     
   }
   clearSearch() {
     if (searchBar.value != "") {
-    resetSearch();
     searchBar.value = "";
     searchIcon.src = "/assets/search.png";
     this.searchCleared.emit("custom value"); 
     clearDateSearch();
+    resetSearch();
     }
   }
   search() {
