@@ -1,35 +1,55 @@
 :host {
   display: inline-block;
 }
-
 .flipcardContainer {
-  width: clamp(100px, 20vw, 400px);
-  aspect-ratio: 4/5;
-  perspective: 500px;
-  font-size: clamp(10pt, 1.5rem, 26pt);
+  position: relative;
+  width: clamp(100px, 22vw, 400px);
+  padding-top: 110%;
+  background: none;
+  transform: translateY(-100%);
 }
-.content {
+
+.flipcard {
   position: absolute;
+  height: 100%;
+  width: 100%;
+  perspective: 500px;
+  font-size: clamp(10pt, 1.4rem, 26pt);
+}
+
+
+.content {
+  position: relative;
+  display: flex;
   width: 100%;
   height: 100%;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+
   transition: transform 1s;
   transform-style: preserve-3d;
   text-align: center;
   justify-content: center;
 }
 
-.content img {
+.imgBox {
+  position: relative;
+  margin-left: 5%;
+  margin-top: 5%;
   width: 90%;
-  height: auto;
-  aspect-ratio: 1;
-  margin-top: 25px;
+  padding-top: 86%;
+}
+img {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .content h2 {
   font-family: 'Catamaran', sans-serif;
   font-size: 1.25em;
-  margin: 0.4em 0 0.4em 0;
+  margin: 0.2em 0 0 0;
 }
 
 .front,
@@ -39,6 +59,7 @@
   width: 100%;
   background: white;
   backface-visibility: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -57,14 +78,15 @@
 .back h3{
   font-family: 'Catamaran', sans-serif;
   font-size: 0.75em;
+  margin-top: 0.5em;
 }
 .backInput{
-  margin: 1em 1em 0.5em 1em;
+  margin: 0 1em 0.5em 1em;
 }
 
 .backInput p{
   font-family: 'Catamaran', sans-serif;
-  font-size: 0.75em;
+  font-size: 0.7em;
   text-align: justify;
 }
 
