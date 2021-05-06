@@ -1,0 +1,52 @@
+.datePicker{
+  width: 330px;
+  position: relative;
+  margin: 50px;
+  margin-left: 350px;
+  border:1px solid lightgray;
+  border-radius: 30px;
+  font-size: 16pt;
+}
+
+.Header{
+  font-size: 20pt;
+  font-family: 'Catamaran', sans-serif;
+  font-weight: 750;
+  margin-top: 5px;
+}
+
+#previous{
+  float:left;
+  margin-left: 20px;
+  cursor:pointer;
+}
+
+#year{
+  margin-left: 32%;
+}
+
+
+#next{
+  float: right;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.monthBoxes{
+  width: 45px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  display: inline-block;
+  padding: 8px;
+  cursor: pointer;
+  margin: 4px;
+  margin-left: 13px;
+  margin-right: 6px;
+  margin-bottom: 12px;
+}
+
+.monthBoxes:hover{
+  background-color: #941C2F;
+  color: #fffcf9;
+}
+

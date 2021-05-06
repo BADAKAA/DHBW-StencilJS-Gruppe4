@@ -10,6 +10,17 @@ export namespace Components {
         "backgroundcolor": string;
         "width": string;
     }
+        "component"?: string;
+        "element": string;
+        "width": string;
+    }
+    interface CookieBanner {
+        "bannertext": string;
+        "buttontext": string;
+        "heading": string;
+        "link"?: string;
+        "linkguidelines"?: string;
+    }
     interface EventList {
     }
     interface ExampleComponent {
@@ -23,6 +34,22 @@ export namespace Components {
         "icon": string;
         "iconsize": string;
         "width": string;
+    }
+    interface FaqComponent {
+        "answer": string;
+        "question": string;
+    }
+    interface FlipCard {
+        "colorback"?: string;
+        "colorfront"?: string;
+        "date"?: string;
+        "description"?: string;
+        "img": string;
+        "name"?: string;
+        "place"?: string;
+        "textback"?: string;
+        "textfront"?: string;
+        "turnable": boolean;
     }
     interface ImageSlider {
         "autoplay"?: string;
@@ -45,6 +72,17 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface MyMenu {
+        "href": string;
+        "id": string;
+        "link": string;
+        "name": string;
+    }
+    interface MySmlink {
+        "icon": string;
+        "link": string;
+        "name": string;
+    }
     interface SearchBar {
         "color": string;
         "component": string;
@@ -60,6 +98,12 @@ declare global {
     var HTMLDatePickerElement: {
         prototype: HTMLDatePickerElement;
         new (): HTMLDatePickerElement;
+    }
+    interface HTMLCookieBannerElement extends Components.CookieBanner, HTMLStencilElement {
+    }
+    var HTMLCookieBannerElement: {
+        prototype: HTMLCookieBannerElement;
+        new (): HTMLCookieBannerElement;
     };
     interface HTMLEventListElement extends Components.EventList, HTMLStencilElement {
     }
@@ -78,6 +122,18 @@ declare global {
     var HTMLHeartButtonElement: {
         prototype: HTMLHeartButtonElement;
         new (): HTMLHeartButtonElement;
+    }
+    interface HTMLFaqComponentElement extends Components.FaqComponent, HTMLStencilElement {
+    }
+    var HTMLFaqComponentElement: {
+        prototype: HTMLFaqComponentElement;
+        new (): HTMLFaqComponentElement;
+    };
+    interface HTMLFlipCardElement extends Components.FlipCard, HTMLStencilElement {
+    }
+    var HTMLFlipCardElement: {
+        prototype: HTMLFlipCardElement;
+        new (): HTMLFlipCardElement;
     };
     interface HTMLImageSliderElement extends Components.ImageSlider, HTMLStencilElement {
     }
@@ -91,6 +147,18 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLMyMenuElement extends Components.MyMenu, HTMLStencilElement {
+    }
+    var HTMLMyMenuElement: {
+        prototype: HTMLMyMenuElement;
+        new (): HTMLMyMenuElement;
+    };
+    interface HTMLMySmlinkElement extends Components.MySmlink, HTMLStencilElement {
+    }
+    var HTMLMySmlinkElement: {
+        prototype: HTMLMySmlinkElement;
+        new (): HTMLMySmlinkElement;
+    };
     interface HTMLSearchBarElement extends Components.SearchBar, HTMLStencilElement {
     }
     var HTMLSearchBarElement: {
@@ -102,8 +170,15 @@ declare global {
         "event-list": HTMLEventListElement;
         "example-component": HTMLExampleComponentElement;
         "heart-button": HTMLHeartButtonElement;
+        "cookie-banner": HTMLCookieBannerElement;
+        "event-list": HTMLEventListElement;
+        "example-component": HTMLExampleComponentElement;
+        "faq-component": HTMLFaqComponentElement;
+        "flip-card": HTMLFlipCardElement;
         "image-slider": HTMLImageSliderElement;
         "my-component": HTMLMyComponentElement;
+        "my-menu": HTMLMyMenuElement;
+        "my-smlink": HTMLMySmlinkElement;
         "search-bar": HTMLSearchBarElement;
     }
 }
@@ -111,6 +186,17 @@ declare namespace LocalJSX {
     interface DatePicker {
         "backgroundcolor"?: string;
         "width"?: string;
+    }
+        "component"?: string;
+        "element"?: string;
+        "width"?: string;
+    }
+    interface CookieBanner {
+        "bannertext"?: string;
+        "buttontext"?: string;
+        "heading"?: string;
+        "link"?: string;
+        "linkguidelines"?: string;
     }
     interface EventList {
     }
@@ -125,6 +211,22 @@ declare namespace LocalJSX {
         "icon"?: string;
         "iconsize"?: string;
         "width"?: string;
+    }
+    interface FaqComponent {
+        "answer"?: string;
+        "question"?: string;
+    }
+    interface FlipCard {
+        "colorback"?: string;
+        "colorfront"?: string;
+        "date"?: string;
+        "description"?: string;
+        "img"?: string;
+        "name"?: string;
+        "place"?: string;
+        "textback"?: string;
+        "textfront"?: string;
+        "turnable"?: boolean;
     }
     interface ImageSlider {
         "autoplay"?: string;
@@ -147,11 +249,24 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface MyMenu {
+        "href"?: string;
+        "id"?: string;
+        "link"?: string;
+        "name"?: string;
+        "onScroll"?: (event: CustomEvent<any>) => void;
+    }
+    interface MySmlink {
+        "icon"?: string;
+        "link"?: string;
+        "name"?: string;
+    }
     interface SearchBar {
         "color"?: string;
         "component"?: string;
         "element"?: string;
         "google"?: string;
+        "onSearchCleared"?: (event: CustomEvent<string>) => void;
         "position"?: string;
         "width"?: string;
     }
@@ -160,8 +275,15 @@ declare namespace LocalJSX {
         "event-list": EventList;
         "example-component": ExampleComponent;
         "heart-button": HeartButton;
+        "cookie-banner": CookieBanner;
+        "event-list": EventList;
+        "example-component": ExampleComponent;
+        "faq-component": FaqComponent;
+        "flip-card": FlipCard;
         "image-slider": ImageSlider;
         "my-component": MyComponent;
+        "my-menu": MyMenu;
+        "my-smlink": MySmlink;
         "search-bar": SearchBar;
     }
 }
@@ -173,8 +295,15 @@ declare module "@stencil/core" {
             "event-list": LocalJSX.EventList & JSXBase.HTMLAttributes<HTMLEventListElement>;
             "example-component": LocalJSX.ExampleComponent & JSXBase.HTMLAttributes<HTMLExampleComponentElement>;
             "heart-button": LocalJSX.HeartButton & JSXBase.HTMLAttributes<HTMLHeartButtonElement>;
+            "cookie-banner": LocalJSX.CookieBanner & JSXBase.HTMLAttributes<HTMLCookieBannerElement>;
+            "event-list": LocalJSX.EventList & JSXBase.HTMLAttributes<HTMLEventListElement>;
+            "example-component": LocalJSX.ExampleComponent & JSXBase.HTMLAttributes<HTMLExampleComponentElement>;
+            "faq-component": LocalJSX.FaqComponent & JSXBase.HTMLAttributes<HTMLFaqComponentElement>;
+            "flip-card": LocalJSX.FlipCard & JSXBase.HTMLAttributes<HTMLFlipCardElement>;
             "image-slider": LocalJSX.ImageSlider & JSXBase.HTMLAttributes<HTMLImageSliderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "my-menu": LocalJSX.MyMenu & JSXBase.HTMLAttributes<HTMLMyMenuElement>;
+            "my-smlink": LocalJSX.MySmlink & JSXBase.HTMLAttributes<HTMLMySmlinkElement>;
             "search-bar": LocalJSX.SearchBar & JSXBase.HTMLAttributes<HTMLSearchBarElement>;
         }
     }

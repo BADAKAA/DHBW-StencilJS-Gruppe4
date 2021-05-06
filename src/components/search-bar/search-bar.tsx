@@ -1,13 +1,18 @@
 //The main logic fpr the search bar comes from this tutorial:
 //https://www.youtube.com/watch?v=3NG8zy0ywIk
 
-import { Component, Host, h, Prop } from '@stencil/core';
-
+import { Component, Host, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
+import { getSearchedElement } from '../../utils/findElement';
+import { resetSearch, searchElement } from '../../utils/searchElement';
+//variables to control this component
 let componentElement: ShadowRoot;
 let searchBarContainer: HTMLDivElement;
 let searchIcon: HTMLImageElement;
 let searchBar: HTMLInputElement;
-
+//variables to store user input preperties
+let componentToBeSearchedIn: string;
+let elementToBeSearchedIn: string;
+//element in which the search bar is acitve
 let searchedElement: HTMLElement;
 @Component({
   tag: 'search-bar',
@@ -19,9 +24,13 @@ export class SearchBar {
   @Prop() position: string;
   @Prop() component: string;
   @Prop() element: string;
-  @Prop() color:string;
+  @Prop() color: string;
   @Prop() width: string;
   @Prop() google: string;
+
+  @Element() el: HTMLElement;
+  @Event() searchCleared: EventEmitter<string>;
+
 
   render() {
     return (
@@ -33,21 +42,35 @@ export class SearchBar {
       </Host>
     );
   }
+
   componentDidLoad() {
-    componentElement = document.querySelector("search-bar").shadowRoot;
+    //declare variables to control this component
+    componentElement = this.el.shadowRoot;
     searchBarContainer = componentElement.querySelector(".searchBarContainer");
     searchIcon = componentElement.querySelector(".searchIcon");
     searchBar = componentElement.querySelector("#searchBar");
+    //check if google-mode was activated by user through "google" property
     if (this.google && this.google == "true") {
-      searchIcon.removeEventListener;
       searchIcon.addEventListener("click", googleSearch);
       searchBar.placeholder = "Search Google...";
 
     } else {
-      searchBar.addEventListener("input", search);
-      searchIcon.addEventListener("click", clearSearch);
-      searchedElement = getSearchedElement(this.component, this.element);
-      console.log(searchedElement);
+      componentToBeSearchedIn = this.component;
+      elementToBeSearchedIn = this.element;
+      //the search-bar component is initialised only when the element that is supposed to be searched is found.
+      const checkIfElementIsReady: number = setInterval(() => {
+        searchedElement = getSearchedElement(componentToBeSearchedIn, elementToBeSearchedIn);
+
+        if (searchedElement) {
+          initializeSearchBar();
+          clearInterval(checkIfElementIsReady);
+        }
+      }, 500);
+      //If the element to be searched in cannot be found after 10 seconds, the search for it is ended.
+      setTimeout(() => {
+        clearInterval(checkIfElementIsReady);
+        componentNotFound();
+      }, 10000);
     }
     if (this.position) {
       searchBarContainer.style.position = this.position;
@@ -56,90 +79,50 @@ export class SearchBar {
       if (this.width.includes("px") || this.width.includes("%") || this.width.includes("vw")) {
         searchBarContainer.style.width = this.width;
       } else {
-        console.log('%c Please input a valid width. Permitted units: "px", "%", "vw" ("vw"="%")', "color:orange; font-weight:bold;font-family:'Open sans'");
+        console.log('%cPlease input a valid width. Permitted units: "px", "%", "vw" ("vw"="%")', "color:orange; font-weight:bold;font-family:'Open sans'");
         throw new Error('Please input a valid width. Permitted units: "px", "%", "vw" ("vw"="%")');
       }
     }
     if (this.color) {
-      searchIcon.style.background=this.color;
+      searchIcon.style.background = this.color;
     }
   }
 }
 
-function getSearchedElement(component: string, elementToBeSearched: string) {
-  //if no component has been specified, search for the element directly.
-  if (!component && document.querySelector(elementToBeSearched)) {
-    return document.querySelector(elementToBeSearched) as HTMLElement;
-  }
-  //check if either the component element can be found in the document.
-  if (!document.querySelector(component)) {
-    console.log('%c The element you want to search in cannot be found.', "color:orange; font-weight:bold;font-family:'Open sans'");
-    throw new Error('The element you want to search in cannot be found.');
-  }
-  //check if the component has a shadowRoot and search within it if that is the case.
-  if (document.querySelector(component).shadowRoot) {
-  //if no element is specified, the last child of the component will be searched
-  //→ no element property is required to use the "search-bar" with the "event-list" component, as this defines the list as searched object automatically.
-    if(!elementToBeSearched) {
-      return document.querySelector(component).shadowRoot.lastChild as HTMLElement;
-    }
-    if(document.querySelector(component).shadowRoot.querySelector(elementToBeSearched)) {
-      return document.querySelector(component).shadowRoot.querySelector(elementToBeSearched) as HTMLElement;
-    }
-  }
-
-  if (document.querySelector(component)) {
-    return document.querySelector(component).querySelector(elementToBeSearched) as HTMLElement;
-  }
-  console.log('%c The element you want to search in cannot be found.', "color:orange; font-weight:bold;font-family:'Open sans'");
-  throw new Error('The element you want to search in cannot be found.');
+function initializeSearchBar() {
+  searchBar.addEventListener("input", search);
+  searchIcon.addEventListener("click", clearSearch);
+  searchedElement = getSearchedElement(componentToBeSearchedIn,elementToBeSearchedIn);
+  console.log("%cSearch bar target found.\nThis is the element the seach bar is active in: ",
+    "color:darkgreen; font-weight:bold;font-family:'Open sans', sans-serif;line-height:12pt");
+  console.log(searchedElement);
 }
 
-function getChildren() {
-  if (typeof searchedElement === typeof HTMLUListElement || typeof searchedElement === typeof HTMLOListElement) {
-    return searchedElement.querySelectorAll("li") as unknown as Array<HTMLElement>;
-  }
-  return searchedElement.children as unknown as Array<HTMLElement>;
-}
+
+
+
 
 function search() {
 
   const input: string = searchBar.value.toLowerCase();
   if (input != "") {
     searchIcon.src = "/assets/clear.png";
-    resetSearch();
+    searchElement(searchedElement, input);
   } else {
     clearSearch();
   }
-
-  const childElements: Array<HTMLElement>=getChildren();
-
-  for (const element of childElements) {
-    //search for string value and disable all elements not containing it
-    if (!element.textContent.toLowerCase().includes(input)) {
-      element.style.position = "absolute";
-      element.style.visibility = "hidden";
-      element.style.opacity = "0";
-    }
-  }
+  
 }
 
 
-function resetSearch() {
 
-  const childElements: Array<HTMLElement>=getChildren();
-
-  for (const element of childElements) {
-    element.style.visibility = "visible";
-    element.style.position = "relative";
-    element.style.opacity = "1";
-  }
-}
 
 function clearSearch() {
+  if(searchBar.value!="") {
   resetSearch();
   searchBar.value = "";
   searchIcon.src = "/assets/search.png";
+  }
 }
 
 function googleSearch() {
@@ -147,4 +130,23 @@ function googleSearch() {
   const input: string = searchBar.value;
   const url = 'http://www.google.com/search?q=' + input;
   window.open(url, '_blank');
+}
+
+function componentNotFound() {
+  if (!searchedElement) {
+    const errorMessage: string = "We looked everywhere, but the element you want to search in cannot be found."
+    const tipps: string =
+      "Try checking the spelling of your element.\n\n" +
+      `If you want to search within a component that has a shadow root, make sure to use the component-property (component="COMPONENT-NAME").\n\n` +
+      "When searching for an element by id, put a hastag (#) in front of the id.\n" +
+      "When searching by class, put a dot (.) in front of the class name.\n" +
+      "If you are searching by type you do not need to put anything in front of the type name (e.g. element='ul').\n";
+
+    console.log("%c\n" + errorMessage,
+      "color:orangered; font-weight:bold;font-family:'Open sans', sans-serif;line-height:22pt"
+    );
+    console.log("%c\n" + tipps,
+      "color:darkgreen; font-weight:bold;font-family:'Open sans', sans-serif;line-height:14pt"
+    );
+  }
 }

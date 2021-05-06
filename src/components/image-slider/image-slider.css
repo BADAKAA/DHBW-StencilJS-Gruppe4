@@ -49,4 +49,6 @@
   top: 100%;
   transform: translate(-50%, -75%);
   opacity: 0.5;
+  width: 75px;
+  height:75px;
 }

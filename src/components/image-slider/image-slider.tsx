@@ -110,8 +110,8 @@ function defineObjectReferences() {
   componentElement =  document.querySelector("image-slider").shadowRoot;
   slider =            componentElement.querySelector("#slider");
   sliderFrame =       componentElement.querySelector("#slider-frame");
-  stopSliderButton =  componentElement.querySelector("#stopSliderButton");
   nextImageButton =   componentElement.querySelector("#nextImageButton");
+  stopSliderButton =  componentElement.querySelector("#stopSliderButton");
   previousImageButton=componentElement.querySelector("#previousImageButton");
 }
 
