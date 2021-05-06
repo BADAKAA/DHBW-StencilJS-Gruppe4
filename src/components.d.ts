@@ -89,6 +89,7 @@ export namespace Components {
         "component": string;
         "element": string;
         "google": string;
+        "offset"?: string;
         "position": string;
         "width": string;
     }
@@ -268,6 +269,7 @@ declare namespace LocalJSX {
         "component"?: string;
         "element"?: string;
         "google"?: string;
+        "offset"?: string;
         "onSearchCleared"?: (event: CustomEvent<string>) => void;
         "position"?: string;
         "width"?: string;

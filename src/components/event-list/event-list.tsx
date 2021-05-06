@@ -79,7 +79,7 @@ function fillList() {
       <h2 class="eventTitle">${event.title}</h2>
       <div class="info">
         <h3 class="city">${event.city}</h3> ${event.location}
-      <p class="description">${event.description}<p>
+      <p class="description">${event.description}</p>
       </div>
       <div class="details" style='display:none'>
         <h4 class="adress"><p class="detail">Adress 📍</p>${event.adress}</h4>
@@ -87,7 +87,9 @@ function fillList() {
         <h4 class="clickDate"><p class="detail">Date <small>📅</small></p>${getDayName(date)+", "+(convertDate(date))}</h4>
         <h4><p class="detail">Time</p>${event.start} – ${event.end} Uhr </h4> 
         <h4 style="margin-top:0.5em"><p class="detail">Description</p></h4>
-        ${event.description}
+        <div style='text-align: justify'>
+          <p class="eventText">${event.description}</p>
+        </div>
       </div>
     </div>
     <div class="eventImage" style="background-image:${"url("+getImageLink(event)+")"}">

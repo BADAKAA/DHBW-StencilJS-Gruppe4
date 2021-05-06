@@ -35,8 +35,8 @@ export function resetSearch() {
     const childElements: Array<HTMLElement> = getChildren();
 
     for (const element of childElements) {
-        element.style.visibility = "visible";
-        element.style.position = "relative";
+        element.style.visibility = "";
+        element.style.position = "";
         element.style.opacity = "1";
     }
 }

@@ -1,7 +1,7 @@
 //The main logic fpr the search bar comes from this tutorial:
 //https://www.youtube.com/watch?v=3NG8zy0ywIk
 
-import { Component, Host, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
+import { Component, Host, h, Prop, Element, Event, EventEmitter, Method } from '@stencil/core';
 import { getSearchedElement } from '../../utils/findElement';
 import { clearDateSearch, resetSearch, searchElement } from '../../utils/searchElement';
 //variables to control this component
@@ -28,6 +28,7 @@ export class SearchBar {
   @Prop() color: string;
   @Prop() width: string;
   @Prop() google: string;
+  @Prop() offset?:string;
 
   @Element() el: HTMLElement;
   @Event() searchCleared: EventEmitter<string>;
@@ -56,6 +57,7 @@ export class SearchBar {
     //check if google-mode was activated by user through "google" property
     if (this.google && this.google == "true") {
       searchIcon.addEventListener("click", googleSearch);
+      searchBar.addEventListener("keypress", (e)=> {if(e.key=="Enter") googleSearch()});
       searchBar.placeholder = "Search Google...";
 
     } else {
@@ -76,11 +78,18 @@ export class SearchBar {
         componentNotFound();
       }, 10000);
     }
+
     if (this.position) {
       if (this.position=="relative") {
         searchBarContainer.style.height="60px";
-        searchBarFrame.style.transform="translate(-50%)"
+        searchBarFrame.style.transform="translateX(-50%)";
       }
+      if (this.position=="absolte") {
+        searchBarFrame.style.transform="translateX(-50%)";
+        if (this.offset) searchBarFrame.style.transform+=` translate(-50%,${this.offset})`;
+      }
+
+      
     }
 
     if (this.width) {
@@ -94,31 +103,32 @@ export class SearchBar {
     if (this.color) searchIcon.style.background = this.color;
     
   }
-  
   clearSearch() {
     if (searchBar.value != "") {
-      clearDateSearch();
-      resetSearch();
-      searchBar.value = "";
-      searchIcon.src = "/assets/search.png";
-      this.searchCleared.emit("custom value"); 
+    resetSearch();
+    searchBar.value = "";
+    searchIcon.src = "/assets/search.png";
+    this.searchCleared.emit("custom value"); 
+    clearDateSearch();
     }
   }
   search() {
 
     const input: string = searchBar.value.toLowerCase();
-    if (input != "") {
+    if (searchBar.value !== "") {
       searchIcon.src = "/assets/clear.png";
       searchElement(searchedElement, input);
+      
     } else {
-      this.clearSearch();
+      searchIcon.src = "/assets/search.png";
+      resetSearch();
     }
-
   }
 
 
   initializeSearchBar() {
-    searchBar.addEventListener("keydown", this.search);
+    searchBar.addEventListener("input", this.search);
+    searchBar.addEventListener("keypress", (e)=> {if(e.key=="Enter") this.clearSearch()});
     searchIcon.addEventListener("click", ()=> this.clearSearch());
     searchedElement = getSearchedElement(componentToBeSearchedIn, elementToBeSearchedIn);
     console.log("%cSearch bar target found.\nThis is the element the seach bar is active in: ",
