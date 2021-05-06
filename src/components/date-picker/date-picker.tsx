@@ -1,6 +1,6 @@
 import { Prop, Component, h, Host, Element } from '@stencil/core';
 import { getSearchedElement } from '../../utils/findElement';
-import { searchDate } from '../../utils/searchElement';
+import { clearDateSearch, searchDate } from '../../utils/searchElement';
 
 const monthNames: Array <string> = [
   'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dez'
@@ -60,7 +60,6 @@ export class DatePicker {
     if (this.backgroundcolor) {  
       datePickerElement.style.background = this.backgroundcolor;
     }
-    adaptForRelease();
   }
 
   //hier werden die Monate dargestellt
@@ -103,16 +102,25 @@ export class DatePicker {
 
 function monthClicked(ev: MouseEvent) {
   const monthElement = ev.target as HTMLDivElement;
-  clearMonthColor();
-  monthElement.style.background = '#941C2F';
-  monthElement.style.color = '#fffcf9';
 
   const monthIndex: number = monthNames.indexOf(monthElement.textContent) + 1;
 
   let month:string= monthIndex.toString();
   if (month.length < 2) month = "0" + month;
 
-  searchDate(month.toString() + "." + yearBox.textContent, searchedElement);
+  
+  if(monthElement.style.background=="") {
+    clearMonthColor();
+    //only search when month has not been clicked previously.
+    monthElement.style.background = '#941C2F';
+    monthElement.style.color = '#fffcf9';
+    searchDate(month.toString() + "." + yearBox.textContent, searchedElement);
+  } else {
+    clearMonthColor();
+    clearDateSearch();
+  }
+  
+
 }
 
 
@@ -136,10 +144,4 @@ function clearMonthColor() {
     monthBox.style.background = '';
     monthBox.style.color = '';
   }
-}
-
-
-//release adaption
-function adaptForRelease() {
-  datePickerElement.style.border="none";
 }

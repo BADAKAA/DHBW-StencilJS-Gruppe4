@@ -16,9 +16,11 @@ button{
   border: none;
   /*box-shadow: 0 0 5px rgb(172, 172, 172);*/
   border-color: #BFBFBF;
+
+  transition: background 0.3s, transform 0.3s;
 }
 
-.button{
+.button {
   position: relative;
   padding: 10px 0 10px 0;
   text-align: center;
@@ -26,4 +28,8 @@ button{
 
 button:hover{
   background-color: #941C2F;
+  transform: scale(1.1,1.1);
+}
+button:focus {
+  outline: none;
 }

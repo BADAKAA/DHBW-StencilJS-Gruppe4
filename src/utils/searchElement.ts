@@ -27,6 +27,7 @@ export function searchDate(date: string, element?:HTMLElement) {
 
 export function clearDateSearch() {
     searchedDate = "";
+    searchElement();
 }
 
 

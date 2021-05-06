@@ -7,8 +7,10 @@
 }
 .datePicker{
   width: 330px;
+  /*border removed for  releaseto look better with other components
   border:1px solid lightgray;
   border-radius: 30px;
+  */
   font-size: 16pt;
 }
 
