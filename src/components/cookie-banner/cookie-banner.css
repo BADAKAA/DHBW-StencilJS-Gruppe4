@@ -1,5 +1,12 @@
 :host {
   display: block;
+  color:white;
+  position: absolute;
+  top:50%;
+  right:50%;
+  transform: translate(50%,-50%);
+  width: 75vw;
+  z-index: 100000;
 }
 
 .container {
@@ -7,17 +14,17 @@
   margin-right: 30px;
   background-color: #1d6483;
   border-radius: 5px;
-  padding-bottom: 15px;
+  padding: 10px 40px 30px 40px;
 }
 
 .content {
-  padding-left: 20px;
-  padding-right: 20px;
+  position: relative;
 }
 
 #closeButton {
-  margin-left: 97%;
-  margin-top: 10px;
+  position: absolute;
+  top:0px;
+  right:0px;
 }
 
 .heading {
@@ -27,7 +34,7 @@
 }
 
 p .link {
-  text-decoration: underline #100B00;
+  text-decoration: underline white;
   cursor: pointer;
 }
 
