@@ -80,16 +80,13 @@ export class SearchBar {
     }
     
     if (this.position) { 
-      if (this.position=="relative") {
-        searchBarContainer.style.height="60px";
-        searchBarFrame.style.transform="translateX(-50%)";
-      }
       if (this.position=="absolute") {
         searchBarFrame.style.transform="translateX(-50%)";
         if (this.offset) searchBarFrame.style.transform+=` translateY(${this.offset})`;
       }
-
-      
+    } else {
+      searchBarContainer.style.height="60px";
+      searchBarFrame.style.transform="translate(0,0)";
     }
 
     if (this.width) {

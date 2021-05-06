@@ -22,7 +22,7 @@ export function searchElement(element?: HTMLElement, input?: string) {
 
 export function searchDate(date: string, element?:HTMLElement) {
     searchedDate = date;
-    searchElement(element);
+    if (element) searchElement(element);
 }
 
 export function clearDateSearch() {

@@ -1,15 +1,18 @@
 :host {
-  display: block;
+  display: flex;
   color:white;
-  position: absolute;
+  position: -webkit-sticky;
+  position: sticky;
   top:50%;
-  right:50%;
-  transform: translate(50%,-50%);
-  width: 75vw;
+
+  justify-content: center;
   z-index: 100000;
 }
 
 .container {
+  position: absolute;
+  transform: translateY(-50%);
+  width: 75vw;
   margin-left: 30px;
   margin-right: 30px;
   background-color: #1d6483;

@@ -10,7 +10,6 @@ const year: number = new Date().getFullYear();
 let yearBox: HTMLElement;
 let componentElement: ShadowRoot;
 let datePickerElement: HTMLDivElement;
-let backgroundElement: HTMLDivElement;
 let searchedElement: HTMLElement;
 
 
@@ -46,7 +45,6 @@ export class DatePicker {
     this.initialiseMonths(datePickerFrame);
 
     datePickerElement = componentElement.querySelector('.datePicker');
-    backgroundElement = componentElement.querySelector('#datePickerFrame');
     yearBox = componentElement.getElementById('year');
 
     //taken from search-bar.tsx
@@ -62,7 +60,7 @@ export class DatePicker {
     if (this.backgroundcolor) {  
       datePickerElement.style.background = this.backgroundcolor;
     }
-
+    adaptForRelease();
   }
 
   //hier werden die Monate dargestellt
@@ -138,4 +136,10 @@ function clearMonthColor() {
     monthBox.style.background = '';
     monthBox.style.color = '';
   }
+}
+
+
+//release adaption
+function adaptForRelease() {
+  datePickerElement.style.border="none";
 }

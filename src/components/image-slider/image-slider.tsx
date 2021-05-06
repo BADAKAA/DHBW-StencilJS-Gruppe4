@@ -102,7 +102,7 @@ function initializeSlider() {
   changeSliderProperties();
 
   if (autoplay) {
-  sliderTimingFunction = setInterval(()=>{changeSlide("+")},5000);
+  sliderTimingFunction = setInterval(()=>{changeSlide("+")},sliderFrequency);
   }
 }
 

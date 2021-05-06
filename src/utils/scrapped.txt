@@ -1,19 +1,11 @@
-    
-    const dateFrame:HTMLDivElement=document.createElement("DIV") as HTMLDivElement;
-    dateFrame.className="date";
-    dateFrame.innerHTML=`<small>${getMonth(date)}</small> <p class="dateNumber">${getDay(date)}</p>`;
-    listItem.appendChild(dateFrame);
+let body:HTMLElement;
+  scrollToTop();
+  body = document.querySelector("body");
+  body.style.overflowY="hidden";
+  window.addEventListener("load", scrollToTop);
 
-    const eventFrame:HTMLDivElement=document.createElement("DIV") as HTMLDivElement;
-    eventFrame.className="event";
-    const time = document.createElement("p") as HTMLElement;
-    time.className="time";
-    const currentTime:string=event.start+"–"+event.end+" Uhr"
-    time.innerHTML=`<p class="weekday">${getDayName(date)}` + currentTime;
-    eventFrame.appendChild(time)
-    eventFrame.innerHTML+=`
-    <h2 class="eventTitle">${event.title}</h2>
-    <div class="info">
-      <h3 class="city">${event.city}</h3> ${event.location}`;
-    listItem.appendChild(eventFrame);
-
+function scrollToTop() {
+  console.log("xcrolling");
+  
+  window.scroll({ top: 0, left: 0, behavior:'smooth'});
+}

@@ -21,18 +21,18 @@
 
 <body>
 
-    <cookie-banner heading="Mmmh lecker, Cookies 🍪"
+    <cookie-banner heading="Mmmh lecker, Cookies! 🍪"
         bannertext="Die Seite verwendet die notwendigen Cookies. Um deinen Besuch auf unserer Webseite zu verbessern und zu personalisieren kannst du gerne die Cookies akzeptieren. Wir können dir speziell auf dich zugeschnittene Werbung anzeigen. Zudem können wir die Leistung unsere Webseite besser analysieren und dir so ein besseres Nutzererlebnis bieten."
         linkguidelines="Zu unseren Richtlinien" link="https://www.airbnb.de/help/article/2855/datenschutzerkl%C3%A4rung"
         buttontext="Akzeptiere die Cookies"></cookie-banner>
 
-    <header>
+    <header class="black">
         <h1 class="inverted"><a href="/ON-your-styleguide/overview.html">Eventist</a></h1>
     </header>
 
 
     <search-bar color="#941C2F" google="true" offset="-50%" position="absolute"></search-bar>
-    <image-slider height="75%" width="100%" autoplay="true"
+    <image-slider height="75%" width="100%" autoplay="true" time="5s"
         sources="/images/featured-event2.jpg;/images/featured-event3.jpg;/images/featured-event4.jpg"></image-slider>
     <div class="menü" style="position:sticky; top:0; width: 100%;">
         <my-menu name="Events" id="event"></my-menu>
@@ -40,90 +40,84 @@
         <my-menu name="Persönliche Events" id="persönliche-events"></my-menu>
     </div>
 
-    <div class="white">
+    <div class="grid">
+        <flip-card name="Stencil Fertig" img="/images/featured-event2.jpg" turnable="true" date="16.06.2022"
+            place="Mosbach"
+            description="Hallo ihr, es tut mir sehr leid dass ich kein Plan von Stencil hab es nervt micht selber. Ich bin froh wenn die Abgabe hier vorbei ist. Ich verstehe e snicht weil in Typescript komme ich anz gut klar aber hier nicht so ne Rotze"
+            colorFront="white" colorBack="white" textback="black" textfront="black"></flip-card>
+        <flip-card name="Masters of Hardcore" img="/images/featured-event3.jpg" turnable="true" place="Dingden"
+            date="16.06.2022"
+            description="Hallo ihr, es tut mir sehr leid dass ich kein Plan von Stencil hab es nervt micht selber. Ich bin froh wenn die Abgabe hier vorbei ist. helloIch verstehe e snicht weil in Typescript komme ich anz gut klar aber hier nicht so ne Rotze"
+            colorFront="white" colorBack="white" textback="black" textfront="black"></flip-card>
+        <flip-card name="Masters of Hardcore" img="/images/featured-event3.jpg" turnable="true" place="Dingden"
+            date="16.06.2022"
+            description="Hallo ihr, es tut mir sehr leid dass ich kein Plan von Stencil hab es nervt micht selber. Ich bin froh wenn die Abgabe hier vorbei ist. helloIch verstehe e snicht weil in Typescript komme ich anz gut klar aber hier nicht so ne Rotze"
+            colorFront="white" colorBack="white" textback="black" textfront="black"></flip-card>
         <heart-button color="black" clickcolor="#941C2F" width="45px" height="45px" icon="&#10084;" iconsize="150%">
         </heart-button>
-        <div class="grid">
-            <flip-card name="Stencil Fertig" img="/images/featured-event2.jpg" turnable="true" date="16.06.2022"
-                place="Mosbach"
-                description="Hallo ihr, es tut mir sehr leid dass ich kein Plan von Stencil hab es nervt micht selber. Ich bin froh wenn die Abgabe hier vorbei ist. Ich verstehe e snicht weil in Typescript komme ich anz gut klar aber hier nicht so ne Rotze"
-                colorFront="white" colorBack="white" textback="black" textfront="black"></flip-card>
-            <flip-card name="Masters of Hardcore" img="/images/featured-event3.jpg" turnable="true" place="Dingden"
-                date="16.06.2022"
-                description="Hallo ihr, es tut mir sehr leid dass ich kein Plan von Stencil hab es nervt micht selber. Ich bin froh wenn die Abgabe hier vorbei ist. helloIch verstehe e snicht weil in Typescript komme ich anz gut klar aber hier nicht so ne Rotze"
-                colorFront="white" colorBack="white" textback="black" textfront="black"></flip-card>
-            <flip-card name="Masters of Hardcore" img="/images/featured-event3.jpg" turnable="true" place="Dingden"
-                date="16.06.2022"
-                description="Hallo ihr, es tut mir sehr leid dass ich kein Plan von Stencil hab es nervt micht selber. Ich bin froh wenn die Abgabe hier vorbei ist. helloIch verstehe e snicht weil in Typescript komme ich anz gut klar aber hier nicht so ne Rotze"
-                colorFront="white" colorBack="white" textback="black" textfront="black"></flip-card>
-        </div>
-        <div class="padding">
-            <h3>FAQ</h3>
-            <faq-component question="Wie buche ich ein Event?" answer="Das Event ist toll"></faq-component>
-            <faq-component question="Wie finde ich Events?" answer="Das Event ist toll"></faq-component>
+    </div>
+    <div class="padding">
+        <h3>FAQ</h3>
+        <faq-component question="Wie buche ich ein Event?" answer="Das Event ist toll"></faq-component>
+        <faq-component question="Wie finde ich Events?" answer="Das Event ist toll"></faq-component>
 
-            <div id="event_text">
-                <h4 class="ziel"> Events </h4>
-                <p>Dies ist ein Typoblindtext. An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen.
-                    Manchmal benutzt man Worte wie Hamburgefonts, Rafgenduks oder Handgloves, um Schriften zu testen.
-                    Manchmal Sätze, die alle Buchstaben des Alphabets enthalten - man nennt diese Sätze »Pangrams«. Sehr
-                    bekannt ist dieser: The quick brown fox jumps over the lazy old dog. Oft werden in Typoblindtexte
-                    auch fremdsprachige Satzteile eingebaut (AVAIL® and Wefox™ are testing aussi la Kerning), um die
-                    Wirkung in anderen Sprachen zu testen. In Lateinisch sieht zum Beispiel fast jede Schrift gut aus.
-                    Quod erat demonstrandum. Seit 1975 fehlen in den meisten Testtexten die Zahlen, weswegen nach
-                    TypoGb. 204 § ab dem Jahr 2034 Zahlen in 86 der Texte zur Pflicht werden. Nichteinhaltung wird mit
-                    bis zu 245 € oder 368 $ bestraft. Genauso wichtig in sind mittlerweile auch Âçcèñtë, die in neueren
-                    Schriften aber fast immer enthalten sind. Ein wichtiges aber schwierig zu integrierendes Feld sind
-                    OpenType-Funktionalitäten. Je nach Software und Voreinstellungen können eingebaute Kapitälchen,
-                    Kerning oder Ligaturen (sehr pfiffig) nicht richtig dargestellt werden.Dies ist ein Typoblindtext.
-                    An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen. Manchmal benutzt man Worte
-                    wie Hamburgefonts, Rafgenduks</p>
-            </div>
-            <div id="location_text">
-                <h4 class="ziel">Location</h4>
-                <p>Dies ist ein Typoblindtext. An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen.
-                    Manchmal benutzt man Worte wie Hamburgefonts, Rafgenduks oder Handgloves, um Schriften zu testen.
-                    Manchmal Sätze, die alle Buchstaben des Alphabets enthalten - man nennt diese Sätze »Pangrams«. Sehr
-                    bekannt ist dieser: The quick brown fox jumps over the lazy old dog. Oft werden in Typoblindtexte
-                    auch fremdsprachige Satzteile eingebaut (AVAIL® and Wefox™ are testing aussi la Kerning), um die
-                    Wirkung in anderen Sprachen zu testen. In Lateinisch sieht zum Beispiel fast jede Schrift gut aus.
-                    Quod erat demonstrandum. Seit 1975 fehlen in den meisten Testtexten die Zahlen, weswegen nach
-                    TypoGb. 204 § ab dem Jahr 2034 Zahlen in 86 der Texte zur Pflicht werden. Nichteinhaltung wird mit
-                    bis zu 245 € oder 368 $ bestraft. Genauso wichtig in sind mittlerweile auch Âçcèñtë, die in neueren
-                    Schriften aber fast immer enthalten sind. Ein wichtiges aber schwierig zu integrierendes Feld sind
-                    OpenType-Funktionalitäten. Je nach Software und Voreinstellungen können eingebaute Kapitälchen,
-                    Kerning oder Ligaturen (sehr pfiffig) nicht richtig dargestellt werden.Dies ist ein Typoblindtext.
-                    An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen. Manchmal benutzt man Worte
-                    wie Hamburgefonts, Rafgenduks</p>
-            </div>
-            <div id="persönlicheEvents_text">
-                <h4 class="ziel">Persönliche Events</h4>
-                <p>Dies ist ein Typoblindtext. An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen.
-                    Manchmal benutzt man Worte wie Hamburgefonts, Rafgenduks oder Handgloves, um Schriften zu testen.
-                    Manchmal Sätze, die alle Buchstaben des Alphabets enthalten - man nennt diese Sätze »Pangrams«. Sehr
-                    bekannt ist dieser: The quick brown fox jumps over the lazy old dog. Oft werden in Typoblindtexte
-                    auch fremdsprachige Satzteile eingebaut (AVAIL® and Wefox™ are testing aussi la Kerning), um die
-                    Wirkung in anderen Sprachen zu testen. In Lateinisch sieht zum Beispiel fast jede Schrift gut aus.
-                    Quod erat demonstrandum. Seit 1975 fehlen in den meisten Testtexten die Zahlen, weswegen nach
-                    TypoGb. 204 § ab dem Jahr 2034 Zahlen in 86 der Texte zur Pflicht werden. Nichteinhaltung wird mit
-                    bis zu 245 € oder 368 $ bestraft. Genauso wichtig in sind mittlerweile auch Âçcèñtë, die in neueren
-                    Schriften aber fast immer enthalten sind. Ein wichtiges aber schwierig zu integrierendes Feld sind
-                    OpenType-Funktionalitäten. Je nach Software und Voreinstellungen können eingebaute Kapitälchen,
-                    Kerning oder Ligaturen (sehr pfiffig) nicht richtig dargestellt werden.Dies ist ein Typoblindtext.
-                    An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen. Manchmal benutzt man Worte
-                    wie Hamburgefonts, Rafgenduks</p>
-            </div>
+        <div id="event_text">
+            <h4 class="ziel"> Events </h4>
+            <p>Dies ist ein Typoblindtext. An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen.
+                Manchmal benutzt man Worte wie Hamburgefonts, Rafgenduks oder Handgloves, um Schriften zu testen.
+                Manchmal Sätze, die alle Buchstaben des Alphabets enthalten - man nennt diese Sätze »Pangrams«. Sehr
+                bekannt ist dieser: The quick brown fox jumps over the lazy old dog. Oft werden in Typoblindtexte
+                auch fremdsprachige Satzteile eingebaut (AVAIL® and Wefox™ are testing aussi la Kerning), um die
+                Wirkung in anderen Sprachen zu testen. In Lateinisch sieht zum Beispiel fast jede Schrift gut aus.
+                Quod erat demonstrandum. Seit 1975 fehlen in den meisten Testtexten die Zahlen, weswegen nach
+                TypoGb. 204 § ab dem Jahr 2034 Zahlen in 86 der Texte zur Pflicht werden. Nichteinhaltung wird mit
+                bis zu 245 € oder 368 $ bestraft. Genauso wichtig in sind mittlerweile auch Âçcèñtë, die in neueren
+                Schriften aber fast immer enthalten sind. Ein wichtiges aber schwierig zu integrierendes Feld sind
+                OpenType-Funktionalitäten. Je nach Software und Voreinstellungen können eingebaute Kapitälchen,
+                Kerning oder Ligaturen (sehr pfiffig) nicht richtig dargestellt werden.Dies ist ein Typoblindtext.
+                An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen. Manchmal benutzt man Worte
+                wie Hamburgefonts, Rafgenduks</p>
+        </div>
+        <div id="location_text">
+            <h4 class="ziel">Location</h4>
+            <p>Dies ist ein Typoblindtext. An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen.
+                Manchmal benutzt man Worte wie Hamburgefonts, Rafgenduks oder Handgloves, um Schriften zu testen.
+                Manchmal Sätze, die alle Buchstaben des Alphabets enthalten - man nennt diese Sätze »Pangrams«. Sehr
+                bekannt ist dieser: The quick brown fox jumps over the lazy old dog. Oft werden in Typoblindtexte
+                auch fremdsprachige Satzteile eingebaut (AVAIL® and Wefox™ are testing aussi la Kerning), um die
+                Wirkung in anderen Sprachen zu testen. In Lateinisch sieht zum Beispiel fast jede Schrift gut aus.
+                Quod erat demonstrandum. Seit 1975 fehlen in den meisten Testtexten die Zahlen, weswegen nach
+                TypoGb. 204 § ab dem Jahr 2034 Zahlen in 86 der Texte zur Pflicht werden. Nichteinhaltung wird mit
+                bis zu 245 € oder 368 $ bestraft. Genauso wichtig in sind mittlerweile auch Âçcèñtë, die in neueren
+                Schriften aber fast immer enthalten sind. Ein wichtiges aber schwierig zu integrierendes Feld sind
+                OpenType-Funktionalitäten. Je nach Software und Voreinstellungen können eingebaute Kapitälchen,
+                Kerning oder Ligaturen (sehr pfiffig) nicht richtig dargestellt werden.Dies ist ein Typoblindtext.
+                An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen. Manchmal benutzt man Worte
+                wie Hamburgefonts, Rafgenduks</p>
+        </div>
+        <div id="persönlicheEvents_text">
+            <h4 class="ziel">Persönliche Events</h4>
+            <p>Dies ist ein Typoblindtext. An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen.
+                Manchmal benutzt man Worte wie Hamburgefonts, Rafgenduks oder Handgloves, um Schriften zu testen.
+                Manchmal Sätze, die alle Buchstaben des Alphabets enthalten - man nennt diese Sätze »Pangrams«. Sehr
+                bekannt ist dieser: The quick brown fox jumps over the lazy old dog. Oft werden in Typoblindtexte
+                auch fremdsprachige Satzteile eingebaut (AVAIL® and Wefox™ are testing aussi la Kerning), um die
+                Wirkung in anderen Sprachen zu testen. In Lateinisch sieht zum Beispiel fast jede Schrift gut aus.
+                Quod erat demonstrandum. Seit 1975 fehlen in den meisten Testtexten die Zahlen, weswegen nach
+                TypoGb. 204 § ab dem Jahr 2034 Zahlen in 86 der Texte zur Pflicht werden. Nichteinhaltung wird mit
+                bis zu 245 € oder 368 $ bestraft. Genauso wichtig in sind mittlerweile auch Âçcèñtë, die in neueren
+                Schriften aber fast immer enthalten sind. Ein wichtiges aber schwierig zu integrierendes Feld sind
+                OpenType-Funktionalitäten. Je nach Software und Voreinstellungen können eingebaute Kapitälchen,
+                Kerning oder Ligaturen (sehr pfiffig) nicht richtig dargestellt werden.Dies ist ein Typoblindtext.
+                An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen. Manchmal benutzt man Worte
+                wie Hamburgefonts, Rafgenduks</p>
 
             <a href="https://www.airbnb.de/" target="_blank"><button style="margin: 30px 0 60px" class="cta">WOW, A
                     BUTTON!</button></a>
-
-
-
         </div>
-
-
-        <footer
-            style="width: 100%; display: inline-block; margin: 2em 0; height: 130px; background-color: #100b00; color: #fffcfe;">
+    </div>
+        <button-up></button-up>
+        <footer>
             <div class="test" style="width: 50%; float: left;  line-height: 20px;">
                 <p style="color: #fffcfe; font-family:'Catamaran', 'open-sans' ;text-align:center;">&copy Impressum</p>
                 <p style="color: #fffcfe; font-family:'Catamaran', 'open-sans' ;text-align:center;"> ON20 Anna–Maria

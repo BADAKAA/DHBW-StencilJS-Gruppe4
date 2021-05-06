@@ -2,9 +2,8 @@
   position: relative;
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 0px;
   margin-top: 50px;
-
 }
 .datePicker{
   width: 330px;
@@ -22,14 +21,12 @@
 }
 
 #previous{
-  float:left;
-  margin-left: 20px;
+  margin-right: 20px;
   cursor:pointer;
 }
 
 #next{
-  float: right;
-  margin-right: 20px;
+  margin-left: 20px;
   cursor: pointer;
 }
 
@@ -44,6 +41,7 @@
   margin-left: 13px;
   margin-right: 6px;
   margin-bottom: 12px;
+  transition: background 0.3s, color;
 }
 
 .monthBoxes:hover{

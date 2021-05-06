@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop } from '@stencil/core';
+let body:HTMLElement;
 let componentElement:ShadowRoot;
 let buttonClose:HTMLElement;
 let acceptButton:HTMLElement;
@@ -39,6 +40,9 @@ export class CookieBanner {
   }
   componentDidLoad() {
     defineObjectReferences();
+    body = document.querySelector("body");
+    body.style.overflowY="hidden";
+
   }
 }
 
@@ -54,4 +58,5 @@ function defineObjectReferences() {
 
 function removeCookieBanner(){
  banner.style.display = "none";
+ body.style.overflowY="scroll";
 }

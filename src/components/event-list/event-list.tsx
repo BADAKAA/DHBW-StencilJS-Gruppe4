@@ -72,7 +72,7 @@ function fillList() {
     const listItemContent:string= `
     <div class="date">
       <small>${getMonth(date)}</small>
-      <p class="dateNumber">${getDay(date)}</p>
+      <p class="dateNumber">${getDate(date)}</p>
     </div>
     <div class="event">
         <h5 class="time"><p class='weekday'>${event.start+' – '+event.end+' Uhr'}</p></h5>
@@ -182,8 +182,8 @@ function getDayName(date: Date, short?: boolean): string {
   return weekdays[date.getDay()];
 }
 
-function getDay(date: Date): string {
-  let dateNumber: string = date.getDay().toString();
+function getDate(date: Date): string {
+  let dateNumber: string = date.getDate().toString();
   if (dateNumber.length < 2) dateNumber = "0" + dateNumber;
 
   return dateNumber;
