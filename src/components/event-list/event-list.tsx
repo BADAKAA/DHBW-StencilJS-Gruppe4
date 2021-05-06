@@ -32,7 +32,7 @@ export class EventList {
   render() {
     return (
       <Host>
-        <ul class="eventList"></ul>
+          <ul class="eventList"></ul>
       </Host>
     );
   }
@@ -83,7 +83,7 @@ function fillList() {
       </div>
       <div class="details" style='display:none'>
         <h4 class="adress"><p class="detail">Adress 📍</p>${event.adress}</h4>
-        <h4 class="adress"><p class="detail">Location </p>${event.location}</h4>
+        <h4 class="location"><p class="detail">Location </p>${event.location}</h4>
         <h4 class="clickDate"><p class="detail">Date <small>📅</small></p>${getDayName(date)+", "+(convertDate(date))}</h4>
         <h4><p class="detail">Time</p>${event.start} – ${event.end} Uhr </h4> 
         <h4 style="margin-top:0.5em"><p class="detail">Description</p></h4>
@@ -98,6 +98,7 @@ function fillList() {
     listItem.innerHTML= listItemContent;
     listItem.addEventListener("click", () => expandItem(listItem));
     listItem.querySelectorAll(".adress").forEach(a=> a.addEventListener("click", () => openAdress(event.adress)));
+    listItem.querySelectorAll(".location").forEach(a=> a.addEventListener("click", () => googleLocation(event.location,event.adress)));
     listItem.querySelector(".clickDate").addEventListener("click", () => openDate(event.date));
     listElement.appendChild(listItem);
   }
@@ -129,11 +130,9 @@ function checkIfYearIsNew(date: Date) {
 }
 
 function openAdress(adress:string) {
-
     const url = 'https://www.google.com/maps/place/' + adress;
     window.open(url, '_blank');
 }
-
 
 function openDate(input:string) {
 
@@ -143,6 +142,12 @@ function openDate(input:string) {
   
   window.open(url, '_blank');
 }
+
+function googleLocation(location:string, adress:string) {
+  const url = 'http://www.google.com/search?q=' + location + " " + adress;
+  window.open(url, '_blank');
+}
+
 function expandItem(listItem: HTMLElement) {
 
   const info = listItem.querySelector(".info") as HTMLElement;
@@ -285,7 +290,7 @@ function updateLayout() {
     //Images disapper if viewport width is less than 1000px.
     let imageDisplay: string = "contents";
     let gridStyle: string = "1.5fr 9fr 6fr";
-  
+
     if (window.innerWidth < 1000) {
       imageDisplay = "none";
       gridStyle = "1fr 6fr"

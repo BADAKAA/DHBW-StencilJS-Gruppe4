@@ -78,15 +78,15 @@ export class SearchBar {
         componentNotFound();
       }, 10000);
     }
-
-    if (this.position) {
+    
+    if (this.position) { 
       if (this.position=="relative") {
         searchBarContainer.style.height="60px";
         searchBarFrame.style.transform="translateX(-50%)";
       }
-      if (this.position=="absolte") {
+      if (this.position=="absolute") {
         searchBarFrame.style.transform="translateX(-50%)";
-        if (this.offset) searchBarFrame.style.transform+=` translate(-50%,${this.offset})`;
+        if (this.offset) searchBarFrame.style.transform+=` translateY(${this.offset})`;
       }
 
       

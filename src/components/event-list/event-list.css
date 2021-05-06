@@ -1,7 +1,12 @@
 :host {
   display: block;
+  position: relative;
+  right:0px;
+  /*max size for widescreen support*/
+  max-width:2160px;
 }
-h1,h2{
+
+h1,h2 {
   font-family: 'Catamaran', sans-serif;
 }
 
@@ -81,18 +86,11 @@ h4 {
   margin: 0 0 0.2em 0;
   font-weight: normal;
 }
-.adress {
+.adress,.location,.clickDate {
   cursor: pointer;
   transition: transform 0.3s;
 }
-.adress:hover {
-  transform:scale(1.005,1.005)
-}
-.clickDate {
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-.clickDate:hover {
+.adress:hover,.location:hover,.clickDate:hover {
   transform:scale(1.005,1.005)
 }
 
@@ -139,9 +137,12 @@ li:hover .eventImage {
 
 .buttonFrame {
   position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   color:#404040;
   font-size: 12pt;
-  margin: 0 60px 30px 60px;
+  max-width:2160px;
+  padding: 0 60px 10px 60px;
   transition: background 0.2s ease-in;
   font-family: 'Open Sans', 'Catamaran', sans-serif;
 }
@@ -149,6 +150,7 @@ li:hover .eventImage {
 .detailButton {
   display: inline-block;
   cursor: pointer;
+  margin-bottom: 0;
 }
 
 .detailButton:hover {
@@ -158,7 +160,7 @@ li:hover .eventImage {
 
 .sortButton {
   position: absolute;
-  right:0px;
+  right:60px;
   top:0px;
   cursor: pointer;
 }
@@ -168,7 +170,6 @@ li:hover .eventImage {
 
 .yearHeader {
   text-align: center;
-  display: inline-block;
   position: absolute;
   font-size: 1em;
   left: 50%;

@@ -18,6 +18,7 @@
   font-family: 'Catamaran', sans-serif;
   font-weight: 750;
   margin-top: 5px;
+  text-align: center;
 }
 
 #previous{
@@ -25,11 +26,6 @@
   margin-left: 20px;
   cursor:pointer;
 }
-
-#year{
-  margin-left: 32%;
-}
-
 
 #next{
   float: right;

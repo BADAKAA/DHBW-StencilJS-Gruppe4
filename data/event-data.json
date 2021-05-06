@@ -10,7 +10,7 @@
         "country":"Germany",
         "location": "Batschkapp",
         "adress":"Gwinnerstraße 5, 60388 Frankfurt am Main",
-        "description": "'I'm guessing that's about 32 cents flat ... 32 cents was correct.' Listen to Jacob Collier, a sassy, perfect-pitch-posessing musical prodigy, who ain't afraid to show his skills.  Jacob is also the first British artist to win an emmy for each of his first albums. Here he is, on an image taken by <a target='window_new'href='https://www.flickr.com/photos/diaz/25112230401'>Antonm Diaz</a>. If you need any more convincing, just google and listen for yourself.",
+        "description": "'I'm guessing that's about 32 cents flat ... 32 cents was correct.' Listen to Jacob Collier, a sassy, perfect-pitch-posessing musical prodigy, who ain't afraid to show his skills.  Jacob is also the first British artist to win an emmy for each of his first albums. Here he is, on an image taken by <a target='window_new'href='https://www.flickr.com/photos/diaz/25112230401'>Anton Diaz</a>. If you need any more convincing, just google and listen for yourself.",
         "image":"https://live.staticflickr.com/1628/25112230401_c59fd805cd_c.jpg"
       },
       {
@@ -34,8 +34,8 @@
         "country":"Germany",
         "location": "Columbiahalle",
         "adress":"Columbiadamm 13-21, 10965 Berlin",
-        "description": "Do ya like Jazz? Then ya gonna like Cory Henry? Don't you like Jazz? Listen to him anyway! I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now.",
-        "image":"https://images.unsplash.com/photo-1612120773294-22d85807fd6d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+        "description": "Do ya like Jazz? Then ya gonna like Cory Henry! Do ya not like Jazz? Listen to him anyway! He is an American R&B/Soul singer-songwriter, pianist, organist, and music producer. A former member of Snarky Puppy, Henry launched his solo artist career with Art of Love, his first independent release.",
+        "image":"https://upload.wikimedia.org/wikipedia/commons/9/9a/CoryHenryTheFunkApostles-1024x675.jpg"
       },
       {
         "title": "Rhetoric Mastery Seminar",
@@ -57,8 +57,8 @@
         "city":"London",
         "country":"Great Britain",
         "location": "Lyceum Theatre",
-        "adress":"21 Wellington St, London WC2E 7RQ",
-        "description": "Amy Webb, futurist, NYU professor, and award-winning author, has spent much of the last decade researching, discussing, and meeting with people and organizations about artificial intelligence. “We’ve reached a fever pitch in all things AI,” she says. Now it’s time to step back to see where it’s going.<br><a target='window_new' href='https://www.technologyreview.com/2019/02/26/66043/why-ai-is-a-threat-to-democracyand-what-we-can-do-to-stop-it/'>Read more</a>.",
+        "adress":"21 Wellington St, London WC2E 7RQ, United Kingdom",
+        "description": "Amy Webb, futurist, NYU professor, and award-winning author, has spent much of the last decade researching, discussing, and meeting with people and organizations about artificial intelligence. “We’ve reached a fever pitch in all things AI,” she says. Now it’s time to step back to see where it’s going.<br><a target='window_new' href='https://www.technologyreview.com/2019/02/26/66043/why-ai-is-a-threat-to-democracyand-what-we-can-do-to-stop-it/'>read more</a>",
         "image":"https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
       },
       {
@@ -70,7 +70,7 @@
         "country":"Great Britain",
         "location": "University of Sussex",
         "adress":"Falmer, Brighton BN1 9RH",
-        "description": "Recent studies reveal: Stencil.js programming has now surpassed TypeScript as the number one leading cause of death among ON20 students. Visit this event to find out how to write Stencil code without wanting to kill yourself. Just kidding, doing that is of course impossible. This is just a self-help group for dealing with stencil-related PTSD.",
+        "description": "Recent studies reveal: Stencil.js programming has now surpassed TypeScript as the number one leading cause of death among ON20 students. Visit this event to find out how to write Stencil code without wanting to kill yourself. Just kidding, doing that is of course impossible. This is just a self-help group for dealing with stencil-related PTSD. <a target='window_new 'href='https://entwicklergate.de/t/lustige-entwickler-programmierer-memes/371/'>Get help</a>",
         "image":"https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
       }
     ],
