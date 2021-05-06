@@ -31,11 +31,11 @@ export class FlipCard {
 
 
 handleMouseOver() {
-  this.turnable ? (this.flipcard = "flipcard flipcard-mouseover"): "flipcard";
+  this.turnable ? (this.flipcard = "flipcardContainer flipcard-mouseover"): "flipcardContainer";
 }
 
 handleMouseOut() {
-  this.flipcard = "flipcard";
+  this.flipcard = "flipcardContainer";
 }
 
 googleMaps(){
@@ -58,7 +58,7 @@ meme(){
         onMouseOver={() => this.handleMouseOver()}
           onMouseOut={() => this.handleMouseOut()}
           >
-          <div class="flipcard">
+          <div class="flipcardContainer">
             <div class="content">
               <div class="front">
                 {this.img && <img src={this.img}></img>}
