@@ -46,7 +46,7 @@ export class DatePicker {
     this.initialiseMonths(datePickerFrame);
 
     datePickerElement = componentElement.querySelector('.datePicker');
-    backgroundElement = componentElement.querySelector('#datePicker');
+    backgroundElement = componentElement.querySelector('#datePickerFrame');
     yearBox = componentElement.getElementById('year');
 
     //taken from search-bar.tsx
@@ -59,8 +59,8 @@ export class DatePicker {
       }
     }
 
-    if (this.backgroundcolor) {
-      backgroundElement.style.background = this.backgroundcolor;
+    if (this.backgroundcolor) {  
+      datePickerElement.style.background = this.backgroundcolor;
     }
 
   }
@@ -109,7 +109,11 @@ function monthClicked(ev: MouseEvent) {
   monthElement.style.background = '#941C2F';
   monthElement.style.color = '#fffcf9';
 
-  const month: number = monthNames.indexOf(monthElement.textContent) + 1;
+  const monthIndex: number = monthNames.indexOf(monthElement.textContent) + 1;
+
+  let month:string= monthIndex.toString();
+  if (month.length < 2) month = "0" + month;
+
   searchDate(month.toString() + "." + yearBox.textContent, searchedElement);
 }
 

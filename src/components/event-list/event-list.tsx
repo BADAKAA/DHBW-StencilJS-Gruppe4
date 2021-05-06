@@ -4,6 +4,8 @@ let eventData: Array<event>;
 
 let componentElement: ShadowRoot;
 let listElement: HTMLUListElement;
+let detailButton: HTMLElement;
+let sortButton: HTMLElement;
 let expanded: boolean = false;
 let previousYears: Array<number> = [];
 
@@ -61,9 +63,7 @@ function fillList() {
   previousYears = [];
   for (const event of eventData) {
 
-
     const date = new Date(event.date);
-    console.log(convertDate(date));
     
     checkIfYearIsNew(date);
 
@@ -84,10 +84,10 @@ function fillList() {
       <div class="details" style='display:none'>
         <h4 class="adress"><p class="detail">Adress 📍</p>${event.adress}</h4>
         <h4 class="adress"><p class="detail">Location </p>${event.location}</h4>
-        <h4 class="clickDate"><p class="detail">Date</p>${getDayName(date)+", "+(convertDate(date))}</h4>
+        <h4 class="clickDate"><p class="detail">Date <small>📅</small></p>${getDayName(date)+", "+(convertDate(date))}</h4>
         <h4><p class="detail">Time</p>${event.start} – ${event.end} Uhr </h4> 
         <h4 style="margin-top:0.5em"><p class="detail">Description</p></h4>
-        <p class="description">${event.description}<p>
+        ${event.description}
       </div>
     </div>
     <div class="eventImage" style="background-image:${"url("+getImageLink(event)+")"}">
@@ -136,9 +136,8 @@ function openAdress(adress:string) {
 function openDate(input:string) {
 
   const date:Date= new Date(input);
-  const day:string= date.getFullYear() + "/" + date.getMonth() + "/" +  getDay(date);
-  const url = 'https://calendar.google.com/calendar/u/1/r/day/' + day;
-  console.log(url);
+  const day:string= date.getFullYear() + "/" + (date.getMonth()+1).toString() + "/" +  date.getDate();
+  const url = 'https://calendar.google.com/calendar/u/0/r/day/' + day;
   
   window.open(url, '_blank');
 }
@@ -160,8 +159,12 @@ function expandItem(listItem: HTMLElement) {
 
 
 function convertDate(date: Date) {
+let day:string= date.getDate().toString();
+if (day.length < 2) day = "0" + day;
+let month:string= (date.getMonth()+1).toString();
+if (month.length < 2) month = "0" + month;
 
-  return date.getDate() + "." + (date.getMonth()+1).toString()  + "." + date.getFullYear();
+  return day + "." + month + "." + date.getFullYear();
 }
 
 function getDayName(date: Date, short?: boolean): string {
@@ -187,8 +190,7 @@ function getMonth(date: Date): string {
 }
 
 //This code adds a buttons to collapse or expand all elements and to sort items.
-let detailButton: HTMLElement;
-let sortButton: HTMLElement;
+
 
 function addButtons() {
   const buttonFrame = document.createElement("DIV") as HTMLDivElement;
@@ -213,11 +215,24 @@ function addButtons() {
 }
 
 function expandAllItems() {
-
+  //this function forces all elements to collapse or expand, reagrdless of their current state
   const listItems = componentElement.querySelectorAll("LI") as unknown as Array<HTMLElement>;
 
   for (const listItem of listItems) {
-    expandItem(listItem);
+    const info = listItem.querySelector(".info") as HTMLElement;
+    const details = listItem.querySelector(".details") as HTMLElement;
+  
+    if (!expanded) {
+      detailButton.textContent="Hide Details";
+      info.style.display = "none";
+      details.style.display = "contents";
+      listItem.style.cursor="auto"
+    } else {
+      detailButton.textContent="Show Details";
+      info.style.display = "contents";
+      details.style.display = "none";
+      listItem.style.cursor="pointer";
+    }
   }
 
   expanded = !expanded;

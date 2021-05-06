@@ -10,7 +10,7 @@
         "country":"Germany",
         "location": "Batschkapp",
         "adress":"Gwinnerstraße 5, 60388 Frankfurt am Main",
-        "description": "'I'm guessing that's about 32 cents flat ... 32 cents was correct.' Jacob Collier is the first British artist to win an emmy for each of his first albums. Listen to Jacob Collier, a sassy, perfect-pitch-posessing musical prodigy, who ain't afraid to show his skills. Here he is, on an image by Antonm Diaz. https://www.flickr.com/photos/diaz/25112230401. If you need any more convincing, just Google him.",
+        "description": "'I'm guessing that's about 32 cents flat ... 32 cents was correct.' Jacob Collier is the first British artist to win an emmy for each of his first albums. Listen to Jacob Collier, a sassy, perfect-pitch-posessing musical prodigy, who ain't afraid to show his skills. Here he is, on an image taken by Antonm Diaz. https://www.flickr.com/photos/diaz/25112230401. If you need any more convincing, just Google him.",
         "image":"https://live.staticflickr.com/1628/25112230401_c59fd805cd_c.jpg"
       },
       {
@@ -70,7 +70,7 @@
         "country":"Great Britain",
         "location": "University of Sussex",
         "adress":"Falmer, Brighton BN1 9RH",
-        "description": "Recent studies reveal: StencilJS programming is the number one leading cause of death among ON20 students. Visit this event to find out how to write Stencil Code without wanting to kill yourself. Just kidding of course, such a thing is impossible. ;)",
+        "description": "Recent studies reveal: Stencil.js programming is the number one leading cause of death among ON20 students. Visit this event to find out how to write Stencil Code without wanting to kill yourself. Just kidding of course, such a thing is impossible. If one still has to do it, one might as well do it right. With enough time an effort, a complex and well-designed event site that automatically adapts to data from a .json-file might be possible.",
         "image":"https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
       }
     ],

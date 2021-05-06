@@ -25,7 +25,7 @@ li {
   border-color: #941C2F;
   border-width: 0px 0px 0px 5px;
   transition: opacity 1s, border-width 0.5s,margin 0.5s;
-  padding-left: 30px;
+  padding-left: 2em;
   padding-right: 2em;
 }
 
@@ -51,6 +51,7 @@ li {
 }
 .date {
   text-align: center;
+  padding: 0 5px 0 5px;
 }
 .dateNumber {
   font-size:2em;
@@ -108,6 +109,7 @@ h4::after{
 .description {
   text-align:justify;
   font-size: 0.9em;
+  max-width: 75vw;
 }
 .details {
   display: none;
@@ -164,9 +166,9 @@ li:hover .eventImage {
   display: inline-block;
   position: absolute;
   font-size: 1em;
-  left:50%;
+  left: 50%;
   width: 4em;
-  transform: translate(-50%,-50%);
+  transform: translate(0,-50%);
   background-color: var(--custom-white);
   z-index: 1000;
 }
