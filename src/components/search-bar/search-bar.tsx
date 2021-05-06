@@ -3,10 +3,11 @@
 
 import { Component, Host, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
 import { getSearchedElement } from '../../utils/findElement';
-import { resetSearch, searchElement } from '../../utils/searchElement';
+import { clearDateSearch, resetSearch, searchElement } from '../../utils/searchElement';
 //variables to control this component
 let componentElement: ShadowRoot;
-let searchBarContainer: HTMLDivElement;
+let searchBarContainer:HTMLElement;
+let searchBarFrame: HTMLDivElement;
 let searchIcon: HTMLImageElement;
 let searchBar: HTMLInputElement;
 //variables to store user input preperties
@@ -36,8 +37,10 @@ export class SearchBar {
     return (
       <Host>
         <div class="searchBarContainer">
-          <img class="searchIcon" src="/assets/search.png"></img>
-          <input type="text" id="searchBar" placeholder="Suche..."></input>
+          <div class="searchBarFrame">
+            <img class="searchIcon" src="/assets/search.png"></img>
+            <input type="text" id="searchBar" placeholder="Suche..."></input>
+          </div>
         </div>
       </Host>
     );
@@ -46,6 +49,7 @@ export class SearchBar {
   componentDidLoad() {
     //declare variables to control this component
     componentElement = this.el.shadowRoot;
+    searchBarFrame = componentElement.querySelector(".searchBarFrame");
     searchBarContainer = componentElement.querySelector(".searchBarContainer");
     searchIcon = componentElement.querySelector(".searchIcon");
     searchBar = componentElement.querySelector("#searchBar");
@@ -72,11 +76,16 @@ export class SearchBar {
         componentNotFound();
       }, 10000);
     }
-    if (this.position) searchBarContainer.style.position = this.position;
+    if (this.position) {
+      if (this.position=="relative") {
+        searchBarContainer.style.height="60px";
+        searchBarFrame.style.transform="translate(-50%)"
+      }
+    }
 
     if (this.width) {
       if (this.width.includes("px") || this.width.includes("%") || this.width.includes("vw")) {
-        searchBarContainer.style.width = this.width;
+        searchBarFrame.style.width = this.width;
       } else {
         console.log('%cPlease input a valid width. Permitted units are: "px", "%", "vw" ("vw"="%")', "color:orange; font-weight:bold;font-family:'Open sans'");
         throw new Error('Please input a valid width. Permitted units are: "px", "%", "vw" ("vw"="%")');
@@ -85,7 +94,16 @@ export class SearchBar {
     if (this.color) searchIcon.style.background = this.color;
     
   }
-
+  
+  clearSearch() {
+    if (searchBar.value != "") {
+      clearDateSearch();
+      resetSearch();
+      searchBar.value = "";
+      searchIcon.src = "/assets/search.png";
+      this.searchCleared.emit("custom value"); 
+    }
+  }
   search() {
 
     const input: string = searchBar.value.toLowerCase();
@@ -98,19 +116,9 @@ export class SearchBar {
 
   }
 
-  clearSearch(ev?:MouseEvent) {
-    console.log(ev);
-    
-    if (searchBar.value != "") {
-      resetSearch();
-      searchBar.value = "";
-      searchIcon.src = "/assets/search.png";
-      this.searchCleared.emit("custom value"); 
-    }
-  }
 
   initializeSearchBar() {
-    searchBar.addEventListener("input", this.search);
+    searchBar.addEventListener("keydown", this.search);
     searchIcon.addEventListener("click", ()=> this.clearSearch());
     searchedElement = getSearchedElement(componentToBeSearchedIn, elementToBeSearchedIn);
     console.log("%cSearch bar target found.\nThis is the element the seach bar is active in: ",

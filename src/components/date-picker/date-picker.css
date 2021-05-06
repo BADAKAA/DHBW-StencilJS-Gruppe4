@@ -1,8 +1,13 @@
+:host {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  margin-top: 50px;
+
+}
 .datePicker{
   width: 330px;
-  position: relative;
-  margin: 50px;
-  margin-left: 350px;
   border:1px solid lightgray;
   border-radius: 30px;
   font-size: 16pt;

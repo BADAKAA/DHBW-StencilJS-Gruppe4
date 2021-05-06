@@ -3,16 +3,21 @@
 }
 
 .searchBarContainer {
-  position: absolute;
-  transform: translate(-50%, -50%);
-
-  left: 50%;
-  width: 50%;
-  height: 60px;
+  position: relative;
+  width: 100%;
   z-index: 1000;
 
 }
 
+.searchBarFrame {
+
+  position: absolute;
+  left: 50%;
+  transform:translateX(-50%);
+  width: 100%;
+  height: 60px;
+  z-index: 1000;
+}
 
 #searchBar {
 border: 1px solid lightgray;
