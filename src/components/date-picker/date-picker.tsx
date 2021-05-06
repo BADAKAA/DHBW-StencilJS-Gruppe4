@@ -42,7 +42,7 @@ export class DatePicker {
 
   componentDidLoad() {
     componentElement = this.el.shadowRoot;
-    const datePickerFrame = componentElement.querySelector('#datePickerFrame') as HTMLDivElement; //wenn die component geladen hat, wird ein Div element genommen und darin die Monate dargestellt  
+    const datePickerFrame = componentElement.querySelector('#datePickerFrame') as HTMLDivElement; 
     this.initialiseMonths(datePickerFrame);
 
     datePickerElement = componentElement.querySelector('.datePicker');
@@ -101,6 +101,7 @@ export class DatePicker {
   }
 
 }
+
 
 function monthClicked(ev: MouseEvent) {
   const monthElement = ev.target as HTMLDivElement;
