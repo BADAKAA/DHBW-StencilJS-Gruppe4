@@ -1,7 +1,7 @@
 //The main logic fpr the search bar comes from this tutorial:
 //https://www.youtube.com/watch?v=3NG8zy0ywIk
 
-import { Component, Host, h, Prop, Element, Event, EventEmitter, Method } from '@stencil/core';
+import { Component, Host, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
 import { getSearchedElement } from '../../utils/findElement';
 import { clearDateSearch, resetSearch, searchElement } from '../../utils/searchElement';
 //variables to control this component
