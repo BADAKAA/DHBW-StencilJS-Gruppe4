@@ -1,23 +1,17 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, Element, h } from '@stencil/core';
 
-//fetch event data
-let eventData:any;
-let eventInformation:any;
-fetch('../data/event-data.json')
-.then(results => results.json())
-.then(data => {eventData=data.events})
-.then(()=>fillList())
+let eventData: any;
 
 let componentElement: ShadowRoot;
 let listElement: HTMLUListElement;
-let expanded:boolean=false;
+let expanded: boolean = false;
 @Component({
   tag: 'event-list',
   styleUrl: 'event-list.css',
   shadow: true,
 })
 export class EventList {
-
+  @Element() el:HTMLElement;
   render() {
     return (
       <Host>
@@ -26,24 +20,32 @@ export class EventList {
     );
   }
   componentDidLoad() {
-    referenceObjects();
+    referenceObjects(this.el);  
+    //Event data is fetched AFTER elements have been referenced. Otherwise, there would be nowhere to append elements in fillList()
+    fetch('../data/event-data.json')
+      .then(results => results.json())
+      .then(data => {
+      eventData = data.events;
+      fillList();
+      console.log(`%cEvent data was last updated ${data.lastUpdated}.`, "color:darkgreen; font-family:'Open Sans', sans-serif;line-height:20pt")
+      })
     addButtons();
   }
 }
 
-function referenceObjects() {
-  componentElement = document.querySelector("event-list").shadowRoot;
+function referenceObjects(hostElement:HTMLElement) {
+  componentElement = hostElement.shadowRoot;
   listElement = componentElement.querySelector("ul");
 }
 
 function fillList() {
 
-  listElement.innerHTML="";
+  listElement.innerHTML = "";
   for (const event of eventData) {
 
     const listItem: HTMLElement = document.createElement("LI");
 
-    listItem.innerHTML =`<h2 class="eventTitle">${event.title}</h2>
+    listItem.innerHTML = `<h2 class="eventTitle">${event.title}</h2>
                         <div class="info">
                         <h3>${event.location}</h3>
                         <p>${(convertDate(event.date))}</p>
@@ -56,6 +58,7 @@ function fillList() {
                         </div>`
     listItem.addEventListener("click", () => expandItem(listItem));
     listElement.appendChild(listItem);
+    
   }
 }
 
@@ -77,14 +80,21 @@ function expandItem(listItem: HTMLElement) {
 function convertDate(date: string) {
 
   const dateComponents: Array<string> = date.split("-");
-  return dateComponents[2] + "." + dateComponents[1] + "." + dateComponents[0];
+  const convertedDate:Date = new Date(date);
+  return getDay(convertedDate.getDay()) +", "+ dateComponents[2] + "." + dateComponents[1] + "." + dateComponents[0];
 }
 
+function getDay(weekdayNumber:number):string {
 
-//This code adds a button to collapse or expand all elements.
-//To use it, call the addButton() function in componentDidLoad().
+  const weekdays:Array<string> = [
+    "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+  ]
+  return weekdays[weekdayNumber];
+}
+//This code adds a buttons to collapse or expand all elements and to sort items.
+//It is used by calling the  the addButton() function in componentDidLoad().
 let detailButton: HTMLElement;
-let sortButton:HTMLElement;
+let sortButton: HTMLElement;
 
 function addButtons() {
   detailButton = document.createElement("p");
@@ -94,7 +104,7 @@ function addButtons() {
   sortButton = document.createElement("p");
   sortButton.textContent = "Sort Items";
   sortButton.classList.add("sortButton");
-  
+
   componentElement.insertBefore(detailButton, listElement);
   componentElement.insertBefore(sortButton, listElement);
 
@@ -118,47 +128,46 @@ function expandAllItems() {
       info.style.display = "none";
       details.style.display = "contents";
       detailButton.textContent = "Hide Details";
-    } else if (expanded){
+    } else if (expanded) {
       info.style.display = "contents";
       details.style.display = "none";
       detailButton.textContent = "Show Details";
     }
   }
-  expanded=!expanded;
+  expanded = !expanded;
 }
 
 function sortItems() {
-  eventInformation=eventData;
+
 
   if (sortButton.textContent.includes("↓")) {
     sortButton.textContent = "Sort Items ↑";
-    eventInformation.sort(compareDescending);
+    eventData.sort(compareDescending);
 
   } else {
     sortButton.textContent = "Sort Items ↓";
-    eventInformation.sort(compareAscending);
+    eventData.sort(compareAscending);
   }
-  eventData = eventInformation;
+
   fillList();
 }
 
-function compareAscending( a, b ) {
-  //sorting function from https://stackoverflow.com/a/1129270
-  if ( a.date < b.date ){
+function compareAscending(a, b) {
+  //sorting function adapted from https://stackoverflow.com/a/1129270
+  if (a.date < b.date) {
     return -1;
   }
-  if ( a.date > b.date ){
+  if (a.date > b.date) {
     return 1;
   }
   return 0;
 }
 
-function compareDescending( a, b ) {
-  //sorting function from https://stackoverflow.com/a/1129270
-  if ( a.date > b.date ){
+function compareDescending(a, b) {
+  if (a.date > b.date) {
     return -1;
   }
-  if ( a.date < b.date ){
+  if (a.date < b.date) {
     return 1;
   }
   return 0;
