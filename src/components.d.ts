@@ -49,6 +49,17 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface MyMenu {
+        "href": string;
+        "id": string;
+        "link": string;
+        "name": string;
+    }
+    interface MySmlink {
+        "icon": string;
+        "link": string;
+        "name": string;
+    }
     interface SearchBar {
         "color": string;
         "component": string;
@@ -95,6 +106,18 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLMyMenuElement extends Components.MyMenu, HTMLStencilElement {
+    }
+    var HTMLMyMenuElement: {
+        prototype: HTMLMyMenuElement;
+        new (): HTMLMyMenuElement;
+    };
+    interface HTMLMySmlinkElement extends Components.MySmlink, HTMLStencilElement {
+    }
+    var HTMLMySmlinkElement: {
+        prototype: HTMLMySmlinkElement;
+        new (): HTMLMySmlinkElement;
+    };
     interface HTMLSearchBarElement extends Components.SearchBar, HTMLStencilElement {
     }
     var HTMLSearchBarElement: {
@@ -108,6 +131,8 @@ declare global {
         "flip-card": HTMLFlipCardElement;
         "image-slider": HTMLImageSliderElement;
         "my-component": HTMLMyComponentElement;
+        "my-menu": HTMLMyMenuElement;
+        "my-smlink": HTMLMySmlinkElement;
         "search-bar": HTMLSearchBarElement;
     }
 }
@@ -155,6 +180,18 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface MyMenu {
+        "href"?: string;
+        "id"?: string;
+        "link"?: string;
+        "name"?: string;
+        "onScroll"?: (event: CustomEvent<any>) => void;
+    }
+    interface MySmlink {
+        "icon"?: string;
+        "link"?: string;
+        "name"?: string;
+    }
     interface SearchBar {
         "color"?: string;
         "component"?: string;
@@ -170,6 +207,8 @@ declare namespace LocalJSX {
         "flip-card": FlipCard;
         "image-slider": ImageSlider;
         "my-component": MyComponent;
+        "my-menu": MyMenu;
+        "my-smlink": MySmlink;
         "search-bar": SearchBar;
     }
 }
@@ -183,6 +222,8 @@ declare module "@stencil/core" {
             "flip-card": LocalJSX.FlipCard & JSXBase.HTMLAttributes<HTMLFlipCardElement>;
             "image-slider": LocalJSX.ImageSlider & JSXBase.HTMLAttributes<HTMLImageSliderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "my-menu": LocalJSX.MyMenu & JSXBase.HTMLAttributes<HTMLMyMenuElement>;
+            "my-smlink": LocalJSX.MySmlink & JSXBase.HTMLAttributes<HTMLMySmlinkElement>;
             "search-bar": LocalJSX.SearchBar & JSXBase.HTMLAttributes<HTMLSearchBarElement>;
         }
     }
