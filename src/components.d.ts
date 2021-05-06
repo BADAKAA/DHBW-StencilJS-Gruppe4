@@ -6,14 +6,6 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface DatePicker {
-        "backgroundcolor": string;
-        "width": string;
-    }
-        "component"?: string;
-        "element": string;
-        "width": string;
-    }
     interface CookieBanner {
         "bannertext": string;
         "buttontext": string;
@@ -21,20 +13,18 @@ export namespace Components {
         "link"?: string;
         "linkguidelines"?: string;
     }
+    interface DatePicker {
+        "backgroundcolor": string;
+        "component"?: string;
+        "element": string;
+        "width": string;
+    }
     interface EventList {
         "buttons": boolean;
     }
     interface ExampleComponent {
         "exampleProp": string;
         "exampleToUpperCase": () => Promise<void>;
-    }
-    interface HeartButton {
-        "clickcolor": string;
-        "color": string;
-        "height": string;
-        "icon": string;
-        "iconsize": string;
-        "width": string;
     }
     interface FaqComponent {
         "answer": string;
@@ -51,6 +41,14 @@ export namespace Components {
         "textback"?: string;
         "textfront"?: string;
         "turnable": boolean;
+    }
+    interface HeartButton {
+        "clickcolor": string;
+        "color": string;
+        "height": string;
+        "icon": string;
+        "iconsize": string;
+        "width": string;
     }
     interface ImageSlider {
         "autoplay"?: string;
@@ -95,17 +93,17 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLDatePickerElement extends Components.DatePicker, HTMLStencilElement {
-    }
-    var HTMLDatePickerElement: {
-        prototype: HTMLDatePickerElement;
-        new (): HTMLDatePickerElement;
-    }
     interface HTMLCookieBannerElement extends Components.CookieBanner, HTMLStencilElement {
     }
     var HTMLCookieBannerElement: {
         prototype: HTMLCookieBannerElement;
         new (): HTMLCookieBannerElement;
+    };
+    interface HTMLDatePickerElement extends Components.DatePicker, HTMLStencilElement {
+    }
+    var HTMLDatePickerElement: {
+        prototype: HTMLDatePickerElement;
+        new (): HTMLDatePickerElement;
     };
     interface HTMLEventListElement extends Components.EventList, HTMLStencilElement {
     }
@@ -119,12 +117,6 @@ declare global {
         prototype: HTMLExampleComponentElement;
         new (): HTMLExampleComponentElement;
     };
-    interface HTMLHeartButtonElement extends Components.HeartButton, HTMLStencilElement {
-    }
-    var HTMLHeartButtonElement: {
-        prototype: HTMLHeartButtonElement;
-        new (): HTMLHeartButtonElement;
-    }
     interface HTMLFaqComponentElement extends Components.FaqComponent, HTMLStencilElement {
     }
     var HTMLFaqComponentElement: {
@@ -136,6 +128,12 @@ declare global {
     var HTMLFlipCardElement: {
         prototype: HTMLFlipCardElement;
         new (): HTMLFlipCardElement;
+    };
+    interface HTMLHeartButtonElement extends Components.HeartButton, HTMLStencilElement {
+    }
+    var HTMLHeartButtonElement: {
+        prototype: HTMLHeartButtonElement;
+        new (): HTMLHeartButtonElement;
     };
     interface HTMLImageSliderElement extends Components.ImageSlider, HTMLStencilElement {
     }
@@ -168,15 +166,13 @@ declare global {
         new (): HTMLSearchBarElement;
     };
     interface HTMLElementTagNameMap {
-        "date-picker": HTMLDatePickerElement;
-        "event-list": HTMLEventListElement;
-        "example-component": HTMLExampleComponentElement;
-        "heart-button": HTMLHeartButtonElement;
         "cookie-banner": HTMLCookieBannerElement;
+        "date-picker": HTMLDatePickerElement;
         "event-list": HTMLEventListElement;
         "example-component": HTMLExampleComponentElement;
         "faq-component": HTMLFaqComponentElement;
         "flip-card": HTMLFlipCardElement;
+        "heart-button": HTMLHeartButtonElement;
         "image-slider": HTMLImageSliderElement;
         "my-component": HTMLMyComponentElement;
         "my-menu": HTMLMyMenuElement;
@@ -185,14 +181,6 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface DatePicker {
-        "backgroundcolor"?: string;
-        "width"?: string;
-    }
-        "component"?: string;
-        "element"?: string;
-        "width"?: string;
-    }
     interface CookieBanner {
         "bannertext"?: string;
         "buttontext"?: string;
@@ -200,20 +188,18 @@ declare namespace LocalJSX {
         "link"?: string;
         "linkguidelines"?: string;
     }
+    interface DatePicker {
+        "backgroundcolor"?: string;
+        "component"?: string;
+        "element"?: string;
+        "width"?: string;
+    }
     interface EventList {
         "buttons"?: boolean;
     }
     interface ExampleComponent {
         "exampleProp"?: string;
         "onExampleEvent"?: (event: CustomEvent<string>) => void;
-    }
-    interface HeartButton {
-        "clickcolor"?: string;
-        "color"?: string;
-        "height"?: string;
-        "icon"?: string;
-        "iconsize"?: string;
-        "width"?: string;
     }
     interface FaqComponent {
         "answer"?: string;
@@ -230,6 +216,14 @@ declare namespace LocalJSX {
         "textback"?: string;
         "textfront"?: string;
         "turnable"?: boolean;
+    }
+    interface HeartButton {
+        "clickcolor"?: string;
+        "color"?: string;
+        "height"?: string;
+        "icon"?: string;
+        "iconsize"?: string;
+        "width"?: string;
     }
     interface ImageSlider {
         "autoplay"?: string;
@@ -275,15 +269,13 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     interface IntrinsicElements {
-        "date-picker": DatePicker;
-        "event-list": EventList;
-        "example-component": ExampleComponent;
-        "heart-button": HeartButton;
         "cookie-banner": CookieBanner;
+        "date-picker": DatePicker;
         "event-list": EventList;
         "example-component": ExampleComponent;
         "faq-component": FaqComponent;
         "flip-card": FlipCard;
+        "heart-button": HeartButton;
         "image-slider": ImageSlider;
         "my-component": MyComponent;
         "my-menu": MyMenu;
@@ -295,15 +287,13 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "date-picker": LocalJSX.DatePicker & JSXBase.HTMLAttributes<HTMLDatePickerElement>;
-            "event-list": LocalJSX.EventList & JSXBase.HTMLAttributes<HTMLEventListElement>;
-            "example-component": LocalJSX.ExampleComponent & JSXBase.HTMLAttributes<HTMLExampleComponentElement>;
-            "heart-button": LocalJSX.HeartButton & JSXBase.HTMLAttributes<HTMLHeartButtonElement>;
             "cookie-banner": LocalJSX.CookieBanner & JSXBase.HTMLAttributes<HTMLCookieBannerElement>;
+            "date-picker": LocalJSX.DatePicker & JSXBase.HTMLAttributes<HTMLDatePickerElement>;
             "event-list": LocalJSX.EventList & JSXBase.HTMLAttributes<HTMLEventListElement>;
             "example-component": LocalJSX.ExampleComponent & JSXBase.HTMLAttributes<HTMLExampleComponentElement>;
             "faq-component": LocalJSX.FaqComponent & JSXBase.HTMLAttributes<HTMLFaqComponentElement>;
             "flip-card": LocalJSX.FlipCard & JSXBase.HTMLAttributes<HTMLFlipCardElement>;
+            "heart-button": LocalJSX.HeartButton & JSXBase.HTMLAttributes<HTMLHeartButtonElement>;
             "image-slider": LocalJSX.ImageSlider & JSXBase.HTMLAttributes<HTMLImageSliderElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "my-menu": LocalJSX.MyMenu & JSXBase.HTMLAttributes<HTMLMyMenuElement>;
