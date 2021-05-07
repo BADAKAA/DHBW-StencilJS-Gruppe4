@@ -12,7 +12,8 @@ body {
 background: var(--custom-white);
 }
 .padding {
-    padding:0px 20px 0 20px;
+    padding: 0 20px 0 20px;
+    position: relative;
 }
 p {
     color:var(--custom-black);
@@ -92,7 +93,8 @@ a {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
-    padding-top: 50px;
+    padding-top: 100px;
+    padding-bottom: 40px;
     justify-items: center;
 }
 .gridHeader {
@@ -134,5 +136,12 @@ footer {
 .title {
     justify-self:start;
     margin-left: 60px;
-    font-weight: 200;
+    font-weight: 100;
+}
+.faqImage {
+    position: absolute;
+    width:25%;
+    top:80px;
+    right:25%;
+    transform: translateX(50%);
 }

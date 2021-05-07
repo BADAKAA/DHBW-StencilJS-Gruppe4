@@ -6,12 +6,12 @@
   
 .smlink{
   
- 
+  transition: opacity 0.3s;
   box-sizing: border-box;
   
   margin:40px;
   float: right;
-    
+  cursor: pointer;
 }
 
 img{

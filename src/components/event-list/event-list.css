@@ -87,10 +87,14 @@ h4 {
   margin: 0 0 0.2em 0;
   font-weight: normal;
 }
+
 .adress,.location,.clickDate {
   cursor: pointer;
+  display:table;
   transition: transform 0.3s;
+  
 }
+
 .adress:hover,.location:hover,.clickDate:hover {
   transform:scale(1.005,1.005)
 }
@@ -110,6 +114,7 @@ h4::after{
   text-align:justify;
   font-size: 0.9em;
   max-width: 75vw;
+  cursor: pointer;
 }
 .details {
   display: none;
@@ -117,6 +122,7 @@ h4::after{
 }
 .eventText {
   margin:0;
+  cursor: pointer;
   font-size: inherit;
 }
 .eventImage {
@@ -206,6 +212,5 @@ hr {
   animation: 1.5s ease-out 0s 1 appearFromBottom;
 }
 .fadeIn {
-  opacity: 0;
-  animation: 2s ease-out 1s fadeIn;
+  animation: 2s ease-out 0s fadeIn;
 }

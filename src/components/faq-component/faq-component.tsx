@@ -44,11 +44,11 @@ function makeAnswerInvisible(ev:MouseEvent) {
   const targetElement = ev.target as HTMLElement;
   const textBody = targetElement.parentElement.parentElement.querySelector(".textBody") as HTMLDivElement;
   console.log(textBody);
-  if (textBody.style.display =="contents") {
+  if (textBody.style.display =="inline-block") {
     textBody.style.display = "none"
   }
   else {
-    textBody.style.display = "contents";
+    textBody.style.display = "inline-block";
   }
 }
 

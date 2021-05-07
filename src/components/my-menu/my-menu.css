@@ -6,8 +6,9 @@
 
 
 .button {
-  background-color: #941c2f;
+  background: #941c2f;
   border: 1px solid #941c2f;
+  border-radius: 0;
   color:#fffcfe;
   font-family: 'Catamaran', 'open-sans';
   font-size: 1.5rem;
@@ -23,8 +24,7 @@
   float: left;
   position: sticky;
   cursor: pointer;
-  transition: font-size 0.3s;
-
+  transition: font-size 0.3s, background 0.3s;
 }
 
 
@@ -39,7 +39,9 @@ button:hover{
   color:#941c2f;
   
 }
-
+button:focus {
+  outline: none;
+}
 
 .footer{
   position: fixed;
