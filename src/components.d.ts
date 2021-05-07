@@ -26,6 +26,7 @@ export namespace Components {
         "width": string;
     }
     interface EventList {
+        "animated": boolean;
         "buttons": boolean;
         "color": string;
     }
@@ -220,6 +221,7 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     interface EventList {
+        "animated"?: boolean;
         "buttons"?: boolean;
         "color"?: string;
     }

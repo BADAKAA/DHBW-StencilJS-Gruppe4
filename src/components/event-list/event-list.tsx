@@ -28,6 +28,7 @@ export interface event {
 })
 export class EventList {
   @Prop() buttons: boolean;
+  @Prop() animated:boolean;
   @Prop() color:string;
   @Element() el: HTMLElement;
   render() {
@@ -51,6 +52,9 @@ export class EventList {
     
     if (this.buttons) addButtons();
     if (this.color) this.el.style.cssText="--line-color:" + this.color;
+    if (this.animated) listElement.classList.add("animated");
+    if (this.animated && this.buttons) componentElement.querySelector(".buttonFrame").classList.add("fadeIn");
+    
   }
 }
 
