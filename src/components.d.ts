@@ -79,10 +79,10 @@ export namespace Components {
         "middle": string;
     }
     interface MyMenu {
-        "href": string;
-        "id": string;
-        "link": string;
+        "element": string;
         "name": string;
+        "url": string;
+        "window": string;
     }
     interface MySmlink {
         "icon": string;
@@ -273,11 +273,10 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface MyMenu {
-        "href"?: string;
-        "id"?: string;
-        "link"?: string;
+        "element"?: string;
         "name"?: string;
-        "onScroll"?: (event: CustomEvent<any>) => void;
+        "url"?: string;
+        "window"?: string;
     }
     interface MySmlink {
         "icon"?: string;
