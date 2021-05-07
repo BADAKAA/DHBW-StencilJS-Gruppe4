@@ -2,7 +2,7 @@
 //https://www.youtube.com/watch?v=3NG8zy0ywIk
 
 import { Component, Host, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
-import { getSearchedElement } from '../../utils/findElement';
+import { componentNotFound, getSearchedElement } from '../../utils/findElement';
 import { clearDateSearch, resetSearch, searchElement } from '../../utils/searchElement';
 //variables to control this component
 let componentElement: ShadowRoot;
@@ -26,12 +26,16 @@ export class SearchBar {
   @Prop() component: string;
   @Prop() element: string;
   @Prop() position: string;
-  @Prop() color: string;
+  @Prop() icon: string;
   @Prop() width: string;
+  @Prop() height?:string;
   @Prop() google: string;
   @Prop() offset?:string;
   @Prop() justify?:string;
-  @Prop() margin:string;
+  @Prop() margin?:string;
+  @Prop() design?:string;
+  @Prop() background?: string;
+
 
   @Element() el: HTMLElement;
   @Event() searchCleared: EventEmitter<string>;
@@ -56,10 +60,11 @@ export class SearchBar {
     searchBarContainer = componentElement.querySelector(".searchBarContainer");
     searchIcon = componentElement.querySelector(".searchIcon");
     searchBar = componentElement.querySelector("#searchBar");
+
     //check if google-mode was activated by user through "google" property
     if (this.google && this.google == "true") {
       searchIcon.addEventListener("click", googleSearch);
-      searchBar.addEventListener("keypress", (e)=> {if(e.key=="Enter") googleSearch()});
+      searchBar.addEventListener("keypress", (e)=> { if(e.key=="Enter") googleSearch() });
       searchBar.placeholder = "Search Google...";
 
     } else {
@@ -77,17 +82,26 @@ export class SearchBar {
       //If the element to be searched in cannot be found after 10 seconds, the search for it is ended.
       setTimeout(() => {
         clearInterval(checkIfElementIsReady);
-        componentNotFound();
+        componentNotFound(searchedElement);
       }, 10000);
     }
-
+    //apply user input style porperties
     if (this.offset) searchBarFrame.style.transform+=` translateY(${this.offset})`;
 
     if (this.position && this.position=="absolute") searchBarContainer.style.position="absolute"; 
     
-    if (this.margin) searchBarFrame.style.margin=this.margin; 
+    if (this.margin)      searchBarFrame.style.margin=this.margin;
 
+    if (this.icon)       searchIcon.style.background = this.icon;
+
+    if (this.background)  searchBar.style.background = this.background;
     
+    if (checkIfValid(this.width))  searchBarFrame.style.width = this.width;
+    
+    if (checkIfValid(this.height)) searchBarFrame.style.height = this.height;
+
+    style(this.design);
+
     if (this.justify) {
       let justify="center";
       
@@ -95,23 +109,9 @@ export class SearchBar {
       if (this.justify=="left") justify="flex-start";
       
       searchBarContainer.style.justifyContent=justify;
-    }
-    
-      
-
-    if (this.width) {
-      if (this.width.includes("px") || this.width.includes("%") || this.width.includes("vw")) {
-        searchBarFrame.style.width = this.width;
-      } else {
-        console.log('%cPlease input a valid width. Permitted units are: "px", "%", "vw" ("vw"="%")', "color:orange; font-weight:bold;font-family:'Open sans'");
-        throw new Error('Please input a valid width. Permitted units are: "px", "%", "vw" ("vw"="%")');
-      }
-    }
-    
-
-    if (this.color) searchIcon.style.background = this.color;
-    
+    } 
   }
+
   clearSearch() {
     if (searchBar.value != "") {
     searchBar.value = "";
@@ -153,21 +153,18 @@ function googleSearch() {
   window.open(url, '_blank');
 }
 
-function componentNotFound() {
-  if (!searchedElement) {
-    const errorMessage: string = "We looked everywhere, but the element you want to search in cannot be found."
-    const tipps: string =
-      "Try checking the spelling of your element.\n\n" +
-      `If you want to search within a component that has a shadow root, make sure to use the component-property (component="COMPONENT-NAME").\n\n` +
-      "When searching for an element by id, put a hastag (#) in front of the id.\n" +
-      "When searching by class, put a dot (.) in front of the class name.\n" +
-      "If you are searching by type you do not need to put anything in front of the type name (e.g. element='ul').\n";
-
-    console.log("%c\n" + errorMessage,
-      "color:orangered; font-weight:bold;font-family:'Open sans', sans-serif;line-height:22pt"
-    );
-    console.log("%c\n" + tipps,
-      "color:darkgreen; font-weight:bold;font-family:'Open sans', sans-serif;line-height:14pt"
-    );
-  }
+function style(design: string | undefined) {
+ if (design && design=="angular") {
+  searchBar.style.borderRadius="0px";
+  searchIcon.style.borderRadius="0px";
+  searchIcon.style.height="60px";
+  searchIcon.style.width="60px";
+  searchIcon.style.left="0px";
+ } 
+}
+function checkIfValid(input: string):boolean {
+  if (!input) return false;
+  if (input.includes("px") || input.includes("%") || input.includes("vw")) return true;
+  console.log('%cPlease input a valid width or height. Permitted units are: "px", "%", "vw" ("vw"="%")', "color:darkorange; font-weight:bold;font-family:'Open sans'");
+  return false;
 }

@@ -27,6 +27,7 @@ export namespace Components {
     }
     interface EventList {
         "buttons": boolean;
+        "color": string;
     }
     interface ExampleComponent {
         "exampleProp": string;
@@ -89,12 +90,15 @@ export namespace Components {
         "name": string;
     }
     interface SearchBar {
-        "color": string;
+        "background"?: string;
         "component": string;
+        "design"?: string;
         "element": string;
         "google": string;
+        "height"?: string;
+        "icon": string;
         "justify"?: string;
-        "margin": string;
+        "margin"?: string;
         "offset"?: string;
         "position": string;
         "width": string;
@@ -217,6 +221,7 @@ declare namespace LocalJSX {
     }
     interface EventList {
         "buttons"?: boolean;
+        "color"?: string;
     }
     interface ExampleComponent {
         "exampleProp"?: string;
@@ -280,10 +285,13 @@ declare namespace LocalJSX {
         "name"?: string;
     }
     interface SearchBar {
-        "color"?: string;
+        "background"?: string;
         "component"?: string;
+        "design"?: string;
         "element"?: string;
         "google"?: string;
+        "height"?: string;
+        "icon"?: string;
         "justify"?: string;
         "margin"?: string;
         "offset"?: string;

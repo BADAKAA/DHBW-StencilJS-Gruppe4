@@ -28,6 +28,7 @@ export interface event {
 })
 export class EventList {
   @Prop() buttons: boolean;
+  @Prop() color:string;
   @Element() el: HTMLElement;
   render() {
     return (
@@ -49,6 +50,7 @@ export class EventList {
       })
     
     if (this.buttons) addButtons();
+    if (this.color) this.el.style.cssText="--line-color:" + this.color;
   }
 }
 

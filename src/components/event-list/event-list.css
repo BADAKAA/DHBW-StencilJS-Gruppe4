@@ -4,6 +4,7 @@
   right:0px;
   /*max size for widescreen support*/
   max-width:2160px;
+  --line-color: MidnightBlue;
 }
 
 h1,h2 {
@@ -27,7 +28,7 @@ li {
 
 .event {
   border-style: solid;
-  border-color: #941C2F;
+  border-color: var(--line-color);
   border-width: 0px 0px 0px 5px;
   transition: opacity 1s, border-width 0.5s,margin 0.5s;
   padding-left: 2em;
