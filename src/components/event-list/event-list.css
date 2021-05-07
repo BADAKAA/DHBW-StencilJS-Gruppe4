@@ -189,6 +189,13 @@ li:hover .eventImage {
 hr {
   opacity: 0.3;
 }
+a {
+  color:#1f487E;
+  transition: color 0.5s;
+}
+a:hover {
+  color: #247Ba0;
+}
 
 @keyframes appearFromBottom {
   0% {
