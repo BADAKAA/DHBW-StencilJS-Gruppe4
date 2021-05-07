@@ -8,9 +8,9 @@ import { Component, Host, h, Prop, Event, EventEmitter, Listen} from '@stencil/c
 //enthält  events, location, persönliche eventübersicht
 export class MyMenu {
 @Prop() name: string;
-@Prop() id: string;
+@Prop() targetElement: string;
 @Prop() link: string;
-@Prop() href: string;
+
 
   //@Prop() class?: string;
 
@@ -22,17 +22,11 @@ export class MyMenu {
 
   //Event welches ausgelöst wird, sobald ein button click erfolgt
   event(){
-    let clicked_id = this.id; 
-                                   //get the id of the caller element (button)
-    if(clicked_id == "event"){    //wenn die ID des buttons "event" ist
-      events();                   //führe Methode events() aus
-    }
-    else if (clicked_id == "location"){ //wenn die ID des buttons "location" ist
-      location();                       //führe Methode location() aus
-    }
-    else if (clicked_id == "persönliche-events"){ //wenn die ID des buttons "persönliche-events" ist
-      persönlicheEvents();                        //führe Methode persönlicheEvents() aus
-    } 
+    const location = document.querySelector('#'+this.targetElement) as HTMLElement;
+    console.log(location); //speicher das ELement mit id location_text in location
+    location.scrollIntoView({behavior: 'smooth'}); //führe die scrollIntoView Methode des location Elements aus
+    
+    
   }
 
 

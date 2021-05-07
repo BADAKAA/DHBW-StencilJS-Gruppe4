@@ -35,9 +35,9 @@
     <image-slider height="75%" width="100%" autoplay="true" time="5s"
         sources="/images/featured-event2.jpg;/images/featured-event3.jpg;/images/featured-event4.jpg"></image-slider>
     <div class="menü" style="position:sticky; top:0; width: 100%;">
-        <my-menu name="Events" id="event"></my-menu>
-        <my-menu name="Location" id="location"></my-menu>
-        <my-menu name="Persönliche Events" id="persönliche-events"></my-menu>
+        <my-menu name="Events" targetElement="event"></my-menu>
+        <my-menu name="Location" targetElement="location"></my-menu>
+        <my-menu name="Persönliche Events" targetElement="persönliche-events"></my-menu>
     </div>
 
     <div class="grid">
@@ -61,7 +61,7 @@
         <faq-component question="Wie finde ich Events?" answer="Das Event ist toll"></faq-component>
         <heart-button color="black" clickcolor="#941C2F" width="45px" height="45px" icon="&#10084;" iconsize="150%">
         </heart-button>
-        <div id="event_text">
+        <div id="event">
             <h4 class="ziel"> Events </h4>
             <p>Dies ist ein Typoblindtext. An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen.
                 Manchmal benutzt man Worte wie Hamburgefonts, Rafgenduks oder Handgloves, um Schriften zu testen.
@@ -78,7 +78,7 @@
                 An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen. Manchmal benutzt man Worte
                 wie Hamburgefonts, Rafgenduks</p>
         </div>
-        <div id="location_text">
+        <div id="location">
             <h4 class="ziel">Location</h4>
             <p>Dies ist ein Typoblindtext. An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen.
                 Manchmal benutzt man Worte wie Hamburgefonts, Rafgenduks oder Handgloves, um Schriften zu testen.
@@ -95,7 +95,7 @@
                 An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen. Manchmal benutzt man Worte
                 wie Hamburgefonts, Rafgenduks</p>
         </div>
-        <div id="persönlicheEvents_text">
+        <div id="persönlicheEvents">
             <h4 class="ziel">Persönliche Events</h4>
             <p>Dies ist ein Typoblindtext. An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen.
                 Manchmal benutzt man Worte wie Hamburgefonts, Rafgenduks oder Handgloves, um Schriften zu testen.
