@@ -54,7 +54,8 @@ export class FlipCard {
           <div class={this.flipcard}
             onClick={() => this.meme()}
             onMouseOver={() => this.handleMouseOver()}
-            onMouseOut={() => this.handleMouseOut()}>
+            //onMouseOut={() => this.handleMouseOut()}
+            >
             <div class="content">
               <div class="front">
                 <div class="imgBox">
