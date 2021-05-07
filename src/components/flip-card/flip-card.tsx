@@ -65,9 +65,9 @@ export class FlipCard {
               <div class="back">
                 {this.name && <h2> {this.name} </h2>}
                 <div class="backInput">
-                  <element onClick={() => this.googleMaps()}>{this.place && <h3> 📍 {this.place} </h3>}</element>
-                  {this.date && <h3> 📅 {this.date} </h3>}
-                  {this.description && <p> {this.description}</p>}
+                  <element onClick={() => this.googleMaps()}><h3> 📍 {this.place} </h3></element>
+                  <h3> 📅 {this.date} </h3>
+                  <p> {this.description}</p>
                 </div>
               </div>
             </div>
