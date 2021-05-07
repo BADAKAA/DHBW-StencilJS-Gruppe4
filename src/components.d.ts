@@ -294,7 +294,6 @@ declare namespace LocalJSX {
         "justify"?: string;
         "margin"?: string;
         "offset"?: string;
-        "onSearchCleared"?: (event: CustomEvent<string>) => void;
         "position"?: string;
         "width"?: string;
     }

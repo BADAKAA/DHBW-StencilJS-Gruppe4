@@ -183,3 +183,17 @@ li:hover .eventImage {
 hr {
   opacity: 0.3;
 }
+
+@keyframes appearFromBottom {
+  0% {
+    transform: translateY(5%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.animate {
+  animation: 1.5s ease-out 0s 1 appearFromBottom;
+}

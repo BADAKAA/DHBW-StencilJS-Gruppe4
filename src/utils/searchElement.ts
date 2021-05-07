@@ -41,6 +41,10 @@ export function resetSearch() {
         element.style.opacity = "1";
     }
 }
+export function clearSearchTerm() {
+    searchTerm = "";
+    searchElement();
+}
 
 export function getChildren() {
     if (typeof searchedElement === typeof HTMLUListElement || typeof searchedElement === typeof HTMLOListElement) {

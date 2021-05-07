@@ -4,8 +4,8 @@
 }
 
 .searchBarContainer {
-  position: relative;
   justify-content: center;
+  position: relative;
   display: flex;
   width: 100%;
   z-index: 1000;
@@ -15,21 +15,21 @@
   justify-content: center;
   position: relative;
   display: flex;
-  width: 75%;
-  height: 60px;
   z-index: 1000;
+  height: 60px;
+  width: 75%;
 }
 
 #searchBar {
-  border: 1px solid lightgray;
-  border-radius: 30px;
-  padding: 0 80px;
-  outline: none;
-  font-size: 16pt;
   font-family: 'Open Sans', sans-serif;
+  border: 1px solid lightgray;
+  padding: 0 80px 0 80px;
+  border-radius: 30px;
+  font-size: 1.4em;
+  outline: none;
+  z-index: 1000;
   width: 100%;
   height:100%;
-  z-index: 1000;
 }
 .searchBar:hover {
   background: #F8F8F8;
@@ -39,18 +39,27 @@
   box-shadow: 9px 9px 10px #00000077;
 }
 
-.searchIcon {
-  z-index: 20000;
-
-  width:45px;
-  height: 45px;
-  left:10px;
-  top:50%;
-  transform: translate(0,-48%);
-
-  cursor: pointer;
+.searchIcon.angular {
+  /*adapt to border size of .searchBar*/
+  height: calc(100% + 2px);
+  background: black;
   position: absolute;
+  cursor: pointer;
+  z-index: 2000;
+  width: auto;
+  left: 0;
+  top: 0;
+}
 
+.searchIcon.round {
+  transform: translate(11%, -49%);
   background: black;
   border-radius: 50%;
+  position: absolute; 
+  cursor: pointer;
+  z-index: 2000;
+  height: 85%;
+  width: auto;
+  top: 50%;
+  left: 0;
 }

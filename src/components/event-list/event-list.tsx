@@ -249,7 +249,6 @@ function expandAllItems() {
 
 function sortItems() {
 
-
   if (sortButton.textContent.includes("↓")) {
     sortButton.textContent = "Sort Items ↑";
     eventData.sort(compareDescending);

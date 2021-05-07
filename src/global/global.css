@@ -1,7 +1,7 @@
 :root {
-    --app-example-var: black;
     --custom-black: #100B00;
     --custom-white:#FFFCF9;
+    --primary:#941C2F;
 }
 body {
     font-family: 'Open Sans', sans-serif;
@@ -24,7 +24,7 @@ h1,h2,h3,h4 {
 h1 {
     font-weight: 300;
     color: var(--custom-black);
-    font-size: 48pt;
+    font-size: 42pt;
 }
 h2 {
     font-weight: 800;
@@ -63,7 +63,7 @@ h4 {
     background:#1F487E;
 }
 .primary {
-    background:#941C2F;
+    background:var(--primary);
     color:#FFFCF9;
 }
 .secondary {
@@ -118,4 +118,21 @@ footer {
 }
 .ziel {
     margin: 0 0 20px;
+}
+.source {
+    padding-bottom: 3px;
+    position: absolute;
+    left:20px;
+    color: grey;
+    font-size: 10pt;
+}
+.icon {
+    height: 36pt;
+    margin-right:10px;
+    transform: translateY(4pt);
+}
+.title {
+    justify-self:start;
+    margin-left: 60px;
+    font-weight: 200;
 }

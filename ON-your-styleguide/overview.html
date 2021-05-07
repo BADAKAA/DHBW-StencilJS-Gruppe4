@@ -17,12 +17,15 @@
 
 <body>
         <div class="gridHeader">
-            <h1><a href="/ON-your-styleguide/index.html">Eventist</a></h1>
-            <search-bar design="angular" icon="#941C2F" position="relative" width="90%" component="event-list" justify="center"></search-bar>
+            <h1 class="title"><nobr><a href="/ON-your-styleguide/index.html">Eventist <img class="icon" src="/icons/home.svg"></img></a></nobr></h1>
+            <search-bar height="60px"design="angular" icon="#941C2F" position="relative" width="90%" component="event-list" justify="center"></search-bar>
         </div>
-        <date-picker component="event-list" backgroundcolor= "none" monthcolor="black" width="100%"></date-picker>
         
-        <event-list color="#941C2F" buttons="true"></event-list>
+        <date-picker component="event-list" backgroundcolor= "none" monthcolor="black" width="100%"></date-picker>
+        <div class="animate">
+            <event-list color="#941C2F" buttons="true"></event-list>
+        </div>
         <button-up name="↑"></button-up>
+        <div class="source">Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 </body>
 </html>
