@@ -11,9 +11,7 @@
   color: white;
   font-size: 150%;
   text-align: center;
-  /*object-fit: fill;*/
-  margin-top: 10px;
-  margin-left: 50px;
+  margin:30px;
   box-shadow: none;
   border:none;
   border-radius: 50%;

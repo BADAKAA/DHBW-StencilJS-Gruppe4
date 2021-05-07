@@ -107,7 +107,6 @@ function monthClicked(ev: MouseEvent) {
 
   let month:string= monthIndex.toString();
   if (month.length < 2) month = "0" + month;
-
   
   if(monthElement.style.background=="") {
     clearMonthColor();
