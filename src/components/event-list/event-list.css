@@ -181,7 +181,7 @@ li:hover .eventImage {
   font-size: 1em;
   left: 50%;
   width: 4em;
-  transform: translate(0,-50%);
+  transform: translate(-50%,-50%);
   background-color: var(--custom-white);
   z-index: 1000;
 }
