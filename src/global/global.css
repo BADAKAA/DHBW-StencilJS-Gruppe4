@@ -95,9 +95,9 @@ footer {
     font-family:'Catamaran', 'open-sans';
 }
 .source {
-    padding-bottom: 3px;
     position: absolute;
     left:20px;
+    bottom: 3px;
     color: grey;
     font-size: 10pt;
 }
