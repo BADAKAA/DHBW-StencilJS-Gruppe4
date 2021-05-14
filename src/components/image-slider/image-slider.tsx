@@ -79,9 +79,9 @@ export class ImageSlider {
     return (
       <Host>
         <div id="slider-frame" >
-        <img src="/assets/pause.png"  class="sliderButton" id="stopSliderButton"></img>
-        <img src="/assets/arrow.png"  class="sliderButton" id="previousImageButton"></img>
-        <img src="/assets/arrow.png"  class="sliderButton" id="nextImageButton"></img>
+        <img src="./assets/pause.png"  class="sliderButton" id="stopSliderButton"></img>
+        <img src="./assets/arrow.png"  class="sliderButton" id="previousImageButton"></img>
+        <img src="./assets/arrow.png"  class="sliderButton" id="nextImageButton"></img>
         <div id="slider">
         </div>
         </div>
@@ -228,11 +228,11 @@ function checkEndReached() {
 function startStopSlider() {
 
   if(!paused) {
-  stopSliderButton.src="/assets/pauseToPlay.gif";
+  stopSliderButton.src="./assets/pauseToPlay.gif";
   clearInterval(sliderTimingFunction);
   paused=true;
   } else if (paused) {
-    stopSliderButton.src="/assets/pause.png";
+    stopSliderButton.src="./assets/pause.png";
     changeSlide("+");
     sliderTimingFunction = setInterval(()=>{changeSlide("+")},sliderFrequency);
     paused=false;
@@ -256,8 +256,8 @@ function pauseSlider() {
 function buttonClick(button:HTMLImageElement,direction:string) {
 
   if(!transitionActive) {
-    button.src="/assets/arrow.gif";
-    setTimeout(()=>button.src="/assets/arrow.png",1000);
+    button.src="./assets/arrow.gif";
+    setTimeout(()=>button.src="./assets/arrow.png",1000);
     changeSlide(direction);
     pauseSlider();
     }

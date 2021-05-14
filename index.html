@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="/dist/stencil-starter-on/stencil-starter-on.esm.js" type="module"></script>
-    <link rel="stylesheet" href="/dist/stencil-starter-on/stencil-starter-on.css" />
+    <script src="./dist/stencil-starter-on/stencil-starter-on.esm.js" type="module"></script>
+    <link rel="stylesheet" type="text/css" href="./dist/stencil-starter-on/stencil-starter-on.css" />
     <title>Eventist</title>
     <link rel="shortcut icon" href="favicon.svg" type="image/svg">
 
@@ -34,7 +34,7 @@
     <search-bar icon="#941C2F" google="true" offset="-50%" width="65%" height="65px" justify="center"
         position="absolute"></search-bar>
     <image-slider height="75%" width="100%" autoplay="true" time="5s"
-        sources="/images/featured-event2.jpg;/images/featured-event3.jpg;/images/featured-event4.jpg"></image-slider>
+        sources="./images/featured-event2.jpg;./images/featured-event3.jpg;./images/featured-event4.jpg"></image-slider>
 
     <div style="position:sticky; top:0; width: 100%;z-index:100;">
         <my-menu name="Events" url="./overview.html"></my-menu>
@@ -55,13 +55,13 @@
             description="Ballroom dance is a set of partner dances, which are enjoyed both socially and competitively around the world, mostly because of its performance and entertainment aspects. Ballroom dancing is also widely enjoyed on stage, film, and television."
             colorFront="white" colorBack="white" textback="black" textfront="black"></flip-card>
 
-        <flip-card name="Army of Hardcore" img="/images/featured-event2.jpg" turnable="true" place="Oberhausen, Germany"
+        <flip-card name="Army of Hardcore" img="./images/featured-event2.jpg" turnable="true" place="Oberhausen, Germany"
             date="2021-07-12"
             description="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim."
             colorFront="white" colorBack="white" textback="black" textfront="black"></flip-card>
     </div>
     <div class="padding">
-        <img class="faqImage" src="/icons/faq.svg" />
+        <img class="faqImage" src="./icons/faq.svg" />
         <h3>FAQ</h3>
         <faq-component question="Wo finde ich einen Überblick zu den Events?"
             answer="Na das ist ja mal ein Zufall!  Genau dafür haben wir eine atemberaubende Web-Komponente gebaut. Diese findest du, wenn du im Menu auf »EVENTS« klickst.">
@@ -125,9 +125,9 @@
                 Haslinger, Bassit Agbéré, Frauke Ridder, Lena Ernst, Enny-Fee Ped</p>
         </div>
         <my-smlink name="instagram" link="https://www.instagram.com/p/CMzXZe6Dxmz/?utm_source=ig_web_copy_link"
-            icon="/icons/instagram.png"></my-smlink>
-        <my-smlink name="facebook" link="https://www.facebook.com/stenciljs/" icon="/icons/fb.png"></my-smlink>
-        <my-smlink name="twitter" link="http://twitter.com/?lang=de" icon="/icons/tw.png"></my-smlink>
+            icon="./icons/instagram.png"></my-smlink>
+        <my-smlink name="facebook" link="https://www.facebook.com/stenciljs/" icon="./icons/fb.png"></my-smlink>
+        <my-smlink name="twitter" link="http://twitter.com/?lang=de" icon="./icons/tw.png"></my-smlink>
 
     </footer>
 </body>

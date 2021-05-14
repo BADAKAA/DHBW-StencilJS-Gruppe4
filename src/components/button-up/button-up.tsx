@@ -19,14 +19,12 @@ export class ButtonUp {
   @Prop() colortext?: string;
 
   backToTop(){
-    console.log("klappt");
     window.scroll({ top: 0, left: 0, behavior:'smooth'});
   }
 
   MouseUp(){
     componentElement = document.querySelector("button-up").shadowRoot;
     elementBackground = componentElement.querySelector("#buttonUp");
-    console.log("Over");
     
     if(this.colorbackground){
       elementBackground.style.backgroundColor = this.colorbackground;
@@ -36,7 +34,6 @@ export class ButtonUp {
   MouseOver(){
     componentElement = document.querySelector("button-up").shadowRoot;
     elementHover = componentElement.querySelector("#buttonUp");
-    console.log("Up");
     if(this.colorhover){
       elementHover.style.backgroundColor = this.colorhover;
     }

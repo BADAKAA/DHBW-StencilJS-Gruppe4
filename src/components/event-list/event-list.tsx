@@ -41,7 +41,7 @@ export class EventList {
   componentDidLoad() {
     referenceObjects(this.el);
     //Event data is fetched AFTER elements have been referenced. Otherwise, there would be nowhere to append elements in fillList()
-    fetch('../data/event-data.json')
+    fetch('./data/event-data.json')
       .then(results => results.json())
       .then(data => {
         eventData = data.events;
