@@ -145,7 +145,6 @@ footer {
     object-fit: cover;
     justify-self: center;
 }
-
 @media only screen and (max-width: 900px) {
     .split {
         grid-template-columns: 1fr;
