@@ -45,7 +45,7 @@ export class SearchBar {
       <Host>
         <div class="searchBarContainer">
           <div class="searchBarFrame">
-            <img class="searchIcon" src="/assets/search.png"></img>
+            <img class="searchIcon" src="./assets/search.png"></img>
             <input type="text" id="searchBar" placeholder="Suche..."></input>
           </div>
         </div>
@@ -141,11 +141,11 @@ function search() {
 
   const input: string = searchBar.value.toLowerCase();
   if (searchBar.value !== "") {
-    searchIcon.src = "/assets/clear.png";
+    searchIcon.src = "./assets/clear.png";
     searchElement(searchedElement, input);
 
   } else {
-    searchIcon.src = "/assets/search.png";
+    searchIcon.src = "./assets/search.png";
     resetSearch();
   }
 }
